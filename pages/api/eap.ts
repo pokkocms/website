@@ -3,7 +3,7 @@ import { Client } from "@hubspot/api-client";
 
 const handler = async (req: NowRequest, res: NowResponse) => {
   fetch(
-    "https://hooks.slack.com/services/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",
+    "https://hooks.slack.com/services/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",
     {
       method: "POST",
       headers: { "Content-type": "application/json" },

@@ -62,7 +62,7 @@ const Home: React.FC<Document> = () => (
           <div className="column">
             <p>
               A content management system that features{" "}
-              <strong>advanced data modelling</strong>,
+              <strong>advanced data modelling</strong>,{" "}
               <strong>content inheritance</strong>,{" "}
               <strong>hierarchical content structure</strong>,{" "}
               <strong>integrated webhooks</strong>,{" "}
