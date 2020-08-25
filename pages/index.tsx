@@ -1,11 +1,54 @@
+import * as React from "react";
 import Head from "next/head";
 import Document from "next/document";
 import { Logo } from "../components/Logo";
 
+const ContactForm: React.FC = () => {
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+
+  const handleSubmit = async (ev: React.FormEvent) => {
+    ev.preventDefault();
+    setLoading(true);
+    try {
+      await fetch("/api/eap", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      setSuccess(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (success) {
+    return <p>Thank you! We will be in touch.</p>;
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        className="input"
+        placeholder="Email address"
+        value={email}
+        onChange={(ev) => setEmail(ev.currentTarget.value)}
+      />
+
+      <button type="submit" disabled={loading}>
+        Keep me posted
+      </button>
+    </form>
+  );
+};
+
 const Home: React.FC<Document> = () => (
   <>
     <Head>
-      <title>Pokko</title>
+      <title>Pokko - Content made better</title>
       <link rel="icon" type="image/png" href="/pokko.png" />
     </Head>
     <main>
@@ -40,14 +83,7 @@ const Home: React.FC<Document> = () => (
                 To join our EAP (early access program), register your interest
                 and we'll be in touch with a user account.
               </p>
-
-              <input
-                type="email"
-                className="input"
-                placeholder="Email address"
-              />
-
-              <button>Keep me posted</button>
+              <ContactForm />
             </div>
           </div>
         </div>

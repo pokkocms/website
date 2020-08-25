@@ -1,7 +1,7 @@
 .input {
   display: block;
   font-size: inherit;
-  color: inherit;
+  color: var(--colour-indigo);
   padding: calc(var(--gap) / 2);
   margin: 0;
   margin-bottom: var(--gap);
@@ -22,4 +22,9 @@ button {
   border-radius: 30px;
 
   color: var(--colour-indigo);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
