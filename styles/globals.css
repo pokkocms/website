@@ -1,11 +1,14 @@
 @import "./fonts.css";
 @import "./typography.css";
+@import "./forms.css";
 
 :root {
   --font: Arimo, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-  --colour-text: #5c5c77;
+  --colour-text: #fff;
+  --colour-indigo: #0e0e2c;
+  --colour-primary: #66dabe;
 
   --font-size-body: 16px;
   --font-size-button: 14px;
@@ -13,7 +16,7 @@
 
   --gap: 1rem;
 
-  --border-radius: 4px;
+  --border-radius: 8px;
 }
 
 html,
@@ -26,44 +29,41 @@ body {
   color: var(--colour-text);
 }
 
-.banner {
-  max-width: 1184px;
+html {
+  background-image: url("/background.svg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+body {
+  padding: 2rem;
+}
+
+.container {
+  max-width: 900px;
   margin: 0 auto;
+}
 
+.header {
+  text-align: center;
+  margin: 2rem;
+}
+
+.header svg {
+  margin-bottom: 2rem;
+}
+
+.columns {
   display: grid;
-
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-end;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: var(--gap);
-
-  padding: var(--gap);
 }
 
-@media (max-width: 512px) {
-  .banner {
-    grid-template-columns: 1fr;
-  }
-}
-
-.input {
-  display: block;
-  font-size: inherit;
-  color: inherit;
-  padding: calc(var(--gap) / 3) calc(var(--gap) / 2);
-  margin: 0;
-  margin-bottom: calc(var(--gap) / 2);
-  border-radius: var(--border-radius);
-  border: 1px solid #9797aa;
-}
-
-button {
-  font-size: var(--font-size-button);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-
-  background-color: #eef2f5;
-  border: none;
-
-  padding: calc(var(--gap) / 2) var(--gap);
-  border-radius: var(--border-radius);
+.panel {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 1rem;
 }

@@ -3,7 +3,7 @@ h2,
 h3 {
   font-weight: bold;
   margin: 0;
-  letter-spacing: -1px;
+  letter-spacing: -0.01em;
 }
 
 h1,
@@ -26,7 +26,7 @@ h3,
 
 p,
 li {
-  line-height: 20px;
+  line-height: 160%;
 }
 
 .heading {
@@ -35,4 +35,10 @@ li {
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: calc(var(--gap) / 2);
+}
+
+p strong,
+p a {
+  font-weight: bold;
+  color: #66dabe;
 }

@@ -1,0 +1,25 @@
+.input {
+  display: block;
+  font-size: inherit;
+  color: inherit;
+  padding: calc(var(--gap) / 2);
+  margin: 0;
+  margin-bottom: var(--gap);
+  border-radius: var(--border-radius);
+  border: 1px solid #a9a4c0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  font-size: var(--font-size-button);
+  font-weight: bold;
+
+  background-color: var(--colour-primary);
+  border: none;
+
+  padding: calc(var(--gap) / 2) var(--gap);
+  border-radius: 30px;
+
+  color: var(--colour-indigo);
+}
