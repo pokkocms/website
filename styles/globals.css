@@ -12,6 +12,8 @@
   --font-size-heading: 14px;
 
   --gap: 1rem;
+
+  --border-radius: 4px;
 }
 
 html,
@@ -46,9 +48,12 @@ body {
 .input {
   display: block;
   font-size: inherit;
-  padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
+  color: inherit;
+  padding: calc(var(--gap) / 3) calc(var(--gap) / 2);
   margin: 0;
   margin-bottom: calc(var(--gap) / 2);
+  border-radius: var(--border-radius);
+  border: 1px solid #9797aa;
 }
 
 button {
@@ -60,4 +65,5 @@ button {
   border: none;
 
   padding: calc(var(--gap) / 2) var(--gap);
+  border-radius: var(--border-radius);
 }

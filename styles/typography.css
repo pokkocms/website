@@ -24,7 +24,8 @@ h3,
   letter-spacing: initial;
 }
 
-p {
+p,
+li {
   line-height: 20px;
 }
 
