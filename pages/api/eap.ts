@@ -12,11 +12,14 @@ const handler = async (req: NowRequest, res: NowResponse) => {
     },
   });
 
-  fetch(process.env.SLACK_URL, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ text: `New contact! ${req.body.email}` }),
-  });
+  fetch(
+    "https://hooks.slack.com/services/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",
+    {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ text: `New contact! ${req.body.email}` }),
+    }
+  );
 
   res.json({ success: true });
 };
