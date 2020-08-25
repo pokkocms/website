@@ -1,12 +1,63 @@
+@import "./fonts.css";
+@import "./typography.css";
+
+:root {
+  --font: Arimo, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  --colour-text: #5c5c77;
+
+  --font-size-body: 16px;
+  --font-size-button: 14px;
+  --font-size-heading: 14px;
+
+  --gap: 1rem;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--font);
+
+  font-size: var(--font-size-body);
+  color: var(--colour-text);
 }
 
-main {
-  text-align: center;
-  margin: 40px;
+.banner {
+  max-width: 1184px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  column-gap: var(--gap);
+
+  padding: var(--gap);
+}
+
+@media (max-width: 512px) {
+  .banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  display: block;
+  font-size: inherit;
+  padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
+  margin: 0;
+  margin-bottom: calc(var(--gap) / 2);
+}
+
+button {
+  font-size: var(--font-size-button);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  background-color: #eef2f5;
+  border: none;
+
+  padding: calc(var(--gap) / 2) var(--gap);
 }
