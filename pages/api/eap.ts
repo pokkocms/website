@@ -18,6 +18,7 @@ const handler = async (req: NowRequest, res: NowResponse) => {
   await slackClient.chat.postMessage({
     channel: "C019C13LGKE", // #sales
     text: `New contact! ${req.body.email}`,
+    as_user: false,
   });
 
   res.json({ success: true });
