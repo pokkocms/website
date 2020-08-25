@@ -2,6 +2,7 @@ import { NowRequest, NowResponse } from "@vercel/node";
 import { Client } from "@hubspot/api-client";
 
 const handler = async (req: NowRequest, res: NowResponse) => {
+  
   fetch(process.env.SLACK_URL, {
     method: "POST",
     headers: { "Content-type": "application/json" },
