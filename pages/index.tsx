@@ -7,9 +7,19 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [email, setEmail] = React.useState("");
+  const [error, setError] = React.useState("");
 
   const handleSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
+
+    if (!email) {
+      setError("Please enter an  email address");
+      return;
+    } else if (!/[^@]+@[^.]+\..+/.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
     setLoading(true);
     try {
       await fetch("/api/eap", {
@@ -32,11 +42,16 @@ const ContactForm: React.FC = () => {
     <form onSubmit={handleSubmit}>
       <input
         type="email"
-        className="input"
+        className={error ? "input is-danger" : "input"}
         placeholder="Email address"
         value={email}
-        onChange={(ev) => setEmail(ev.currentTarget.value)}
+        onChange={(ev) => {
+          setEmail(ev.currentTarget.value);
+          setError("");
+        }}
       />
+
+      {error ? <p className="is-danger">{error}</p> : null}
 
       <button type="submit" disabled={loading}>
         Keep me posted
@@ -60,7 +75,10 @@ const Home: React.FC<Document> = () => (
         property="og:description"
         content="Pokko - a modern solution to complex content management"
       />
-      <meta property="og:image" content="https://www.pokko.io/pokko-sharing.png" />
+      <meta
+        property="og:image"
+        content="https://www.pokko.io/pokko-sharing.png"
+      />
       <meta property="og:url" content="https://www.pokko.io/" />
       <meta property="og:site_name" content="Pokko" />
     </Head>
