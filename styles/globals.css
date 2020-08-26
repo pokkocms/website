@@ -93,3 +93,8 @@ p.is-danger {
     font-size: 30px;
   }
 }
+
+.buttons a:not(:last-child),
+.buttons button:not(:last-child) {
+  margin-right: var(--gap);
+}

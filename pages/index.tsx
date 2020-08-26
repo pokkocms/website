@@ -1,5 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import Document from "next/document";
 import { Logo } from "../components/Logo";
 
@@ -53,9 +54,12 @@ const ContactForm: React.FC = () => {
 
       {error ? <p className="is-danger">{error}</p> : null}
 
-      <button type="submit" disabled={loading}>
-        Keep me posted
-      </button>
+      <div className="buttons">
+        <button type="submit" disabled={loading}>
+          Keep me posted
+        </button>
+        <Link href="/privacy">Privacy policy</Link>
+      </div>
     </form>
   );
 };
