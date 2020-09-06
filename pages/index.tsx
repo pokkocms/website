@@ -50,6 +50,7 @@ const ContactForm: React.FC = () => {
       <input type="hidden" name="form-name" value="eap" />
 
       <input
+        name="email"
         type="email"
         className={error ? "input is-danger" : "input"}
         placeholder="Email address"
