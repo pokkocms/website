@@ -4,6 +4,12 @@ import Link from "next/link";
 import Document from "next/document";
 import { Logo } from "../components/Logo";
 
+const encode = (data: any) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 const ContactForm: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -23,10 +29,10 @@ const ContactForm: React.FC = () => {
 
     setLoading(true);
     try {
-      await fetch("/api/eap", {
+      await fetch("/", {
         method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ email }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "eap", email }),
       });
 
       setSuccess(true);
@@ -40,7 +46,7 @@ const ContactForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} netlify>
       <input
         type="email"
         className={error ? "input is-danger" : "input"}
