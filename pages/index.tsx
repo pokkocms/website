@@ -46,7 +46,7 @@ const ContactForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} data-netlify>
+    <form name="eap" onSubmit={handleSubmit} data-netlify>
       <input
         type="email"
         className={error ? "input is-danger" : "input"}
