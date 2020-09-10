@@ -32,7 +32,7 @@ const ContactForm: React.FC = () => {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "eap", email }),
+        body: encode({ email }),
       });
 
       setSuccess(true);
