@@ -3,12 +3,12 @@
 @import "./forms.css";
 
 :root {
-  --font: Arimo, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  --font: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   --colour-text: #fff;
-  --colour-indigo: #0e0e2c;
-  --colour-primary: #66dabe;
+  --colour-indigo: #1a1a30;
+  --colour-primary: #4fc6a9;
   --colour-danger: #f12b2c;
 
   --font-size-body: 16px;

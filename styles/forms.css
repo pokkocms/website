@@ -24,7 +24,7 @@ button {
   border: none;
 
   padding: calc(var(--gap) / 2) var(--gap);
-  border-radius: 30px;
+  border-radius: var(--border-radius);
 
   color: var(--colour-indigo);
 }

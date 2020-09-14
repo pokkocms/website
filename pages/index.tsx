@@ -67,7 +67,9 @@ const ContactForm: React.FC = () => {
         <button type="submit" disabled={loading}>
           Keep me posted
         </button>
-        <Link href="/privacy">Privacy policy</Link>
+        <Link href="/privacy">
+          <a>Privacy policy</a>
+        </Link>
       </div>
     </form>
   );
@@ -99,7 +101,7 @@ const Home: React.FC<Document> = () => (
       <div className="container">
         <div className="header">
           <Logo />
-          <h1>Pokko is a better way to manage your content.</h1>
+          <h1>Pokko is a better way to manage your content</h1>
         </div>
 
         <div className="columns">
