@@ -4,12 +4,6 @@ import Link from "next/link";
 import Document from "next/document";
 import { Logo } from "../components/Logo";
 
-const encode = (data: any) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
-
 const ContactForm: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -29,11 +23,14 @@ const ContactForm: React.FC = () => {
 
     setLoading(true);
     try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ email }),
-      });
+      await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/8337392/ac26cc50-7c1d-4ad1-9005-8c67ba897ccb",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ fields: [{ name: "email", value: email }] }),
+        }
+      );
 
       setSuccess(true);
     } finally {
