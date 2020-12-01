@@ -1,6 +1,5 @@
 export const Metadata: React.FC = () => (
   <>
-    <link rel="icon" type="image/png" href="/pokko.png" />
     <meta
       name="description"
       content="Pokko - a modern solution to complex content management"
