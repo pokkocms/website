@@ -44,7 +44,7 @@ const Home: React.FC<Document> = () => (
           </p>
           <a href="https://au-syd1.pokko.io/register">Get started</a>
         </div>
-        <div className="hero__right">graphic</div>
+        <div className="hero__right">...</div>
       </div>
     </div>
   </>
