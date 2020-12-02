@@ -8,6 +8,8 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [email, setEmail] = React.useState("");
+  const [jobType, setJobType] = React.useState("");
+  const [source, setSource] = React.useState("");
   const [error, setError] = React.useState("");
 
   const handleSubmit = async (ev: React.FormEvent) => {
@@ -28,7 +30,13 @@ const ContactForm: React.FC = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fields: [{ name: "email", value: email }] }),
+          body: JSON.stringify({
+            fields: [
+              { name: "email", value: email },
+              { name: "job_type", value: jobType },
+              { name: "lead_context", value: source },
+            ],
+          }),
         }
       );
 
@@ -57,6 +65,39 @@ const ContactForm: React.FC = () => {
           setError("");
         }}
       />
+      <select
+        name="jobType"
+        className={error ? "input is-danger" : "input"}
+        value={jobType}
+        onChange={(ev) => {
+          setJobType(ev.currentTarget.value);
+          setError("");
+        }}
+      >
+        <option>I am a...</option>
+        <option>Back-end Developer</option>
+        <option>Front-end Developer</option>
+        <option>Business Analyst</option>
+        <option>Content Creator</option>
+        <option>Designer</option>
+        <option>Marketer</option>
+        <option>Other</option>
+      </select>
+      <select
+        name="source"
+        className={error ? "input is-danger" : "input"}
+        value={source}
+        onChange={(ev) => {
+          setSource(ev.currentTarget.value);
+          setError("");
+        }}
+      >
+        <option>How did you hear about Pokko?</option>
+        <option>Contact at Pokko</option>
+        <option>Through a friend</option>
+        <option>Word of mouth</option>
+        <option>Other</option>
+      </select>
 
       {error ? <p className="is-danger">{error}</p> : null}
 
