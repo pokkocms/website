@@ -116,3 +116,124 @@ body {
     border-radius: var(--radius);
   }
 }
+
+.features {
+  &__container {
+    @include container;
+
+    row-gap: 3rem;
+    grid-auto-flow: row;
+    margin-top: 7.5rem;
+  }
+
+  &__header {
+    grid-column: 2;
+    display: grid;
+    row-gap: 1.5rem;
+
+    h2 {
+      font-weight: bold;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+
+      color: var(--colour-neutral-onyx);
+    }
+
+    p {
+      line-height: 1.4;
+      max-width: 55%;
+    }
+  }
+
+  &__tiles {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+
+    li {
+      list-style: none;
+      display: grid;
+
+      padding: 1.5rem 2rem 6rem 2rem;
+
+      &:nth-child(2n) {
+        background-color: var(--colour-neutral-cloud);
+      }
+
+      svg {
+        background: #b7e2f7;
+        box-shadow: inset 0px 0px 12px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        height: 2.5rem;
+        width: 2.5rem;
+      }
+
+      strong {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+
+        font-size: 1.5rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--colour-neutral-onyx);
+      }
+
+      p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        color: var(--colour-neutral-slate);
+      }
+    }
+  }
+}
+
+.why {
+  &__container {
+    @include container;
+  }
+
+  &__items {
+    grid-column: 2;
+  }
+
+  &-item {
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__detail {
+      padding: 7rem 4rem;
+
+      strong {
+        font-weight: bold;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--colour-neutral-onyx);
+
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      p {
+        line-height: 1.4;
+
+        margin-bottom: 2rem;
+      }
+
+      ul {
+        display: grid;
+        row-gap: 0.75rem;
+        li {
+          list-style-position: inside;
+        }
+      }
+    }
+
+    &__icon {
+      background-color: var(--colour-secondary--sky-blue-25);
+    }
+  }
+}
