@@ -11,6 +11,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
         async
         src={`https://www.googletagmanager.com/gtag/js?id=UA-176777547-1`}
       />
+      <link rel="icon" href="https://cdn.pokko.io/p/favicon.svg" />
       <script
         dangerouslySetInnerHTML={{
           __html: `
