@@ -1,0 +1,44 @@
+.hero {
+  &__container {
+    @include container;
+
+    row-gap: 5rem;
+
+    background-color: var(--colour-secondary--sky-blue-25);
+
+    padding-top: var(--spacing-5);
+    padding-bottom: calc(2 * var(--spacing-5));
+
+    .navbar {
+      grid-column: 2;
+    }
+  }
+
+  &__content {
+    grid-column: 2;
+
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      color: var(--colour-neutral-onyx);
+      line-height: 110%;
+
+      letter-spacing: -0.02em;
+
+      em {
+        font-style: normal;
+        color: var(--colour-neutral-light-slate-75);
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      line-height: 140%;
+      letter-spacing: -0.02em;
+    }
+  }
+}

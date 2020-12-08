@@ -49,6 +49,7 @@ export type Entries = {
   modularPage?: Maybe<ModularPage>;
   featureTile?: Maybe<FeatureTile>;
   iconTile?: Maybe<IconTile>;
+  earlyAccessForm?: Maybe<EarlyAccessForm>;
   iconTiles?: Maybe<IconTiles>;
   section?: Maybe<Section>;
   hero?: Maybe<Hero>;
@@ -61,6 +62,7 @@ export type Entries = {
   allModularPage?: Maybe<ModularPageCollection>;
   allFeatureTile?: Maybe<FeatureTileCollection>;
   allIconTile?: Maybe<IconTileCollection>;
+  allEarlyAccessForm?: Maybe<EarlyAccessFormCollection>;
   allIconTiles?: Maybe<IconTilesCollection>;
   allSection?: Maybe<SectionCollection>;
   allHero?: Maybe<HeroCollection>;
@@ -88,6 +90,11 @@ export type EntriesFeatureTileArgs = {
 
 
 export type EntriesIconTileArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesEarlyAccessFormArgs = {
   id: Scalars['String'];
 };
 
@@ -157,6 +164,14 @@ export type EntriesAllFeatureTileArgs = {
 export type EntriesAllIconTileArgs = {
   condition?: Maybe<IconTileFilter>;
   orderBy?: Maybe<IconTileOrderBy>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllEarlyAccessFormArgs = {
+  condition?: Maybe<EarlyAccessFormFilter>;
+  orderBy?: Maybe<EarlyAccessFormOrderBy>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
@@ -334,6 +349,16 @@ export type IconTile = PokEntry & PokValue & ITile & {
   icon?: Maybe<PokMedia>;
 };
 
+export type EarlyAccessForm = PokEntry & PokValue & {
+  __typename?: 'EarlyAccessForm';
+  id: Scalars['String'];
+  pokko: Pokko;
+  style?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  link?: Maybe<PokValue>;
+  title?: Maybe<Scalars['String']>;
+};
+
 export type IconTiles = PokEntry & PokValue & ISection & {
   __typename?: 'IconTiles';
   id: Scalars['String'];
@@ -491,6 +516,35 @@ export enum IconTileOrderBy {
   CreatedDesc = 'CREATED_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
   ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type EarlyAccessFormCollection = {
+  __typename?: 'EarlyAccessFormCollection';
+  nodes: Array<Maybe<EarlyAccessForm>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type EarlyAccessFormFilter = {
+  /** Filter on the Style field */
+  style?: Maybe<Scalars['String']>;
+  /** Filter on the Summary field */
+  summary?: Maybe<Scalars['String']>;
+  /** Filter on the Title field */
+  title?: Maybe<Scalars['String']>;
+};
+
+export enum EarlyAccessFormOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  StyleAsc = 'STYLE_ASC',
+  StyleDesc = 'STYLE_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
   TitleAsc = 'TITLE_ASC',
   TitleDesc = 'TITLE_DESC'
 }
@@ -745,6 +799,9 @@ export type GetHomeQuery = (
       { __typename: 'IconTile' }
       & HomeModule_IconTile_Fragment
     ) | (
+      { __typename: 'EarlyAccessForm' }
+      & HomeModule_EarlyAccessForm_Fragment
+    ) | (
       { __typename: 'IconTiles' }
       & HomeModule_IconTiles_Fragment
     ) | (
@@ -769,7 +826,7 @@ export type GetHomeQuery = (
       { __typename: 'Link' }
       & HomeModule_Link_Fragment
     )>>> }
-  ) | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }> }
+  ) | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }> }
 );
 
 type HomeModule_Tiles_Fragment = { __typename?: 'Tiles' };
@@ -779,6 +836,11 @@ type HomeModule_ModularPage_Fragment = { __typename?: 'ModularPage' };
 type HomeModule_FeatureTile_Fragment = { __typename?: 'FeatureTile' };
 
 type HomeModule_IconTile_Fragment = { __typename?: 'IconTile' };
+
+type HomeModule_EarlyAccessForm_Fragment = (
+  { __typename?: 'EarlyAccessForm' }
+  & EarlyAccessFormModuleFragment
+);
 
 type HomeModule_IconTiles_Fragment = (
   { __typename?: 'IconTiles' }
@@ -808,13 +870,13 @@ type HomeModule_ResourceTile_Fragment = { __typename?: 'ResourceTile' };
 
 type HomeModule_Link_Fragment = { __typename?: 'Link' };
 
-export type HomeModuleFragment = HomeModule_Tiles_Fragment | HomeModule_ModularPage_Fragment | HomeModule_FeatureTile_Fragment | HomeModule_IconTile_Fragment | HomeModule_IconTiles_Fragment | HomeModule_Section_Fragment | HomeModule_Hero_Fragment | HomeModule_FeatureTiles_Fragment | HomeModule_ResourceTiles_Fragment | HomeModule_Tile_Fragment | HomeModule_ResourceTile_Fragment | HomeModule_Link_Fragment;
+export type HomeModuleFragment = HomeModule_Tiles_Fragment | HomeModule_ModularPage_Fragment | HomeModule_FeatureTile_Fragment | HomeModule_IconTile_Fragment | HomeModule_EarlyAccessForm_Fragment | HomeModule_IconTiles_Fragment | HomeModule_Section_Fragment | HomeModule_Hero_Fragment | HomeModule_FeatureTiles_Fragment | HomeModule_ResourceTiles_Fragment | HomeModule_Tile_Fragment | HomeModule_ResourceTile_Fragment | HomeModule_Link_Fragment;
 
 export type HeroModuleFragment = (
   { __typename?: 'Hero' }
   & Pick<Hero, 'title'>
   & { heroBody: Hero['body'] }
-  & { link?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | (
+  & { link?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | (
     { __typename?: 'Link' }
     & Pick<Link, 'target' | 'text'>
   )>, image?: Maybe<(
@@ -833,7 +895,7 @@ export type IconTilesModuleFragment = (
       { __typename?: 'PokMedia' }
       & Pick<PokMedia, 'url'>
     )> }
-  ) | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }>>> }
+  ) | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }>>> }
 );
 
 export type FeatureTilesModuleFragment = (
@@ -845,20 +907,29 @@ export type FeatureTilesModuleFragment = (
       { __typename?: 'PokMedia' }
       & Pick<PokMedia, 'url'>
     )> }
-  ) | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }>>> }
+  ) | { __typename?: 'IconTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }>>> }
 );
 
 export type ResourceTileModuleFragment = (
   { __typename?: 'ResourceTiles' }
   & Pick<ResourceTiles, 'title' | 'summary'>
-  & { resourceTilesBody?: Maybe<Array<Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | (
+  & { resourceTilesBody?: Maybe<Array<Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | (
     { __typename?: 'ResourceTile' }
     & Pick<ResourceTile, 'title' | 'body'>
-    & { link?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | (
+    & { link?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | (
       { __typename?: 'Link' }
       & Pick<Link, 'text' | 'target'>
     )> }
   ) | { __typename?: 'Link' }>>> }
+);
+
+export type EarlyAccessFormModuleFragment = (
+  { __typename?: 'EarlyAccessForm' }
+  & Pick<EarlyAccessForm, 'style' | 'title' | 'summary'>
+  & { link?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | (
+    { __typename?: 'Link' }
+    & Pick<Link, 'text' | 'target'>
+  )> }
 );
 
 export const HeroModuleFragmentDoc = gql`
@@ -924,17 +995,32 @@ export const ResourceTileModuleFragmentDoc = gql`
   }
 }
     `;
+export const EarlyAccessFormModuleFragmentDoc = gql`
+    fragment EarlyAccessFormModule on EarlyAccessForm {
+  style
+  title
+  summary
+  link {
+    ... on Link {
+      text
+      target
+    }
+  }
+}
+    `;
 export const HomeModuleFragmentDoc = gql`
     fragment HomeModule on PokValue {
   ...HeroModule
   ...IconTilesModule
   ...FeatureTilesModule
   ...ResourceTileModule
+  ...EarlyAccessFormModule
 }
     ${HeroModuleFragmentDoc}
 ${IconTilesModuleFragmentDoc}
 ${FeatureTilesModuleFragmentDoc}
-${ResourceTileModuleFragmentDoc}`;
+${ResourceTileModuleFragmentDoc}
+${EarlyAccessFormModuleFragmentDoc}`;
 export const GetHomeDocument = gql`
     query GetHome {
   entry(path: ["website", "home"]) {
@@ -985,6 +1071,7 @@ export type GetHomeQueryResult = Apollo.QueryResult<GetHomeQuery, GetHomeQueryVa
       "ModularPage",
       "FeatureTile",
       "IconTile",
+      "EarlyAccessForm",
       "IconTiles",
       "Section",
       "Hero",
@@ -999,6 +1086,7 @@ export type GetHomeQueryResult = Apollo.QueryResult<GetHomeQuery, GetHomeQueryVa
       "ModularPage",
       "FeatureTile",
       "IconTile",
+      "EarlyAccessForm",
       "IconTiles",
       "Section",
       "Hero",
