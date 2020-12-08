@@ -1,0 +1,67 @@
+query GetHome {
+  entry(path: ["website", "home"]) {
+    ... on ModularPage {
+      body {
+        __typename
+        ...HomeModule
+      }
+    }
+  }
+}
+
+fragment HomeModule on PokValue {
+  ...HeroModule
+  ...IconTilesModule
+  ...FeatureTilesModule
+  ...ResourceTileModule
+}
+
+fragment HeroModule on Hero {
+  title
+  heroBody: body
+  link {
+    ... on Link {
+      target
+      text
+    }
+  }
+}
+
+fragment IconTilesModule on IconTiles {
+  layout
+  title
+  summary
+  iconTileBody: body {
+    ... on IconTile {
+      title
+      body
+    }
+  }
+}
+
+fragment FeatureTilesModule on FeatureTiles {
+  featureTilesBody: body {
+    ... on FeatureTile {
+      title
+      body
+      features
+    }
+  }
+}
+
+fragment ResourceTileModule on ResourceTiles {
+  title
+  summary
+  resourceTilesBody: body {
+    ... on ResourceTile {
+      title
+      body
+      link {
+        ... on Link {
+          text
+          target
+        }
+      }
+    }
+  }
+}

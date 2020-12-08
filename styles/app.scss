@@ -20,10 +20,6 @@ body {
   grid-template-columns: 1fr 1120px 1fr;
 }
 
-.content {
-  grid-column: 2;
-}
-
 .hero {
   &__container {
     @include container;
@@ -154,7 +150,7 @@ body {
     li {
       list-style: none;
       display: grid;
-      
+
       align-items: flex-start;
       grid-template-rows: auto 1fr 1fr;
 
