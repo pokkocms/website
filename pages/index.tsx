@@ -14,6 +14,7 @@ import {
   IconTilesModuleFragment,
   ResourceTileModuleFragment,
 } from "../api/queries";
+import ReactMarkdown from "react-markdown";
 
 const Navbar: React.FC = () => (
   <nav className="navbar">
@@ -44,7 +45,11 @@ const HeroModule: React.FC<HeroModuleFragment> = ({
       <Navbar />
       <div className="hero__content">
         <div className="hero__left">
-          <h1>{title}</h1>
+          <h1>
+            <ReactMarkdown renderers={{ paragraph: React.Fragment }}>
+              {title}
+            </ReactMarkdown>
+          </h1>
           <p>{heroBody}</p>
 
           {link.__typename === "Link" ? (
@@ -232,7 +237,7 @@ const Home: React.FC<GetHomeQuery> = ({ entry }) =>
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await client.query<GetHomeQuery>({ query: GetHomeDocument });
-  console.log(JSON.stringify(res.data.entry, null, 2));
+
   return {
     revalidate: 5,
     props: { entry: res.data.entry },
