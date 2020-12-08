@@ -7,7 +7,7 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
   link,
 }) => {
   switch (style) {
-    case "twocol":
+    case "twocol": {
       const id = `input-${Math.random()}`;
       return (
         <div className="eap-twocol__container">
@@ -32,7 +32,26 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
           </form>
         </div>
       );
-    default:
-      return <>other form</>;
+    }
+    default: {
+      const id = `input-${Math.random()}`;
+      return (
+        <div className="eap-basic__container">
+          <h2>{title}</h2>
+          {summary ? <p>{summary}</p> : null}
+          <form className="eap-basic__form">
+            <input
+              id={id}
+              type="email"
+              className="input"
+              placeholder="Your email"
+            />
+            <button type="submit" className="button">
+              Register now
+            </button>
+          </form>
+        </div>
+      );
+    }
   }
 };
