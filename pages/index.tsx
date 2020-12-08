@@ -39,6 +39,7 @@ const HeroModule: React.FC<HeroModuleFragment> = ({
   title,
   link,
   heroBody,
+  image,
 }) => {
   return (
     <div className="hero__container">
@@ -56,7 +57,9 @@ const HeroModule: React.FC<HeroModuleFragment> = ({
             <a href={link.target}>{link.text}</a>
           ) : null}
         </div>
-        <div className="hero__right"></div>
+        <div className="hero__right">
+          <img src={image?.url} />
+        </div>
       </div>
     </div>
   );
@@ -79,7 +82,7 @@ const IconTilesModule: React.FC<IconTilesModuleFragment> = ({
           {iconTileBody.map((ent, idx) =>
             ent.__typename === "IconTile" ? (
               <li key={idx}>
-                <svg />
+                <img src={ent.icon?.url} />
                 <strong>{ent.title}</strong>
                 <p>{ent.body}</p>
               </li>
@@ -99,7 +102,7 @@ const IconTilesModule: React.FC<IconTilesModuleFragment> = ({
           {iconTileBody.map((ent, idx) =>
             ent.__typename === "IconTile" ? (
               <li key={idx}>
-                <svg />
+                <img src={ent.icon?.url} />
                 <strong>{ent.title}</strong>
                 <p>{ent.body}</p>
               </li>
@@ -111,6 +114,23 @@ const IconTilesModule: React.FC<IconTilesModuleFragment> = ({
   }
 };
 
+const GreenCheck: React.FC = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="10" cy="10" r="10" fill="#CCF0EC" />
+    <path
+      d="M5.71411 11.3251L7.69514 13.22C8.03599 13.5461 8.57627 13.5353 8.90382 13.1959L14.2855 7.61914"
+      stroke="#007F73"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
+
 const FeatureTilesModule: React.FC<FeatureTilesModuleFragment> = ({
   featureTilesBody,
 }) => {
@@ -120,34 +140,28 @@ const FeatureTilesModule: React.FC<FeatureTilesModuleFragment> = ({
         {featureTilesBody.map((ent, idx) =>
           ent.__typename === "FeatureTile" ? (
             <li key={idx} className="why-item__container">
-              {idx % 2 !== 0 ? <div className="why-item__icon"></div> : null}
+              {idx % 2 !== 0 ? (
+                <div className="why-item__icon">
+                  <img src={ent.icon?.url} />
+                </div>
+              ) : null}
               <div className="why-item__detail">
                 <strong>{ent.title}</strong>
                 <p>{ent.body}</p>
                 <ul>
                   {ent.features.map((str, idx2) => (
                     <li key={idx2}>
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle cx="10" cy="10" r="10" fill="#CCF0EC" />
-                        <path
-                          d="M5.71411 11.3251L7.69514 13.22C8.03599 13.5461 8.57627 13.5353 8.90382 13.1959L14.2855 7.61914"
-                          stroke="#007F73"
-                          strokeWidth="1.5"
-                        />
-                      </svg>
-
+                      <GreenCheck />
                       <p>{str}</p>
                     </li>
                   ))}
                 </ul>
               </div>
-              {idx % 2 === 0 ? <div className="why-item__icon"></div> : null}
+              {idx % 2 === 0 ? (
+                <div className="why-item__icon">
+                  <img src={ent.icon?.url} />
+                </div>
+              ) : null}
             </li>
           ) : null
         )}

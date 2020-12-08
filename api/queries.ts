@@ -264,12 +264,13 @@ export type ModularPage = PokEntry & PokValue & {
   body?: Maybe<Array<Maybe<PokValue>>>;
 };
 
-export type FeatureTile = PokEntry & PokValue & ITile & {
+export type FeatureTile = PokEntry & PokValue & ITile & IIconTile & {
   __typename?: 'FeatureTile';
   id: Scalars['String'];
   pokko: Pokko;
   title?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['String']>;
+  icon?: Maybe<PokMedia>;
   features?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
@@ -279,10 +280,8 @@ export type ITile = {
   body?: Maybe<Scalars['String']>;
 };
 
-export type IconTile = PokEntry & PokValue & ITile & {
-  __typename?: 'IconTile';
+export type IIconTile = {
   id: Scalars['String'];
-  pokko: Pokko;
   title?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['String']>;
   icon?: Maybe<PokMedia>;
@@ -325,6 +324,15 @@ export enum PokMediaPosition {
   Left = 'LEFT',
   LeftTop = 'LEFT_TOP'
 }
+
+export type IconTile = PokEntry & PokValue & ITile & {
+  __typename?: 'IconTile';
+  id: Scalars['String'];
+  pokko: Pokko;
+  title?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['String']>;
+  icon?: Maybe<PokMedia>;
+};
 
 export type IconTiles = PokEntry & PokValue & ISection & {
   __typename?: 'IconTiles';
@@ -809,6 +817,9 @@ export type HeroModuleFragment = (
   & { link?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | (
     { __typename?: 'Link' }
     & Pick<Link, 'target' | 'text'>
+  )>, image?: Maybe<(
+    { __typename?: 'PokMedia' }
+    & Pick<PokMedia, 'url'>
   )> }
 );
 
@@ -818,6 +829,10 @@ export type IconTilesModuleFragment = (
   & { iconTileBody?: Maybe<Array<Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | { __typename?: 'FeatureTile' } | (
     { __typename?: 'IconTile' }
     & Pick<IconTile, 'title' | 'body'>
+    & { icon?: Maybe<(
+      { __typename?: 'PokMedia' }
+      & Pick<PokMedia, 'url'>
+    )> }
   ) | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }>>> }
 );
 
@@ -826,6 +841,10 @@ export type FeatureTilesModuleFragment = (
   & { featureTilesBody?: Maybe<Array<Maybe<{ __typename?: 'Tiles' } | { __typename?: 'ModularPage' } | (
     { __typename?: 'FeatureTile' }
     & Pick<FeatureTile, 'title' | 'body' | 'features'>
+    & { icon?: Maybe<(
+      { __typename?: 'PokMedia' }
+      & Pick<PokMedia, 'url'>
+    )> }
   ) | { __typename?: 'IconTile' } | { __typename?: 'IconTiles' } | { __typename?: 'Section' } | { __typename?: 'Hero' } | { __typename?: 'FeatureTiles' } | { __typename?: 'ResourceTiles' } | { __typename?: 'Tile' } | { __typename?: 'ResourceTile' } | { __typename?: 'Link' }>>> }
 );
 
@@ -852,6 +871,9 @@ export const HeroModuleFragmentDoc = gql`
       text
     }
   }
+  image {
+    url
+  }
 }
     `;
 export const IconTilesModuleFragmentDoc = gql`
@@ -863,6 +885,9 @@ export const IconTilesModuleFragmentDoc = gql`
     ... on IconTile {
       title
       body
+      icon {
+        url
+      }
     }
   }
 }
@@ -874,6 +899,9 @@ export const FeatureTilesModuleFragmentDoc = gql`
       title
       body
       features
+      icon {
+        url
+      }
     }
   }
 }
@@ -989,6 +1017,9 @@ export type GetHomeQueryResult = Apollo.QueryResult<GetHomeQuery, GetHomeQueryVa
       "FeatureTile",
       "IconTile",
       "ResourceTile"
+    ],
+    "IIconTile": [
+      "FeatureTile"
     ]
   }
 };

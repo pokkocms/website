@@ -25,6 +25,9 @@ fragment HeroModule on Hero {
       text
     }
   }
+  image {
+    url
+  }
 }
 
 fragment IconTilesModule on IconTiles {
@@ -35,6 +38,9 @@ fragment IconTilesModule on IconTiles {
     ... on IconTile {
       title
       body
+      icon {
+        url
+      }
     }
   }
 }
@@ -45,6 +51,9 @@ fragment FeatureTilesModule on FeatureTiles {
       title
       body
       features
+      icon {
+        url
+      }
     }
   }
 }
