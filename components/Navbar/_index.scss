@@ -8,6 +8,10 @@
 
   align-items: center;
 
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+
   &__brand {
     padding: var(--spacing-3);
 
@@ -24,6 +28,10 @@
 
     justify-content: start;
 
+    @include mobile {
+      display: none;
+    }
+
     a {
       color: var(--colour-text);
       text-decoration: none;
@@ -32,5 +40,9 @@
 
   &__right {
     padding: var(--spacing-2);
+
+    @include mobile {
+      display: none;
+    }
   }
 }

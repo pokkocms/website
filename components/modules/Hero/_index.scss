@@ -41,4 +41,10 @@
       letter-spacing: -0.02em;
     }
   }
+
+  &__right {
+    @include mobile {
+      display: none;
+    }
+  }
 }

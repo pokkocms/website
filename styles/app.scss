@@ -15,9 +15,23 @@ body {
   background-color: #fff;
 }
 
+img {
+  max-width: 100%;
+}
+
+@mixin mobile {
+  @media screen and (max-width: 520px) {
+    @content;
+  }
+}
+
 @mixin container {
   display: grid;
   grid-template-columns: 1fr 1120px 1fr;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 @import "../components/index";

@@ -11,6 +11,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
         async
         src={`https://www.googletagmanager.com/gtag/js?id=UA-176777547-1`}
       />
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, maximum-scale=1"
+      />
+
       <link rel="icon" href="https://cdn.pokko.io/p/favicon.svg" />
       <script
         dangerouslySetInnerHTML={{

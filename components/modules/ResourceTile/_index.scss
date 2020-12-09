@@ -28,6 +28,10 @@
     p {
       line-height: 1.4;
       max-width: 55%;
+
+      @include mobile {
+        max-width: 100%;
+      }
     }
   }
 
@@ -37,6 +41,10 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
     row-gap: 2.5rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
 
     li {
       list-style: none;

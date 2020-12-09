@@ -3,13 +3,21 @@
     &__container {
       display: grid;
       grid-template-columns: 1fr repeat(2, calc(1120px / 2)) 1fr;
-      grid-template-rows: auto;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
     }
 
     &__detail {
       order: 1;
       grid-column: 2;
       padding: 7rem 4rem;
+
+      @include mobile {
+        grid-column: auto;
+        order: auto;
+      }
 
       strong {
         font-weight: bold;
@@ -50,12 +58,23 @@
       order: 2;
       grid-column: 3;
       background-color: var(--colour-secondary--sky-blue-25);
+
+      @include mobile {
+        grid-column: auto;
+        order: auto;
+      }
     }
 
     &__bleed {
       order: 3;
       grid-column: 4;
       background-color: var(--colour-secondary--sky-blue-25);
+
+      @include mobile {
+        display: none;
+        order: auto;
+        grid-column: auto;
+      }
     }
   }
 }
@@ -64,13 +83,25 @@
   .why-item__bleed {
     order: 1;
     grid-column: 1;
+    @include mobile {
+      order: auto;
+      grid-column: auto;
+    }
   }
   .why-item__icon {
     order: 2;
     grid-column: 2;
+    @include mobile {
+      order: auto;
+      grid-column: auto;
+    }
   }
   .why-item__detail {
     order: 3;
     grid-column: 3;
+    @include mobile {
+      order: auto;
+      grid-column: auto;
+    }
   }
 }
