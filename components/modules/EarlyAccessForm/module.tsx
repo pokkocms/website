@@ -1,4 +1,6 @@
+import { useForm } from "react-hook-form";
 import { EarlyAccessFormModuleFragment } from "../../../api/queries";
+import { RegisterFormInput, useRegisterForm } from "../../../hooks/form";
 
 export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
   title,
@@ -6,6 +8,9 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
   style,
   link,
 }) => {
+  const [submit, { state, message }] = useRegisterForm();
+  const { register, handleSubmit, errors } = useForm<RegisterFormInput>();
+
   switch (style) {
     case "twocol": {
       const id = `input-${Math.random()}`;
@@ -18,18 +23,37 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
               <a href={link.target}>{link.text}</a>
             ) : null}
           </div>
-          <form className="eap-twocol__right">
-            <label htmlFor={id}>It’s time to do something unconventional</label>
-            <input
-              id={id}
-              type="email"
-              className="input"
-              placeholder="Your email"
-            />
-            <button type="submit" className="button">
-              Register now
-            </button>
-          </form>
+          {state === "success" ? (
+            <div className="eap-twocol__right">
+              <p>{message ?? "Thank you!"}</p>
+            </div>
+          ) : (
+            <form className="eap-twocol__right" onSubmit={handleSubmit(submit)}>
+              <label htmlFor={id}>
+                It’s time to do something unconventional
+              </label>
+              <div className="control">
+                <input
+                  id={id}
+                  type="email"
+                  placeholder="Your email"
+                  className={errors.email ? "input --danger" : "input"}
+                  name="email"
+                  ref={register({ required: "This field is required" })}
+                />
+                {errors.email ? (
+                  <p className="message --danger">{errors.email.message}</p>
+                ) : null}
+              </div>
+              <button
+                type="submit"
+                className="button"
+                disabled={state === "loading"}
+              >
+                Register now
+              </button>
+            </form>
+          )}
         </div>
       );
     }
@@ -39,17 +63,35 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
         <div className="eap-basic__container">
           <h2>{title}</h2>
           {summary ? <p>{summary}</p> : null}
-          <form className="eap-basic__form">
-            <input
-              id={id}
-              type="email"
-              className="input"
-              placeholder="Your email"
-            />
-            <button type="submit" className="button">
-              Register now
-            </button>
-          </form>
+          {state === "success" ? (
+            <div className="eap-basic__success">
+              <p>{message ?? "Thank you!"}</p>
+            </div>
+          ) : (
+            <form className="eap-basic__form" onSubmit={handleSubmit(submit)}>
+              <div className="control">
+                <input
+                  id={id}
+                  type="email"
+                  placeholder="Your email"
+                  className={errors.email ? "input --danger" : "input"}
+                  name="email"
+                  ref={register({ required: "This field is required" })}
+                />
+
+                {errors.email ? (
+                  <p className="message --danger">{errors.email.message}</p>
+                ) : null}
+              </div>
+              <button
+                type="submit"
+                className="button"
+                disabled={state === "loading"}
+              >
+                Register now
+              </button>
+            </form>
+          )}
         </div>
       );
     }

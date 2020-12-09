@@ -34,6 +34,10 @@ body {
     color: var(--colour-neutral-slate);
     background-color: var(--colour-secondary--sky-blue-100);
   }
+
+  &[disabled] {
+    opacity: 0.8;
+  }
 }
 
 .link-button {
@@ -56,8 +60,33 @@ a {
   background: var(--colour-neutral-dark-cloud);
   border: 1px solid var(--colour-neutral-light-slate-25);
   border-radius: var(--radius);
-  padding: 10px 14px;
+  padding: 14px 10px;
   display: block;
   width: 100%;
   font-size: inherit;
+
+  &.--danger {
+    border-color: var(--colour-danger);
+  }
+}
+
+.message {
+  color: var(--colour-neutral-onyx);
+  background-color: var(--colour-neutral-light-slate-25);
+  border: 1px solid var(--colour-neutral-light-slate-75);
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  border-radius: 4px;
+
+  &.--danger {
+    color: var(--colour-danger);
+    background-color: var(--colour-danger-25);
+    border-color: var(--colour-danger);
+  }
+}
+
+.control {
+  display: grid;
+  row-gap: 0.5rem;
 }
