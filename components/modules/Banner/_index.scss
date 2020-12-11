@@ -1,0 +1,34 @@
+.banner {
+  &__container {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 0.5rem;
+    background-color: var(--colour-primary-green-100);
+
+    color: white;
+
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  &__icon {
+    padding: 0.25rem;
+    border-radius: 32px;
+
+    background: var(--colour-primary-green-75);
+
+    display: grid;
+    align-items: center;
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  &__body {
+    line-height: 1.4;
+  }
+}
