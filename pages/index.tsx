@@ -14,6 +14,7 @@ import { IconTilesModule } from "../components/modules/IconTiles/module";
 import { ResourceTileModule } from "../components/modules/ResourceTile/module";
 import { EarlyAccessFormModule } from "../components/modules/EarlyAccessForm/module";
 import { Banner } from "../components/modules/Banner/module";
+import { Footer } from "../components/Footer/module";
 
 const Home: React.FC<GetHomeQuery> = ({ entry }) =>
   entry.__typename === "ModularPage" ? (
@@ -42,6 +43,7 @@ const Home: React.FC<GetHomeQuery> = ({ entry }) =>
       {entry.body.map((ent, idx) => (
         <HomeModuleHandler key={idx} {...ent} />
       ))}
+      <Footer />
     </>
   ) : null;
 
