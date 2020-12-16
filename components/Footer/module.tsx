@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 
 export type FooterProps = {};
 
@@ -45,30 +46,98 @@ export const Footer: React.FC<FooterProps> = () => (
         <div className="footer__links">
           <h3>Company</h3>
           <ul>
-            <li>About Pokko</li>
-            <li>Jobs {"<--"} we’re hiring!</li>
-            <li>Referral Program</li>
-            <li>Terms of Service</li>
-            <li>Privacy Policy</li>
+            <li>
+              <Link href="/about">
+                <a>About Pokko</a>
+              </Link>
+            </li>
+            <li>
+              <a href="mailto:jobs@pokko.io">Jobs {"<--"} we’re hiring!</a>
+            </li>
+            <li>
+              <Link href="/referral-program">
+                <a>Referral Program</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms">
+                <a>Terms of Service</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy">
+                <a>Privacy Policy</a>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="footer__links">
           <h3>Product</h3>
           <ul>
-            <li>Features</li>
-            <li>Product Roadmap</li>
-            <li>Pricing</li>
-            <li>Documentation</li>
-            <li>Pokko University</li>
+            <li>
+              <Link href="/features">
+                <a>Features</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/roadmap">
+                <a>Product Roadmap</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/pricing">
+                <a>Pricing</a>
+              </Link>
+            </li>
+            <li>
+              <a
+                href="https://docs.pokko.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Documentation
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://uni.pokko.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Pokko University
+              </a>
+            </li>
           </ul>
         </div>
         <div className="footer__links">
           <h3>Help and Community</h3>
           <ul>
-            <li>Contact us</li>
-            <li>Discord</li>
-            <li>Blog</li>
-            <li>Server status</li>
+            <li>
+              <a href="mailto:support@pokko.io">Contact us</a>
+            </li>
+            <li>
+              <a
+                href="https://discord.gg/v8cstDy2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Discord
+              </a>
+            </li>
+            <li>
+              <Link href="/news">
+                <a>Blog</a>
+              </Link>
+            </li>
+            <li>
+              <a
+                href="https://google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Server status
+              </a>
+            </li>
           </ul>
         </div>
       </div>
