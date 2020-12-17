@@ -43,6 +43,15 @@
   }
 
   &__right {
+    position: relative;
+
+    img {
+      max-width: initial;
+      position: absolute;
+      left: -100px;
+      width: 700px;
+    }
+
     @include mobile {
       display: none;
     }
