@@ -12,7 +12,7 @@ export const Metadata: React.FC = () => (
     />
     <meta
       property="og:image"
-      content="https://www.pokko.io/pokko-sharing.png"
+      content="https://cdn.pokko.io/p/pokko-sharing.png"
     />
     <meta property="og:url" content="https://www.pokko.io/" />
     <meta property="og:site_name" content="Pokko" />
