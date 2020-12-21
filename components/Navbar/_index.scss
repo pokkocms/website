@@ -81,13 +81,13 @@
 
   &-brand {
     svg {
-      width: 8.25rem;
+      height: 1.75rem;
     }
   }
 
   &-header {
     margin: 0 2rem;
-    margin-top: 4.5rem;
+    margin-top: calc(4.5rem + 2px);
 
     display: grid;
     grid-template-columns: 1fr auto;
