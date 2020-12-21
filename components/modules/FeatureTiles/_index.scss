@@ -29,6 +29,10 @@
 
         margin-bottom: 1.5rem;
         display: block;
+
+        @include mobile {
+          font-size: 2rem;
+        }
       }
 
       p {

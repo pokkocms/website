@@ -137,6 +137,10 @@
       letter-spacing: -0.02em;
 
       color: var(--colour-neutral-onyx);
+
+      @include mobile {
+        font-size: 2rem;
+      }
     }
 
     p {
