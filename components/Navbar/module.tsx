@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React from "react";
 import { Logo } from "../Logo";
 
@@ -63,6 +64,11 @@ const NavbarBurger: React.FC<{ active: boolean; toggle: () => void }> = ({
 
 export const Navbar: React.FC = () => {
   const [burger, setBurger] = React.useState(false);
+  const { pathname } = useRouter();
+
+  React.useEffect(() => {
+    setBurger(false);
+  }, [pathname]);
 
   return (
     <nav className="navbar">
