@@ -9,6 +9,10 @@
     background-color: var(--colour-secondary--sky-blue-25);
 
     padding: 5rem 0;
+
+    @include mobile {
+      padding: 2.5rem 1.5rem;
+    }
   }
 
   &__header {
@@ -35,15 +39,20 @@
     }
   }
 
-  &__tiles {
+  &__tile-container {
     grid-column: 2;
+    overflow: auto;
+  }
+
+  &__tiles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
     row-gap: 2.5rem;
 
     @include mobile {
-      grid-template-columns: 1fr;
+      grid-template-columns: unset;
+      grid-auto-flow: column;
     }
 
     li {
@@ -76,6 +85,15 @@
 
         line-height: 1.4;
         color: var(--colour-neutral-slate);
+      }
+
+      @include mobile {
+        padding: 2.5rem 1rem 1rem 1rem;
+        width: 16rem;
+
+        p {
+          margin-bottom: 1rem;
+        }
       }
     }
   }

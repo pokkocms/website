@@ -5,6 +5,11 @@
     row-gap: 3rem;
     grid-auto-flow: row;
     margin-top: 7.5rem;
+
+    @include mobile {
+      margin-top: 5rem;
+      row-gap: 2rem;
+    }
   }
 
   &__header {
@@ -19,6 +24,10 @@
       letter-spacing: -0.02em;
 
       color: var(--colour-neutral-onyx);
+
+      @include mobile {
+        font-size: 2rem;
+      }
     }
 
     p {
@@ -29,6 +38,11 @@
         max-width: 100%;
       }
     }
+
+    @include mobile {
+      margin: 0 1.5rem;
+      row-gap: 1rem;
+    }
   }
 
   &__tiles {
@@ -38,6 +52,7 @@
 
     @include mobile {
       grid-template-columns: 1fr;
+      margin: 0 1.5rem;
     }
 
     li {
@@ -48,10 +63,6 @@
       grid-template-rows: auto 1fr 1fr;
 
       padding: 1.5rem 2rem 6rem 2rem;
-
-      @include mobile {
-        padding: 2rem;
-      }
 
       &:nth-child(2n) {
         background-color: var(--colour-neutral-cloud);
@@ -85,6 +96,14 @@
         line-height: 1.4;
         color: var(--colour-neutral-slate);
       }
+
+      @include mobile {
+        padding: 1rem 1rem 3rem 1rem;
+
+        strong {
+          margin-top: 1.5rem;
+        }
+      }
     }
   }
 }
@@ -100,6 +119,10 @@
     background-color: var(--colour-secondary--sky-blue-25);
 
     padding: 5rem 0;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__header {

@@ -12,6 +12,11 @@
     .navbar {
       grid-column: 2;
     }
+
+    @include mobile {
+      padding-top: 1rem;
+      row-gap: 1rem;
+    }
   }
 
   &__content {
@@ -25,12 +30,16 @@
       margin-bottom: 2rem;
       color: var(--colour-neutral-onyx);
       line-height: 110%;
-
       letter-spacing: -0.02em;
 
       em {
         font-style: normal;
         color: var(--colour-neutral-light-slate-75);
+        display: block;
+
+        font-size: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
       }
     }
 
@@ -39,12 +48,25 @@
       margin-bottom: 1.5rem;
       line-height: 140%;
       letter-spacing: -0.02em;
-
-      width: 90%;
     }
 
-    form {
-      width: 80%;
+    @include mobile {
+      margin: 0 1.5rem;
+      grid-template-columns: 1fr;
+
+      h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+      }
+
+      .eap-basic__form {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+
+        button {
+          justify-self: stretch;
+        }
+      }
     }
   }
 
@@ -59,7 +81,18 @@
     }
 
     @include mobile {
-      display: none;
+      background-color: var(--colour-secondary--sky-blue-25);
+      position: unset;
+
+      img {
+        position: relative;
+        left: 0;
+        width: auto;
+        max-width: 100%;
+
+        transform: translateY(2rem);
+        margin-bottom: -3rem;
+      }
     }
   }
 }

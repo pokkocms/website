@@ -8,8 +8,38 @@
 
   align-items: center;
 
+  &__burger {
+    display: none;
+
+    padding: var(--spacing-3);
+
+    &-toggle {
+      border: none;
+      background: transparent;
+    }
+
+    &-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: white;
+
+      &.--active {
+        display: block;
+      }
+    }
+  }
+
   @include mobile {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+    margin: 0 1rem;
+
+    .navbar__burger {
+      display: block;
+    }
   }
 
   &__brand {
