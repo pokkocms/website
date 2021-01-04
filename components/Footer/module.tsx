@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = () => (
                 </Link>
               </li>
               <li>
-                <a href="mailto:jobs@pokko.io">Jobs {"<--"} we’re hiring!</a>
+                <a href="mailto:jobs@pokko.io">Jobs</a> {"<--"} we’re hiring!
               </li>
               <li>
                 <Link href="/referral-program">

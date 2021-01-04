@@ -30,7 +30,10 @@ export const HeroModule: React.FC<HeroModuleFragment> = ({
               <p>{message ?? "Thank you!"}</p>
             </div>
           ) : (
-            <form className="eap-basic__form" onSubmit={handleSubmit(submit)}>
+            <form
+              className="eap-twocol__form --inline"
+              onSubmit={handleSubmit(submit)}
+            >
               <div className="control">
                 <input
                   type="email"
