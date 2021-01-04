@@ -1,17 +1,23 @@
 import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { client, staticPropsByPath } from "../lib/pokko";
-import intro, {
+import {
   GetDynamicPagePathsDocument,
   GetDynamicPagePathsQuery,
   GetPageByPathQuery,
-  ModularPageContentFragment,
 } from "../pokko/queries";
 import { ModularPage } from "../components/entries/ModularPage/view";
+import { BlogPost } from "../components/entries/BlogPost/view";
+import { ContentPage } from "../components/entries/ContentPage/view";
 
 export const DynamicPage: React.FC<GetPageByPathQuery> = ({ entry }) => {
-  if (intro.possibleTypes["IModularPage"].includes(entry.__typename)) {
-    return <ModularPage entry={entry as ModularPageContentFragment} />;
+  switch (entry.__typename) {
+    case "ModularPage":
+      return <ModularPage entry={entry} />;
+    case "BlogPost":
+      return <BlogPost entry={entry} />;
+    case "ContentPage":
+      return <ContentPage entry={entry} />;
   }
 
   return null;

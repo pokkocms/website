@@ -1,6 +1,7 @@
 .richtext {
   &__container {
     @include container;
+    grid-template-columns: 1fr 60ch 1fr;
   }
 
   &__content {

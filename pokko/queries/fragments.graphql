@@ -5,6 +5,17 @@ fragment ModularPageContent on IModularPage {
   }
 }
 
+fragment ContentPageContent on IContentPage {
+  ...ModularPageContent
+  alias
+  title
+}
+
+fragment BlogPostContent on IBlogPost {
+  ...ContentPageContent
+  date
+}
+
 fragment MetadataContent on IMetadata {
   metaDescription
   metaTitle

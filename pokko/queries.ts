@@ -59,6 +59,7 @@ export type Entries = {
   featureTiles?: Maybe<FeatureTiles>;
   resourceTiles?: Maybe<ResourceTiles>;
   tile?: Maybe<Tile>;
+  contentPage?: Maybe<ContentPage>;
   resourceTile?: Maybe<ResourceTile>;
   link?: Maybe<Link>;
   allTiles?: Maybe<TilesCollection>;
@@ -75,6 +76,7 @@ export type Entries = {
   allFeatureTiles?: Maybe<FeatureTilesCollection>;
   allResourceTiles?: Maybe<ResourceTilesCollection>;
   allTile?: Maybe<TileCollection>;
+  allContentPage?: Maybe<ContentPageCollection>;
   allResourceTile?: Maybe<ResourceTileCollection>;
   allLink?: Maybe<LinkCollection>;
 };
@@ -146,6 +148,11 @@ export type EntriesResourceTilesArgs = {
 
 
 export type EntriesTileArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesContentPageArgs = {
   id: Scalars['String'];
 };
 
@@ -265,6 +272,14 @@ export type EntriesAllResourceTilesArgs = {
 export type EntriesAllTileArgs = {
   condition?: Maybe<TileFilter>;
   orderBy?: Maybe<TileOrderBy>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllContentPageArgs = {
+  condition?: Maybe<ContentPageFilter>;
+  orderBy?: Maybe<ContentPageOrderBy>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
@@ -565,22 +580,40 @@ export type Section = PokEntry & PokValue & ISection & {
   title?: Maybe<Scalars['String']>;
 };
 
-export type BlogPost = PokEntry & PokValue & IBlogPost & IModularPage & IMetadata & {
+export type BlogPost = PokEntry & PokValue & IBlogPost & IModularPage & IContentPage & IMetadata & {
   __typename?: 'BlogPost';
   id: Scalars['String'];
   pokko: Pokko;
+  title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-  alias?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
   metaImage?: Maybe<PokMedia>;
+  alias?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
 };
 
 export type IBlogPost = {
   id: Scalars['String'];
   date?: Maybe<Scalars['String']>;
+};
+
+export type IContentPage = {
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
+};
+
+export type ContentPage = PokEntry & PokValue & IContentPage & IModularPage & IMetadata & {
+  __typename?: 'ContentPage';
+  id: Scalars['String'];
+  pokko: Pokko;
+  title?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']>;
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  metaImage?: Maybe<PokMedia>;
+  alias?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
 };
 
 export type TilesCollection = {
@@ -809,12 +842,14 @@ export type BlogPostCollection = {
 };
 
 export type BlogPostFilter = {
+  /** Filter on the Title field */
+  title?: Maybe<Scalars['String']>;
   /** Filter on the Date field */
   date?: Maybe<Scalars['String']>;
-  /** Filter on the Alias field */
-  alias?: Maybe<Scalars['String']>;
   /** Filter on the Meta description field */
   metaDescription?: Maybe<Scalars['String']>;
+  /** Filter on the Alias field */
+  alias?: Maybe<Scalars['String']>;
   /** Filter on the Meta title field */
   metaTitle?: Maybe<Scalars['String']>;
 };
@@ -831,7 +866,9 @@ export enum BlogPostOrderBy {
   MetaTitleAsc = 'META_TITLE_ASC',
   MetaTitleDesc = 'META_TITLE_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC'
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
 }
 
 export type RichTextCollection = {
@@ -931,6 +968,39 @@ export enum TileOrderBy {
   BodyDesc = 'BODY_DESC',
   CreatedAsc = 'CREATED_ASC',
   CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type ContentPageCollection = {
+  __typename?: 'ContentPageCollection';
+  nodes: Array<Maybe<ContentPage>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type ContentPageFilter = {
+  /** Filter on the Title field */
+  title?: Maybe<Scalars['String']>;
+  /** Filter on the Meta description field */
+  metaDescription?: Maybe<Scalars['String']>;
+  /** Filter on the Alias field */
+  alias?: Maybe<Scalars['String']>;
+  /** Filter on the Meta title field */
+  metaTitle?: Maybe<Scalars['String']>;
+};
+
+export enum ContentPageOrderBy {
+  AliasAsc = 'ALIAS_ASC',
+  AliasDesc = 'ALIAS_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
+  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
+  MetaTitleAsc = 'META_TITLE_ASC',
+  MetaTitleDesc = 'META_TITLE_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
   ModifiedDesc = 'MODIFIED_DESC',
   TitleAsc = 'TITLE_ASC',
@@ -1084,7 +1154,54 @@ type ModularPageContent_BlogPost_Fragment = (
   & MetadataContent_BlogPost_Fragment
 );
 
-export type ModularPageContentFragment = ModularPageContent_ModularPage_Fragment | ModularPageContent_BlogPost_Fragment;
+type ModularPageContent_ContentPage_Fragment = (
+  { __typename?: 'ContentPage' }
+  & { body?: Maybe<Array<Maybe<(
+    { __typename?: 'Hero' }
+    & ModularPageBody_Hero_Fragment
+  ) | (
+    { __typename?: 'ResourceTiles' }
+    & ModularPageBody_ResourceTiles_Fragment
+  ) | (
+    { __typename?: 'IconTiles' }
+    & ModularPageBody_IconTiles_Fragment
+  ) | (
+    { __typename?: 'Tiles' }
+    & ModularPageBody_Tiles_Fragment
+  ) | (
+    { __typename?: 'FeatureTiles' }
+    & ModularPageBody_FeatureTiles_Fragment
+  ) | (
+    { __typename?: 'EarlyAccessForm' }
+    & ModularPageBody_EarlyAccessForm_Fragment
+  ) | (
+    { __typename?: 'RichText' }
+    & ModularPageBody_RichText_Fragment
+  )>>> }
+  & MetadataContent_ContentPage_Fragment
+);
+
+export type ModularPageContentFragment = ModularPageContent_ModularPage_Fragment | ModularPageContent_BlogPost_Fragment | ModularPageContent_ContentPage_Fragment;
+
+type ContentPageContent_BlogPost_Fragment = (
+  { __typename?: 'BlogPost' }
+  & Pick<BlogPost, 'alias' | 'title'>
+  & ModularPageContent_BlogPost_Fragment
+);
+
+type ContentPageContent_ContentPage_Fragment = (
+  { __typename?: 'ContentPage' }
+  & Pick<ContentPage, 'alias' | 'title'>
+  & ModularPageContent_ContentPage_Fragment
+);
+
+export type ContentPageContentFragment = ContentPageContent_BlogPost_Fragment | ContentPageContent_ContentPage_Fragment;
+
+export type BlogPostContentFragment = (
+  { __typename?: 'BlogPost' }
+  & Pick<BlogPost, 'date'>
+  & ContentPageContent_BlogPost_Fragment
+);
 
 type MetadataContent_ModularPage_Fragment = (
   { __typename?: 'ModularPage' }
@@ -1101,7 +1218,12 @@ type MetadataContent_BlogPost_Fragment = (
   & Pick<BlogPost, 'metaDescription' | 'metaTitle'>
 );
 
-export type MetadataContentFragment = MetadataContent_ModularPage_Fragment | MetadataContent_Metadata_Fragment | MetadataContent_BlogPost_Fragment;
+type MetadataContent_ContentPage_Fragment = (
+  { __typename?: 'ContentPage' }
+  & Pick<ContentPage, 'metaDescription' | 'metaTitle'>
+);
+
+export type MetadataContentFragment = MetadataContent_ModularPage_Fragment | MetadataContent_Metadata_Fragment | MetadataContent_BlogPost_Fragment | MetadataContent_ContentPage_Fragment;
 
 type ModularPageBody_Tiles_Fragment = { __typename: 'Tiles' };
 
@@ -1153,7 +1275,9 @@ type ModularPageBody_Section_Fragment = { __typename: 'Section' };
 
 type ModularPageBody_BlogPost_Fragment = { __typename: 'BlogPost' };
 
-export type ModularPageBodyFragment = ModularPageBody_Tiles_Fragment | ModularPageBody_Tile_Fragment | ModularPageBody_ModularPage_Fragment | ModularPageBody_Hero_Fragment | ModularPageBody_Link_Fragment | ModularPageBody_ResourceTiles_Fragment | ModularPageBody_ResourceTile_Fragment | ModularPageBody_IconTiles_Fragment | ModularPageBody_IconTile_Fragment | ModularPageBody_FeatureTiles_Fragment | ModularPageBody_FeatureTile_Fragment | ModularPageBody_EarlyAccessForm_Fragment | ModularPageBody_RichText_Fragment | ModularPageBody_Metadata_Fragment | ModularPageBody_Section_Fragment | ModularPageBody_BlogPost_Fragment;
+type ModularPageBody_ContentPage_Fragment = { __typename: 'ContentPage' };
+
+export type ModularPageBodyFragment = ModularPageBody_Tiles_Fragment | ModularPageBody_Tile_Fragment | ModularPageBody_ModularPage_Fragment | ModularPageBody_Hero_Fragment | ModularPageBody_Link_Fragment | ModularPageBody_ResourceTiles_Fragment | ModularPageBody_ResourceTile_Fragment | ModularPageBody_IconTiles_Fragment | ModularPageBody_IconTile_Fragment | ModularPageBody_FeatureTiles_Fragment | ModularPageBody_FeatureTile_Fragment | ModularPageBody_EarlyAccessForm_Fragment | ModularPageBody_RichText_Fragment | ModularPageBody_Metadata_Fragment | ModularPageBody_Section_Fragment | ModularPageBody_BlogPost_Fragment | ModularPageBody_ContentPage_Fragment;
 
 export type HeroModuleFragment = (
   { __typename?: 'Hero' }
@@ -1233,6 +1357,12 @@ export type GetPageByPathQuery = (
   ) | { __typename?: 'Hero' } | { __typename?: 'Link' } | { __typename?: 'ResourceTiles' } | { __typename?: 'ResourceTile' } | { __typename?: 'IconTiles' } | { __typename?: 'IconTile' } | { __typename?: 'FeatureTiles' } | { __typename?: 'FeatureTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'RichText' } | { __typename?: 'Metadata' } | { __typename?: 'Section' } | (
     { __typename?: 'BlogPost' }
     & ModularPageContent_BlogPost_Fragment
+    & BlogPostContentFragment
+    & ContentPageContent_BlogPost_Fragment
+  ) | (
+    { __typename?: 'ContentPage' }
+    & ModularPageContent_ContentPage_Fragment
+    & ContentPageContent_ContentPage_Fragment
   )> }
 );
 
@@ -1362,13 +1492,30 @@ export const ModularPageContentFragmentDoc = gql`
 }
     ${MetadataContentFragmentDoc}
 ${ModularPageBodyFragmentDoc}`;
+export const ContentPageContentFragmentDoc = gql`
+    fragment ContentPageContent on IContentPage {
+  ...ModularPageContent
+  alias
+  title
+}
+    ${ModularPageContentFragmentDoc}`;
+export const BlogPostContentFragmentDoc = gql`
+    fragment BlogPostContent on IBlogPost {
+  ...ContentPageContent
+  date
+}
+    ${ContentPageContentFragmentDoc}`;
 export const GetPageByPathDocument = gql`
     query GetPageByPath($path: [String!]!) {
   entry(path: $path) {
     ...ModularPageContent
+    ...BlogPostContent
+    ...ContentPageContent
   }
 }
-    ${ModularPageContentFragmentDoc}`;
+    ${ModularPageContentFragmentDoc}
+${BlogPostContentFragmentDoc}
+${ContentPageContentFragmentDoc}`;
 
 /**
  * __useGetPageByPathQuery__
@@ -1454,7 +1601,8 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       "RichText",
       "Metadata",
       "Section",
-      "BlogPost"
+      "BlogPost",
+      "ContentPage"
     ],
     "PokValue": [
       "Tiles",
@@ -1472,7 +1620,8 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       "RichText",
       "Metadata",
       "Section",
-      "BlogPost"
+      "BlogPost",
+      "ContentPage"
     ],
     "ITiles": [
       "Tiles"
@@ -1491,7 +1640,8 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
     ],
     "IModularPage": [
       "ModularPage",
-      "BlogPost"
+      "BlogPost",
+      "ContentPage"
     ],
     "ModularPage_Body": [
       "Hero",
@@ -1536,10 +1686,15 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
     "IMetadata": [
       "ModularPage",
       "Metadata",
-      "BlogPost"
+      "BlogPost",
+      "ContentPage"
     ],
     "IBlogPost": [
       "BlogPost"
+    ],
+    "IContentPage": [
+      "BlogPost",
+      "ContentPage"
     ]
   }
 };

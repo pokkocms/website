@@ -1,0 +1,20 @@
+.content-page {
+  &__header {
+    &-container {
+      @include container;
+
+      margin: 3rem 0;
+    }
+
+    &-content {
+      grid-column: 2;
+      text-align: center;
+    }
+  }
+
+  &__body {
+    &-container {
+      margin: 3rem 0;
+    }
+  }
+}

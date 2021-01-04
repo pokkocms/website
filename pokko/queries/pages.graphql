@@ -1,6 +1,8 @@
 query GetPageByPath($path: [String!]!) {
   entry(path: $path) {
     ...ModularPageContent
+    ...BlogPostContent
+    ...ContentPageContent
   }
 }
 
