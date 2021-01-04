@@ -4,7 +4,12 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client";
-import intro from "../api/queries";
+import { GetStaticPropsResult } from "next";
+import intro, {
+  GetPageByPathDocument,
+  GetPageByPathQuery,
+  GetPageByPathQueryVariables,
+} from "../api/queries";
 
 const config = {
   environment: process.env.POK_ENVIRONMENT!,
@@ -25,3 +30,21 @@ const options: ApolloClientOptions<NormalizedCacheObject> = {
 };
 
 export const client = new ApolloClient(options);
+
+export const staticPropsByPath = async (
+  path: string[]
+): Promise<GetStaticPropsResult<GetPageByPathQuery>> => {
+  const res = await client.query<
+    GetPageByPathQuery,
+    GetPageByPathQueryVariables
+  >({
+    query: GetPageByPathDocument,
+    fetchPolicy: "network-only",
+    variables: { path },
+  });
+
+  return {
+    revalidate: 5,
+    props: { entry: res.data.entry },
+  };
+};

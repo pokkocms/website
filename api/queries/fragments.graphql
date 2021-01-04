@@ -1,20 +1,23 @@
-query GetHome {
-  entry(path: ["website", "home"]) {
-    ... on ModularPage {
-      body {
-        __typename
-        ...HomeModule
-      }
-    }
+fragment ModularPageContent on IModularPage {
+  ...MetadataContent
+  body {
+    ...ModularPageBody
   }
 }
 
-fragment HomeModule on PokValue {
+fragment MetadataContent on IMetadata {
+  metaDescription
+  metaTitle
+}
+
+fragment ModularPageBody on PokValue {
+  __typename
   ...HeroModule
   ...IconTilesModule
   ...FeatureTilesModule
   ...ResourceTileModule
   ...EarlyAccessFormModule
+  ...RichTextModule
 }
 
 fragment HeroModule on Hero {
@@ -86,4 +89,8 @@ fragment EarlyAccessFormModule on EarlyAccessForm {
       target
     }
   }
+}
+
+fragment RichTextModule on RichText {
+  body
 }

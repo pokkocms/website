@@ -1,0 +1,13 @@
+query GetPageByPath($path: [String!]!) {
+  entry(path: $path) {
+    ...ModularPageContent
+  }
+}
+
+query GetDynamicPagePaths {
+  taxonomy(filter: { path: ["website", "home"] }) {
+    nodes {
+      path
+    }
+  }
+}

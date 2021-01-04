@@ -1,0 +1,50 @@
+.richtext {
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    grid-column: 2;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    h1,
+    h2,
+    p,
+    li,
+    code,
+    blockquote {
+      line-height: 1.4;
+    }
+
+    h1,
+    h2,
+    p,
+    ol,
+    ul,
+    blockquote {
+      margin-bottom: 0.5rem;
+    }
+
+    ol {
+      list-style-type: decimal;
+      list-style-position: inside;
+    }
+
+    ul {
+      list-style-type: disc;
+      list-style-position: inside;
+    }
+
+    blockquote {
+      padding-left: 1rem;
+      border-left: 2px solid var(--colour-neutral-light-slate-25);
+    }
+  }
+}
