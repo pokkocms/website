@@ -146,7 +146,7 @@ export const Footer: React.FC<FooterProps> = () => (
               </li>
               <li>
                 <Link href="/news">
-                  <a>Blog</a>
+                  <a>News</a>
                 </Link>
               </li>
               <li>
