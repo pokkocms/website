@@ -6,7 +6,7 @@ import intro, {
   GetDynamicPagePathsQuery,
   GetPageByPathQuery,
   ModularPageContentFragment,
-} from "../api/queries";
+} from "../pokko/queries";
 import { ModularPage } from "../components/entries/ModularPage/view";
 
 export const DynamicPage: React.FC<GetPageByPathQuery> = ({ entry }) => {

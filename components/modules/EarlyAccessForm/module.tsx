@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { EarlyAccessFormModuleFragment } from "../../../api/queries";
+import { EarlyAccessFormModuleFragment } from "../../../pokko/queries";
 import { RegisterFormInput, useRegisterForm } from "../../../hooks/form";
 
 export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({

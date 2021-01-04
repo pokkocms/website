@@ -1,7 +1,7 @@
 import * as React from "react";
 import { GetStaticProps } from "next";
 import { staticPropsByPath } from "../lib/pokko";
-import { GetPageByPathQuery } from "../api/queries";
+import { GetPageByPathQuery } from "../pokko/queries";
 import { DynamicPage } from "./[...path]";
 
 const Home: React.FC<GetPageByPathQuery> = ({ entry }) => {

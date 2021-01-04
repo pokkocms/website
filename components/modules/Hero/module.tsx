@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
-import { HeroModuleFragment } from "../../../api/queries";
+import { HeroModuleFragment } from "../../../pokko/queries";
 import { useRegisterForm, RegisterFormInput } from "../../../hooks/form";
 import { Navbar } from "../../Navbar/module";
 

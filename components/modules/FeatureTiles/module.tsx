@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FeatureTilesModuleFragment } from "../../../api/queries";
+import { FeatureTilesModuleFragment } from "../../../pokko/queries";
 import { GreenCheck } from "../../icons/GreenCheck";
 
 export const FeatureTilesModule: React.FC<FeatureTilesModuleFragment> = ({

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { ResourceTileModuleFragment } from "../../../api/queries";
+import { ResourceTileModuleFragment } from "../../../pokko/queries";
 
 export const ResourceTileModule: React.FC<ResourceTileModuleFragment> = ({
   title,

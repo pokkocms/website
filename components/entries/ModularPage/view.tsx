@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   ModularPageBodyFragment,
   ModularPageContentFragment,
-} from "../../../api/queries";
+} from "../../../pokko/queries";
 import { Footer } from "../../Footer/module";
 import { Metadata } from "../../Metadata";
 import { Banner } from "../../modules/Banner/module";

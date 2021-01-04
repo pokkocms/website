@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MetadataContentFragment } from "../api/queries";
+import { MetadataContentFragment } from "../pokko/queries";
 
 export type MetadataProps = {
   entry: MetadataContentFragment;

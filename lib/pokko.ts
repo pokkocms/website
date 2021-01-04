@@ -9,7 +9,7 @@ import intro, {
   GetPageByPathDocument,
   GetPageByPathQuery,
   GetPageByPathQueryVariables,
-} from "../api/queries";
+} from "../pokko/queries";
 
 const config = {
   environment: process.env.POK_ENVIRONMENT!,

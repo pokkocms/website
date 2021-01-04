@@ -7,7 +7,7 @@ import {
   RenderElementProps,
   RenderLeafProps,
 } from "slate-react";
-import { RichTextModuleFragment } from "../../../api/queries";
+import { RichTextModuleFragment } from "../../../pokko/queries";
 
 export const RichTextModule: React.FC<RichTextModuleFragment> = ({ body }) => {
   const editor = React.useMemo(() => withReact(createEditor()), []);

@@ -1,4 +1,4 @@
-import { IconTilesModuleFragment } from "../../../api/queries";
+import { IconTilesModuleFragment } from "../../../pokko/queries";
 
 export const IconTilesModule: React.FC<IconTilesModuleFragment> = ({
   layout,

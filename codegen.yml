@@ -3,7 +3,7 @@ schema:
       headers:
         X-Token: ${POK_TOKEN}
 documents:
-  - api/queries/*.graphql
+  - pokko/queries/*.graphql
 generates:
   ./api/queries.ts:
     plugins:
