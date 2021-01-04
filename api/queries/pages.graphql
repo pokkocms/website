@@ -8,6 +8,7 @@ query GetDynamicPagePaths {
   taxonomy(filter: { path: ["website", "home"] }) {
     nodes {
       path
+      entryId
     }
   }
 }

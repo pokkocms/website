@@ -532,13 +532,14 @@ export type RichText = PokEntry & PokValue & IRichText & {
   __typename?: 'RichText';
   id: Scalars['String'];
   pokko: Pokko;
-  body?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['JSON']>;
 };
 
 export type IRichText = {
   id: Scalars['String'];
-  body?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['JSON']>;
 };
+
 
 export type IMetadata = {
   id: Scalars['String'];
@@ -1004,7 +1005,6 @@ export type Sync = {
   payload?: Maybe<Scalars['JSON']>;
 };
 
-
 export type SyncCondition = {
   after?: Maybe<Scalars['String']>;
 };
@@ -1245,7 +1245,7 @@ export type GetDynamicPagePathsQuery = (
     { __typename?: 'PageCollection' }
     & { nodes: Array<Maybe<(
       { __typename?: 'Page' }
-      & Pick<Page, 'path'>
+      & Pick<Page, 'path' | 'entryId'>
     )>> }
   )> }
 );
@@ -1400,6 +1400,7 @@ export const GetDynamicPagePathsDocument = gql`
   taxonomy(filter: {path: ["website", "home"]}) {
     nodes {
       path
+      entryId
     }
   }
 }

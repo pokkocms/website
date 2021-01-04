@@ -34,6 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: res.data.taxonomy.nodes
+      .filter((ent) => Boolean(ent.entryId))
       .map((ent) => ({
         params: { path: ent.path! },
       }))
