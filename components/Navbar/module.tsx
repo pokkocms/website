@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
         <a href="#">Documentation</a>
       </div>
       <div className="navbar__right">
-        <a className="button --primary" href="https://au-syd1.pokko.io/">
+        <a className="button --primary" href="https://id.pokko.io/">
           Login
         </a>
       </div>
