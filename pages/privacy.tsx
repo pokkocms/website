@@ -6,7 +6,6 @@ const Privacy: React.FC = () => (
   <>
     <Head>
       <title>Privacy Policy - Pokko</title>
-      <Metadata />
     </Head>
     <main>
       <div className="container">

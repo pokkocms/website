@@ -6,7 +6,6 @@ const Terms: React.FC = () => (
   <>
     <Head>
       <title>Terms of service - Pokko</title>
-      <Metadata />
     </Head>
     <main>
       <div className="container">
