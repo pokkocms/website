@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
         <Link href="/features">
           <a>Core features</a>
         </Link>
-        <Link href="/why">
+        <Link href="/about">
           <a>Why Pokko?</a>
         </Link>
         <Link href="/pricing">
