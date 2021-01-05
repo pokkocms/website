@@ -14,8 +14,9 @@ export const BlogPost: React.FC<BlogPostProps> = ({ entry }) => (
   <>
     <Metadata entry={entry} />
 
-    <Navbar />
     <EarlyAccessBanner />
+    <Navbar />
+
     <div className="blog-post__header-container">
       <div className="blog-post__header-content">
         <h1>{entry.title}</h1>
