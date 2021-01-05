@@ -1,5 +1,6 @@
+import * as React from "react";
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import Link from "next/link";
 import { Logo } from "../Logo";
 
 const NavbarBurger: React.FC<{ active: boolean; toggle: () => void }> = ({
@@ -73,13 +74,23 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar__brand">
-        <Logo />
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
       </div>
       <div className="navbar__left">
-        <a href="#">Core features</a>
-        <a href="#">Why Pokko?</a>
-        <a href="#">Pricing</a>
-        <a href="#">Documentation</a>
+        <Link href="/features">
+          <a>Core features</a>
+        </Link>
+        <Link href="/why">
+          <a>Why Pokko?</a>
+        </Link>
+        <Link href="/pricing">
+          <a>Pricing</a>
+        </Link>
+        <a href="https://docs.pokko.io/">Documentation</a>
       </div>
       <div className="navbar__right">
         <a className="button --primary" href="https://id.pokko.io/">
