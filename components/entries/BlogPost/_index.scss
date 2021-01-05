@@ -1,0 +1,26 @@
+.blog-post {
+  &__header {
+    &-container {
+      @include container;
+
+      margin: 3rem 0;
+    }
+
+    &-content {
+      display: grid;
+      row-gap: 1rem;
+      grid-column: 2;
+      text-align: center;
+
+      time {
+        font-size: 0.75rem;
+      }
+    }
+  }
+  
+  &__body {
+    &-container {
+      margin: 3rem 0;
+    }
+  }
+}

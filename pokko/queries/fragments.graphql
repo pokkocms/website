@@ -1,0 +1,107 @@
+fragment ModularPageContent on IModularPage {
+  ...MetadataContent
+  body {
+    ...ModularPageBody
+  }
+}
+
+fragment ContentPageContent on IContentPage {
+  ...ModularPageContent
+  alias
+  title
+}
+
+fragment BlogPostContent on IBlogPost {
+  ...ContentPageContent
+  date
+}
+
+fragment MetadataContent on IMetadata {
+  metaDescription
+  metaTitle
+}
+
+fragment ModularPageBody on PokValue {
+  __typename
+  ...HeroModule
+  ...IconTilesModule
+  ...FeatureTilesModule
+  ...ResourceTileModule
+  ...EarlyAccessFormModule
+  ...RichTextModule
+}
+
+fragment HeroModule on Hero {
+  title
+  heroBody: body
+  link {
+    ... on Link {
+      target
+      text
+    }
+  }
+  image {
+    url
+  }
+}
+
+fragment IconTilesModule on IconTiles {
+  layout
+  title
+  summary
+  iconTileBody: body {
+    ... on IconTile {
+      title
+      body
+      icon {
+        url
+      }
+    }
+  }
+}
+
+fragment FeatureTilesModule on FeatureTiles {
+  featureTilesBody: body {
+    ... on FeatureTile {
+      title
+      body
+      features
+      icon {
+        url
+      }
+    }
+  }
+}
+
+fragment ResourceTileModule on ResourceTiles {
+  title
+  summary
+  resourceTilesBody: body {
+    ... on ResourceTile {
+      title
+      body
+      link {
+        ... on Link {
+          text
+          target
+        }
+      }
+    }
+  }
+}
+
+fragment EarlyAccessFormModule on EarlyAccessForm {
+  style
+  title
+  summary
+  link {
+    ... on Link {
+      text
+      target
+    }
+  }
+}
+
+fragment RichTextModule on RichText {
+  body
+}
