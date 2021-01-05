@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "model": "node -r dotenv/config node_modules/.bin/graphql-codegen"
+    "model": "node -r dotenv/config node_modules/.bin/graphql-codegen",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
