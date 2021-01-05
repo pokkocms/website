@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { Logo } from "../Logo";
+import { Router } from "next/dist/client/router";
 
 const NavbarBurger: React.FC<{ active: boolean; toggle: () => void }> = ({
   active,
@@ -71,11 +71,20 @@ const NavbarBurger: React.FC<{ active: boolean; toggle: () => void }> = ({
 
 export const Navbar: React.FC = () => {
   const [burger, setBurger] = React.useState(false);
-  const { pathname } = useRouter();
 
   React.useEffect(() => {
-    setBurger(false);
-  }, [pathname]);
+    const type = "routeChangeStart";
+
+    const handler = () => {
+      setBurger(false);
+    };
+
+    Router.events.on(type, handler);
+
+    return () => {
+      Router.events.off(type, handler);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
