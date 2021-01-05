@@ -9,6 +9,10 @@
     &-content {
       grid-column: 2;
       text-align: center;
+
+      @include mobile {
+        grid-column: unset;
+      }
     }
   }
 

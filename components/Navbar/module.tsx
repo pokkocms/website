@@ -45,19 +45,25 @@ const NavbarBurger: React.FC<{ active: boolean; toggle: () => void }> = ({
     </div>
     <ul className="navbar__burger-links">
       <li>
-        <a href="#">Core features</a>
+        <Link href="/features">
+          <a>Core features</a>
+        </Link>
       </li>
       <li>
-        <a href="#">Why Pokko?</a>
+        <Link href="/about">
+          <a>Why Pokko?</a>
+        </Link>
       </li>
       <li>
-        <a href="#">Pricing</a>
+        <Link href="/pricing">
+          <a>Pricing</a>
+        </Link>
       </li>
       <li>
-        <a href="#">Documentation</a>
+        <a href="https://docs.pokko.io/">Documentation</a>
       </li>
     </ul>
-    <a href="#" className="button --primary">
+    <a href="https://id.pokko.io/" className="button --primary">
       Login
     </a>
   </div>

@@ -15,9 +15,13 @@
       time {
         font-size: 0.75rem;
       }
+
+      @include mobile {
+        grid-column: unset;
+      }
     }
   }
-  
+
   &__body {
     &-container {
       margin: 3rem 0;
