@@ -95,6 +95,7 @@
       display: grid;
       grid-template-columns: 1fr auto;
       column-gap: 1rem;
+      row-gap: 1rem;
       align-items: start;
 
       .button {
@@ -105,10 +106,16 @@
 
       @include mobile {
         grid-template-columns: 1fr;
-        row-gap: 1rem;
 
         .button {
           justify-self: stretch;
+        }
+      }
+
+      @include tablet {
+        grid-template-columns: 1fr auto;
+        .button {
+          justify-self: start;
         }
       }
     }

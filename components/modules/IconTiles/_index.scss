@@ -55,6 +55,10 @@
       margin: 0 1.5rem;
     }
 
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     li {
       list-style: none;
       display: grid;
@@ -182,6 +186,10 @@
     @include mobile {
       grid-template-columns: none;
       row-gap: 1.5rem;
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     li {
