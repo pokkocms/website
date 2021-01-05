@@ -1,7 +1,7 @@
 .richtext {
   &__container {
     @include container;
-    grid-template-columns: 1fr 60ch 1fr;
+    grid-template-columns: 1fr 58rem 1fr;
 
     @include mobile {
       grid-template-rows: 1fr;
@@ -35,11 +35,14 @@
 
     h1,
     h2,
-    p,
     ol,
     ul,
     blockquote {
       margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
     }
 
     ol {

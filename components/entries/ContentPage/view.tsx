@@ -14,9 +14,9 @@ export const ContentPage: React.FC<ContentPageProps> = ({ entry }) => (
   <>
     <Metadata entry={entry} />
 
-    <Navbar />
     <EarlyAccessBanner />
-    
+    <Navbar />
+
     <div className="content-page__header-container">
       <div className="content-page__header-content">
         <h1>{entry.title}</h1>
