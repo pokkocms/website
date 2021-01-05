@@ -10,7 +10,8 @@
 
   @include mobile {
     grid-template-columns: 1fr auto;
-    margin: 0 1rem;
+    margin: 0;
+    border-radius: 0;
 
     .navbar__burger {
       display: block;
