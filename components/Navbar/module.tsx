@@ -10,7 +10,11 @@ const NavbarBurger: React.FC<{ active: boolean; toggle: () => void }> = ({
   <div className={"navbar__burger-menu" + (active ? " --active" : "")}>
     <div className="navbar__burger-header">
       <div className="navbar__burger-brand">
-        <Logo />
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
       </div>
       <button className="navbar__burger-toggle" onClick={toggle}>
         <svg
