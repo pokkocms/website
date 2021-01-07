@@ -50,6 +50,7 @@
           grid-template-columns: 1fr auto;
           column-gap: 1rem;
           row-gap: 0.5rem;
+          align-items: flex-end;
 
           a {
             grid-column: 1;
