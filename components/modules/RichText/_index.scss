@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 58rem 1fr;
 
     @include mobile {
-      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
       margin: 0 1.5rem;
     }
   }
