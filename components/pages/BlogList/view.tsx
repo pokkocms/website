@@ -27,8 +27,8 @@ export const BlogList: React.FC<BlogPostListingFragment> = ({ nodes }) => (
     </div>
     <div className="blog-list__body-container">
       <ul>
-        {nodes.map((ent) => (
-          <li>
+        {nodes.map((ent, idx) => (
+          <li key={idx}>
             <Link href={ent.pokko.path.slice(2).join("/")}>
               <a>{ent.title}</a>
             </Link>
