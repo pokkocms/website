@@ -1,0 +1,23 @@
+query ListBlogPosts {
+  entries {
+    allBlogPost(orderBy: DATE_DESC) {
+      ...BlogPostListing
+    }
+  }
+}
+
+fragment BlogPostListing on BlogPostCollection {
+  nodes {
+    ...BlogPostSummary
+  }
+}
+
+fragment BlogPostSummary on BlogPost {
+  id
+  title
+  date
+  summary
+  pokko {
+    path
+  }
+}

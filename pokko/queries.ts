@@ -584,6 +584,7 @@ export type BlogPost = PokEntry & PokValue & IBlogPost & IModularPage & IContent
   __typename?: 'BlogPost';
   id: Scalars['String'];
   pokko: Pokko;
+  summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
@@ -600,6 +601,7 @@ export type IBlogPost = {
 
 export type IContentPage = {
   id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
 };
@@ -608,6 +610,7 @@ export type ContentPage = PokEntry & PokValue & IContentPage & IModularPage & IM
   __typename?: 'ContentPage';
   id: Scalars['String'];
   pokko: Pokko;
+  summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
@@ -842,6 +845,8 @@ export type BlogPostCollection = {
 };
 
 export type BlogPostFilter = {
+  /** Filter on the Summary field */
+  summary?: Maybe<Scalars['String']>;
   /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
   /** Filter on the Date field */
@@ -867,6 +872,8 @@ export enum BlogPostOrderBy {
   MetaTitleDesc = 'META_TITLE_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
   ModifiedDesc = 'MODIFIED_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
   TitleAsc = 'TITLE_ASC',
   TitleDesc = 'TITLE_DESC'
 }
@@ -982,6 +989,8 @@ export type ContentPageCollection = {
 };
 
 export type ContentPageFilter = {
+  /** Filter on the Summary field */
+  summary?: Maybe<Scalars['String']>;
   /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
   /** Filter on the Meta description field */
@@ -1003,6 +1012,8 @@ export enum ContentPageOrderBy {
   MetaTitleDesc = 'META_TITLE_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
   ModifiedDesc = 'MODIFIED_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
   TitleAsc = 'TITLE_ASC',
   TitleDesc = 'TITLE_DESC'
 }
@@ -1099,6 +1110,37 @@ export type PagesCondition = {
   path?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathExact?: Maybe<Scalars['Boolean']>;
 };
+
+export type ListBlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ListBlogPostsQuery = (
+  { __typename?: 'Query' }
+  & { entries?: Maybe<(
+    { __typename?: 'Entries' }
+    & { allBlogPost?: Maybe<(
+      { __typename?: 'BlogPostCollection' }
+      & BlogPostListingFragment
+    )> }
+  )> }
+);
+
+export type BlogPostListingFragment = (
+  { __typename?: 'BlogPostCollection' }
+  & { nodes: Array<Maybe<(
+    { __typename?: 'BlogPost' }
+    & BlogPostSummaryFragment
+  )>> }
+);
+
+export type BlogPostSummaryFragment = (
+  { __typename?: 'BlogPost' }
+  & Pick<BlogPost, 'id' | 'title' | 'date' | 'summary'>
+  & { pokko: (
+    { __typename?: 'Pokko' }
+    & Pick<Pokko, 'path'>
+  ) }
+);
 
 type ModularPageContent_ModularPage_Fragment = (
   { __typename?: 'ModularPage' }
@@ -1345,7 +1387,7 @@ export type RichTextModuleFragment = (
 );
 
 export type GetPageByPathQueryVariables = Exact<{
-  path: Array<Scalars['String']>;
+  path: Array<Scalars['String']> | Scalars['String'];
 }>;
 
 
@@ -1380,6 +1422,24 @@ export type GetDynamicPagePathsQuery = (
   )> }
 );
 
+export const BlogPostSummaryFragmentDoc = gql`
+    fragment BlogPostSummary on BlogPost {
+  id
+  title
+  date
+  summary
+  pokko {
+    path
+  }
+}
+    `;
+export const BlogPostListingFragmentDoc = gql`
+    fragment BlogPostListing on BlogPostCollection {
+  nodes {
+    ...BlogPostSummary
+  }
+}
+    ${BlogPostSummaryFragmentDoc}`;
 export const MetadataContentFragmentDoc = gql`
     fragment MetadataContent on IMetadata {
   metaDescription
@@ -1505,6 +1565,40 @@ export const BlogPostContentFragmentDoc = gql`
   date
 }
     ${ContentPageContentFragmentDoc}`;
+export const ListBlogPostsDocument = gql`
+    query ListBlogPosts {
+  entries {
+    allBlogPost(orderBy: DATE_DESC) {
+      ...BlogPostListing
+    }
+  }
+}
+    ${BlogPostListingFragmentDoc}`;
+
+/**
+ * __useListBlogPostsQuery__
+ *
+ * To run a query within a React component, call `useListBlogPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useListBlogPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useListBlogPostsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useListBlogPostsQuery(baseOptions?: Apollo.QueryHookOptions<ListBlogPostsQuery, ListBlogPostsQueryVariables>) {
+        return Apollo.useQuery<ListBlogPostsQuery, ListBlogPostsQueryVariables>(ListBlogPostsDocument, baseOptions);
+      }
+export function useListBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListBlogPostsQuery, ListBlogPostsQueryVariables>) {
+          return Apollo.useLazyQuery<ListBlogPostsQuery, ListBlogPostsQueryVariables>(ListBlogPostsDocument, baseOptions);
+        }
+export type ListBlogPostsQueryHookResult = ReturnType<typeof useListBlogPostsQuery>;
+export type ListBlogPostsLazyQueryHookResult = ReturnType<typeof useListBlogPostsLazyQuery>;
+export type ListBlogPostsQueryResult = Apollo.QueryResult<ListBlogPostsQuery, ListBlogPostsQueryVariables>;
 export const GetPageByPathDocument = gql`
     query GetPageByPath($path: [String!]!) {
   entry(path: $path) {
