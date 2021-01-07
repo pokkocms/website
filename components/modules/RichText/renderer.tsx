@@ -83,6 +83,12 @@ const defaults = {
         return <li {...attributes}>{children}</li>;
       case "numbered-list":
         return <ol {...attributes}>{children}</ol>;
+      case "link":
+        return (
+          <a {...attributes} href={element.href}>
+            {children}
+          </a>
+        );
       case "paragraph":
       default:
         return <p {...attributes}>{children}</p>;
