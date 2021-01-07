@@ -31,11 +31,19 @@
 
       margin: 3rem 0;
 
+      @include mobile {
+        margin: 3rem 1.5rem;
+      }
+
       ul {
         display: grid;
         row-gap: 2rem;
         grid-column: 2;
         list-style: none;
+
+        @include mobile {
+          grid-column: unset;
+        }
 
         li {
           display: grid;
