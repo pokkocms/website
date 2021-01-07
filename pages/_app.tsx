@@ -31,6 +31,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
         rel="stylesheet"
         href="https://cdn.pokko.io/p/fonts/Inter/inter.css"
       />
+      <link
+        rel="stylesheet"
+        href="https://cdn.pokko.io/p/fonts/IBM-Plex-Mono/ibm-plex-mono.css"
+      />
     </Head>
     <Component {...pageProps} />
   </>
