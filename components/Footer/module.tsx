@@ -151,11 +151,11 @@ export const Footer: React.FC<FooterProps> = () => (
               </li>
               <li>
                 <a
-                  href="https://google.com"
+                  href="https://status.pokko.io/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Server status
+                  System status
                 </a>
               </li>
             </ul>
