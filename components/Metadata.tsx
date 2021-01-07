@@ -6,12 +6,24 @@ export type MetadataProps = {
 };
 
 export const Metadata: React.FC<MetadataProps> = ({ entry }) => (
+  <MetadataRaw {...entry} />
+);
+
+export type MetadataRawProps = {
+  metaDescription?: string;
+  metaTitle?: string;
+};
+
+export const MetadataRaw: React.FC<MetadataRawProps> = ({
+  metaTitle,
+  metaDescription,
+}) => (
   <Head>
-    <title>{entry.metaTitle}</title>
-    <meta name="description" content={entry.metaDescription} />
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={entry.metaTitle} />
-    <meta property="og:description" content={entry.metaDescription} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
     <meta
       property="og:image"
       content="https://cdn.pokko.io/p/pokko-sharing.png"

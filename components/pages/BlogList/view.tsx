@@ -2,6 +2,7 @@ import Link from "next/link";
 import * as React from "react";
 import { BlogPostListingFragment } from "../../../pokko/queries";
 import { Footer } from "../../Footer/module";
+import { MetadataRaw } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
 import { Navbar } from "../../Navbar/module";
 
@@ -11,6 +12,11 @@ export type BlogListProps = {
 
 export const BlogList: React.FC<BlogPostListingFragment> = ({ nodes }) => (
   <>
+    <MetadataRaw
+      metaTitle="News - Pokko"
+      metaDescription="From the Pokko news desk"
+    />
+
     <EarlyAccessBanner />
     <Navbar />
 
