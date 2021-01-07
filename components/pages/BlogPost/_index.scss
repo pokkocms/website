@@ -12,6 +12,9 @@
     }
 
     &-content {
+      display: grid;
+      row-gap: 0.25rem;
+
       grid-column: 2;
 
       time {

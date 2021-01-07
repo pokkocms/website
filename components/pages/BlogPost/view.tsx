@@ -19,7 +19,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({ entry }) => (
 
     <div className="blog-post__header-container">
       <div className="blog-post__header-content">
-        <h1>{entry.title}</h1>
         <time>
           {new Date(entry.date).toLocaleDateString(undefined, {
             year: "numeric",
@@ -27,6 +26,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({ entry }) => (
             month: "long",
           })}
         </time>
+        <h1>{entry.title}</h1>
       </div>
     </div>
     <div className="blog-post__body-container">
