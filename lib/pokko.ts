@@ -31,6 +31,8 @@ const options: ApolloClientOptions<NormalizedCacheObject> = {
 
 export const client = new ApolloClient(options);
 
+const revalidate = 5;
+
 export const staticPropsByPath = async (
   path: string[]
 ): Promise<GetStaticPropsResult<GetPageByPathQuery>> => {
@@ -43,8 +45,12 @@ export const staticPropsByPath = async (
     variables: { path },
   });
 
+  if (!res.data.entry) {
+    return { notFound: true, revalidate };
+  }
+
   return {
-    revalidate: 5,
+    revalidate,
     props: { entry: res.data.entry },
   };
 };

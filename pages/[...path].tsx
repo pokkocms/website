@@ -45,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { path: ent.path! },
       }))
       .filter((ent) => ent.params.path.length > 0),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
