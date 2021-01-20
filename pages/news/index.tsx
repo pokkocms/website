@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
     query: ListBlogPostsDocument,
   });
 
-  return { props: res.data };
+  return { props: res.data, revalidate: 5 };
 };
 
 export default NewsPage;
