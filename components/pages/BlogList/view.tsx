@@ -5,6 +5,7 @@ import { Footer } from "../../Footer/module";
 import { MetadataRaw } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
 import { Navbar } from "../../Navbar/module";
+import { locale } from "../../util";
 
 export type BlogListProps = {
   listing: BlogPostListingFragment;
@@ -34,7 +35,7 @@ export const BlogList: React.FC<BlogPostListingFragment> = ({ nodes }) => (
             </Link>
             <p>{ent.summary}</p>
             <time>
-              {new Date(ent.date).toLocaleDateString(undefined, {
+              {new Date(ent.date).toLocaleDateString(locale, {
                 year: "numeric",
                 day: "numeric",
                 month: "long",

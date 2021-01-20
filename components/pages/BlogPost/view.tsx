@@ -4,6 +4,7 @@ import { Footer } from "../../Footer/module";
 import { Metadata } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
 import { Navbar } from "../../Navbar/module";
+import { locale } from "../../util";
 import { ModuleHandler } from "../ModularPage/view";
 
 export type BlogPostProps = {
@@ -20,7 +21,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({ entry }) => (
     <div className="blog-post__header-container">
       <div className="blog-post__header-content">
         <time>
-          {new Date(entry.date).toLocaleDateString(undefined, {
+          {new Date(entry.date).toLocaleDateString(locale, {
             year: "numeric",
             day: "numeric",
             month: "long",
