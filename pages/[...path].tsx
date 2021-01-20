@@ -9,8 +9,15 @@ import {
 import { ModularPage } from "../components/pages/ModularPage/view";
 import { BlogPost } from "../components/pages/BlogPost/view";
 import { ContentPage } from "../components/pages/ContentPage/view";
+import { useRouter } from "next/dist/client/router";
 
 export const DynamicPage: React.FC<GetPageByPathQuery> = ({ entry }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <p>Loading...</p>;
+  }
+
   switch (entry.__typename) {
     case "ModularPage":
       return <ModularPage entry={entry} />;
