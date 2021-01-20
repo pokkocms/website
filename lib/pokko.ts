@@ -44,7 +44,7 @@ export const staticPropsByPath = async (
   });
 
   return {
-    revalidate: 3600,
+    revalidate: 5,
     props: { entry: res.data.entry },
   };
 };
