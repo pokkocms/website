@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://www.pokko.io",
+  siteUrl: process.env.PREVIEW ? "https://preview.pokko.io" : "https://www.pokko.io",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: process.env.PREVIEW
