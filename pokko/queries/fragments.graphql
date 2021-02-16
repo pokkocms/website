@@ -19,6 +19,9 @@ fragment BlogPostContent on IBlogPost {
 fragment MetadataContent on IMetadata {
   metaDescription
   metaTitle
+  metaImage {
+    url
+  }
 }
 
 fragment ModularPageBody on PokValue {

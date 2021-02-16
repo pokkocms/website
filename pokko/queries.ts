@@ -1248,21 +1248,37 @@ export type BlogPostContentFragment = (
 type MetadataContent_ModularPage_Fragment = (
   { __typename?: 'ModularPage' }
   & Pick<ModularPage, 'metaDescription' | 'metaTitle'>
+  & { metaImage?: Maybe<(
+    { __typename?: 'PokMedia' }
+    & Pick<PokMedia, 'url'>
+  )> }
 );
 
 type MetadataContent_Metadata_Fragment = (
   { __typename?: 'Metadata' }
   & Pick<Metadata, 'metaDescription' | 'metaTitle'>
+  & { metaImage?: Maybe<(
+    { __typename?: 'PokMedia' }
+    & Pick<PokMedia, 'url'>
+  )> }
 );
 
 type MetadataContent_BlogPost_Fragment = (
   { __typename?: 'BlogPost' }
   & Pick<BlogPost, 'metaDescription' | 'metaTitle'>
+  & { metaImage?: Maybe<(
+    { __typename?: 'PokMedia' }
+    & Pick<PokMedia, 'url'>
+  )> }
 );
 
 type MetadataContent_ContentPage_Fragment = (
   { __typename?: 'ContentPage' }
   & Pick<ContentPage, 'metaDescription' | 'metaTitle'>
+  & { metaImage?: Maybe<(
+    { __typename?: 'PokMedia' }
+    & Pick<PokMedia, 'url'>
+  )> }
 );
 
 export type MetadataContentFragment = MetadataContent_ModularPage_Fragment | MetadataContent_Metadata_Fragment | MetadataContent_BlogPost_Fragment | MetadataContent_ContentPage_Fragment;
@@ -1444,6 +1460,9 @@ export const MetadataContentFragmentDoc = gql`
     fragment MetadataContent on IMetadata {
   metaDescription
   metaTitle
+  metaImage {
+    url
+  }
 }
     `;
 export const HeroModuleFragmentDoc = gql`
