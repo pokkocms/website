@@ -41,6 +41,10 @@ export const useRegisterForm: RegisterFormHook = () => {
               { name: "job_type", value: input.jobType },
               { name: "lead_context", value: input.source },
             ].filter((ent) => Boolean(ent.value)),
+            context: {
+              pageUri: window.location.href,
+              pageName: document.title,
+            },
           }),
         }
       );
