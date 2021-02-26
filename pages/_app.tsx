@@ -9,24 +9,17 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
     <Head>
       <script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=UA-176777547-1`}
-      />
+        defer
+        data-domain="pokko.io"
+        src="https://plausible.io/js/plausible.js"
+      ></script>
+
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, maximum-scale=1"
       />
 
       <link rel="icon" href="https://cdn.pokko.io/p/favicon.svg" />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-176777547-1');
-          `,
-        }}
-      />
       <link
         rel="stylesheet"
         href="https://cdn.pokko.io/p/fonts/Inter/inter.css"
