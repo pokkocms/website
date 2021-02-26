@@ -12,7 +12,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
           async
           defer
           data-domain="pokko.io"
-          src="https://plausible.io/js/plausible.js"
+          src="https://stats.pokko.io/js/index.js"
         ></script>
       )}
 
