@@ -7,12 +7,14 @@ import "../styles/app.scss";
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <>
     <Head>
-      <script
-        async
-        defer
-        data-domain="pokko.io"
-        src="https://plausible.io/js/plausible.js"
-      ></script>
+      {process.env.PREVIEW ? null : (
+        <script
+          async
+          defer
+          data-domain="pokko.io"
+          src="https://plausible.io/js/plausible.js"
+        ></script>
+      )}
 
       <meta
         name="viewport"
