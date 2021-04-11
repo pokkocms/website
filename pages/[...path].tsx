@@ -33,11 +33,10 @@ export const DynamicPage: React.FC<GetPageByPathQuery> = ({ entry }) => {
 export const getStaticProps: GetStaticProps<any, { path: string[] }> = async (
   context
 ) =>
-  await staticPropsByPath([
-    "website",
-    "home",
-    ...(context.params.path as string[]),
-  ]);
+  await staticPropsByPath(
+    ["website", "home", ...(context.params.path as string[])],
+    context.preview
+  );
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await client.query<GetDynamicPagePathsQuery>({

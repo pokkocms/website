@@ -8,7 +8,7 @@ const Home: React.FC<GetPageByPathQuery> = ({ entry }) => {
   return <DynamicPage entry={entry} />;
 };
 
-export const getStaticProps: GetStaticProps = async () =>
-  await staticPropsByPath(["website", "home"]);
+export const getStaticProps: GetStaticProps = async (context) =>
+  await staticPropsByPath(["website", "home"], context.preview);
 
 export default Home;

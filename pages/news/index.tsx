@@ -1,15 +1,18 @@
 import * as React from "react";
 import { GetStaticProps } from "next";
 import { ListBlogPostsDocument, ListBlogPostsQuery } from "../../pokko/queries";
-import { client } from "../../lib/pokko";
+import { client, clientPreview } from "../../lib/pokko";
 import { BlogList } from "../../components/pages/BlogList/view";
 
 const NewsPage: React.FC<ListBlogPostsQuery> = (props) => {
   return <BlogList nodes={props.entries.allBlogPost.nodes} />;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await client.query<ListBlogPostsQuery>({
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await (context.preview
+    ? clientPreview
+    : client
+  ).query<ListBlogPostsQuery>({
     query: ListBlogPostsDocument,
   });
 
