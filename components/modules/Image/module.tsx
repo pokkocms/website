@@ -7,7 +7,7 @@ export const ImageModule: React.FC<ImageModuleFragment> = ({ image }) => {
     return (
       <div className="image__container">
         <div className="image__content">
-          <Image src={image.url} layout="fill" />
+          <Image src={image.url} height={image.height!} width={image.width!} />
         </div>
       </div>
     );

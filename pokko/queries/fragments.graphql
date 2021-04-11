@@ -113,5 +113,7 @@ fragment RichTextModule on RichText {
 fragment ImageModule on Image {
   image {
     url
+    height
+    width
   }
 }

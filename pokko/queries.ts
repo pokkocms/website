@@ -356,12 +356,17 @@ export type PokValue = {
 
 export type IImage = {
   id: Scalars['String'];
+  pokko: Pokko;
   image?: Maybe<PokMedia>;
 };
 
 export type PokMedia = {
   __typename?: 'PokMedia';
   id: Scalars['String'];
+  contentType: Scalars['String'];
+  height?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
+  size: Scalars['Int'];
   url: Scalars['String'];
 };
 
@@ -408,6 +413,7 @@ export type Tiles = PokEntry & PokValue & ITiles & ISection & {
 
 export type ITiles = {
   id: Scalars['String'];
+  pokko: Pokko;
   body?: Maybe<Array<Maybe<Tile>>>;
 };
 
@@ -421,12 +427,14 @@ export type Tile = PokEntry & PokValue & ITile & {
 
 export type ITile = {
   id: Scalars['String'];
+  pokko: Pokko;
   title?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['String']>;
 };
 
 export type ISection = {
   id: Scalars['String'];
+  pokko: Pokko;
   summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
@@ -443,6 +451,7 @@ export type ModularPage = PokEntry & PokValue & IModularPage & IMetadata & {
 
 export type IModularPage = {
   id: Scalars['String'];
+  pokko: Pokko;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
 };
 
@@ -460,6 +469,7 @@ export type Hero = PokEntry & PokValue & IHero & {
 
 export type IHero = {
   id: Scalars['String'];
+  pokko: Pokko;
   image?: Maybe<PokMedia>;
   link?: Maybe<Link>;
   title?: Maybe<Scalars['String']>;
@@ -476,6 +486,7 @@ export type Link = PokEntry & PokValue & ILink & {
 
 export type ILink = {
   id: Scalars['String'];
+  pokko: Pokko;
   target?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
 };
@@ -491,6 +502,7 @@ export type ResourceTiles = PokEntry & PokValue & IResourceTiles & ISection & {
 
 export type IResourceTiles = {
   id: Scalars['String'];
+  pokko: Pokko;
   body?: Maybe<Array<Maybe<ResourceTile>>>;
 };
 
@@ -505,6 +517,7 @@ export type ResourceTile = PokEntry & PokValue & IResourceTile & ITile & {
 
 export type IResourceTile = {
   id: Scalars['String'];
+  pokko: Pokko;
   link?: Maybe<Link>;
 };
 
@@ -520,6 +533,7 @@ export type IconTiles = PokEntry & PokValue & IIconTiles & ISection & {
 
 export type IIconTiles = {
   id: Scalars['String'];
+  pokko: Pokko;
   body?: Maybe<Array<Maybe<IconTile>>>;
   layout?: Maybe<Scalars['String']>;
 };
@@ -535,6 +549,7 @@ export type IconTile = PokEntry & PokValue & IIconTile & ITile & {
 
 export type IIconTile = {
   id: Scalars['String'];
+  pokko: Pokko;
   icon?: Maybe<PokMedia>;
 };
 
@@ -547,6 +562,7 @@ export type FeatureTiles = PokEntry & PokValue & IFeatureTiles & {
 
 export type IFeatureTiles = {
   id: Scalars['String'];
+  pokko: Pokko;
   body?: Maybe<Array<Maybe<FeatureTile>>>;
 };
 
@@ -562,6 +578,7 @@ export type FeatureTile = PokEntry & PokValue & IFeatureTile & ITile & IIconTile
 
 export type IFeatureTile = {
   id: Scalars['String'];
+  pokko: Pokko;
   features?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
@@ -577,6 +594,7 @@ export type EarlyAccessForm = PokEntry & PokValue & IEarlyAccessForm & {
 
 export type IEarlyAccessForm = {
   id: Scalars['String'];
+  pokko: Pokko;
   style?: Maybe<Scalars['String']>;
   summary?: Maybe<Scalars['String']>;
   link?: Maybe<Link>;
@@ -592,12 +610,14 @@ export type RichText = PokEntry & PokValue & IRichText & {
 
 export type IRichText = {
   id: Scalars['String'];
+  pokko: Pokko;
   body?: Maybe<Scalars['JSON']>;
 };
 
 
 export type IMetadata = {
   id: Scalars['String'];
+  pokko: Pokko;
   metaDescription?: Maybe<Scalars['String']>;
   metaImage?: Maybe<PokMedia>;
   metaTitle?: Maybe<Scalars['String']>;
@@ -639,6 +659,7 @@ export type BlogPost = PokEntry & PokValue & IBlogPost & IModularPage & IContent
 
 export type IBlogPost = {
   id: Scalars['String'];
+  pokko: Pokko;
   authors?: Maybe<Array<Maybe<Author>>>;
   date?: Maybe<Scalars['String']>;
 };
@@ -653,12 +674,14 @@ export type Author = PokEntry & PokValue & IAuthor & {
 
 export type IAuthor = {
   id: Scalars['String'];
+  pokko: Pokko;
   image?: Maybe<PokMedia>;
   name?: Maybe<Scalars['String']>;
 };
 
 export type IContentPage = {
   id: Scalars['String'];
+  pokko: Pokko;
   summary?: Maybe<Scalars['String']>;
   title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -1667,7 +1690,7 @@ export type ImageModuleFragment = (
   { __typename?: 'Image' }
   & { image?: Maybe<(
     { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url'>
+    & Pick<PokMedia, 'url' | 'height' | 'width'>
   )> }
 );
 
@@ -1819,6 +1842,8 @@ export const ImageModuleFragmentDoc = gql`
     fragment ImageModule on Image {
   image {
     url
+    height
+    width
   }
 }
     `;
