@@ -32,6 +32,7 @@ fragment ModularPageBody on PokValue {
   ...ResourceTileModule
   ...EarlyAccessFormModule
   ...RichTextModule
+  ...ImageModule
 }
 
 fragment HeroModule on Hero {
@@ -107,4 +108,10 @@ fragment EarlyAccessFormModule on EarlyAccessForm {
 
 fragment RichTextModule on RichText {
   body
+}
+
+fragment ImageModule on Image {
+  image {
+    url
+  }
 }

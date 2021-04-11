@@ -45,6 +45,7 @@ export type QueryTaxonomyArgs = {
 
 export type Entries = {
   __typename?: 'Entries';
+  image?: Maybe<Image>;
   tiles?: Maybe<Tiles>;
   modularPage?: Maybe<ModularPage>;
   featureTile?: Maybe<FeatureTile>;
@@ -57,11 +58,13 @@ export type Entries = {
   richText?: Maybe<RichText>;
   hero?: Maybe<Hero>;
   featureTiles?: Maybe<FeatureTiles>;
+  author?: Maybe<Author>;
   resourceTiles?: Maybe<ResourceTiles>;
   tile?: Maybe<Tile>;
   contentPage?: Maybe<ContentPage>;
   resourceTile?: Maybe<ResourceTile>;
   link?: Maybe<Link>;
+  allImage?: Maybe<ImageCollection>;
   allTiles?: Maybe<TilesCollection>;
   allModularPage?: Maybe<ModularPageCollection>;
   allFeatureTile?: Maybe<FeatureTileCollection>;
@@ -74,11 +77,17 @@ export type Entries = {
   allRichText?: Maybe<RichTextCollection>;
   allHero?: Maybe<HeroCollection>;
   allFeatureTiles?: Maybe<FeatureTilesCollection>;
+  allAuthor?: Maybe<AuthorCollection>;
   allResourceTiles?: Maybe<ResourceTilesCollection>;
   allTile?: Maybe<TileCollection>;
   allContentPage?: Maybe<ContentPageCollection>;
   allResourceTile?: Maybe<ResourceTileCollection>;
   allLink?: Maybe<LinkCollection>;
+};
+
+
+export type EntriesImageArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -142,6 +151,11 @@ export type EntriesFeatureTilesArgs = {
 };
 
 
+export type EntriesAuthorArgs = {
+  id: Scalars['String'];
+};
+
+
 export type EntriesResourceTilesArgs = {
   id: Scalars['String'];
 };
@@ -167,89 +181,95 @@ export type EntriesLinkArgs = {
 };
 
 
+export type EntriesAllImageArgs = {
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
 export type EntriesAllTilesArgs = {
-  condition?: Maybe<TilesFilter>;
-  orderBy?: Maybe<TilesOrderBy>;
+  filter?: Maybe<TilesFilter>;
+  orderBy?: Maybe<Array<Maybe<TilesOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllModularPageArgs = {
-  condition?: Maybe<ModularPageFilter>;
-  orderBy?: Maybe<ModularPageOrderBy>;
+  filter?: Maybe<ModularPageFilter>;
+  orderBy?: Maybe<Array<Maybe<ModularPageOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllFeatureTileArgs = {
-  condition?: Maybe<FeatureTileFilter>;
-  orderBy?: Maybe<FeatureTileOrderBy>;
+  filter?: Maybe<FeatureTileFilter>;
+  orderBy?: Maybe<Array<Maybe<FeatureTileOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllMetadataArgs = {
-  condition?: Maybe<MetadataFilter>;
-  orderBy?: Maybe<MetadataOrderBy>;
+  filter?: Maybe<MetadataFilter>;
+  orderBy?: Maybe<Array<Maybe<MetadataOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllIconTileArgs = {
-  condition?: Maybe<IconTileFilter>;
-  orderBy?: Maybe<IconTileOrderBy>;
+  filter?: Maybe<IconTileFilter>;
+  orderBy?: Maybe<Array<Maybe<IconTileOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllEarlyAccessFormArgs = {
-  condition?: Maybe<EarlyAccessFormFilter>;
-  orderBy?: Maybe<EarlyAccessFormOrderBy>;
+  filter?: Maybe<EarlyAccessFormFilter>;
+  orderBy?: Maybe<Array<Maybe<EarlyAccessFormOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllIconTilesArgs = {
-  condition?: Maybe<IconTilesFilter>;
-  orderBy?: Maybe<IconTilesOrderBy>;
+  filter?: Maybe<IconTilesFilter>;
+  orderBy?: Maybe<Array<Maybe<IconTilesOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllSectionArgs = {
-  condition?: Maybe<SectionFilter>;
-  orderBy?: Maybe<SectionOrderBy>;
+  filter?: Maybe<SectionFilter>;
+  orderBy?: Maybe<Array<Maybe<SectionOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllBlogPostArgs = {
-  condition?: Maybe<BlogPostFilter>;
-  orderBy?: Maybe<BlogPostOrderBy>;
+  filter?: Maybe<BlogPostFilter>;
+  orderBy?: Maybe<Array<Maybe<BlogPostOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllRichTextArgs = {
-  condition?: Maybe<RichTextFilter>;
-  orderBy?: Maybe<RichTextOrderBy>;
+  filter?: Maybe<RichTextFilter>;
+  orderBy?: Maybe<Array<Maybe<RichTextOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllHeroArgs = {
-  condition?: Maybe<HeroFilter>;
-  orderBy?: Maybe<HeroOrderBy>;
+  filter?: Maybe<HeroFilter>;
+  orderBy?: Maybe<Array<Maybe<HeroOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
@@ -261,52 +281,58 @@ export type EntriesAllFeatureTilesArgs = {
 };
 
 
+export type EntriesAllAuthorArgs = {
+  filter?: Maybe<AuthorFilter>;
+  orderBy?: Maybe<Array<Maybe<AuthorOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
 export type EntriesAllResourceTilesArgs = {
-  condition?: Maybe<ResourceTilesFilter>;
-  orderBy?: Maybe<ResourceTilesOrderBy>;
+  filter?: Maybe<ResourceTilesFilter>;
+  orderBy?: Maybe<Array<Maybe<ResourceTilesOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllTileArgs = {
-  condition?: Maybe<TileFilter>;
-  orderBy?: Maybe<TileOrderBy>;
+  filter?: Maybe<TileFilter>;
+  orderBy?: Maybe<Array<Maybe<TileOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllContentPageArgs = {
-  condition?: Maybe<ContentPageFilter>;
-  orderBy?: Maybe<ContentPageOrderBy>;
+  filter?: Maybe<ContentPageFilter>;
+  orderBy?: Maybe<Array<Maybe<ContentPageOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllResourceTileArgs = {
-  condition?: Maybe<ResourceTileFilter>;
-  orderBy?: Maybe<ResourceTileOrderBy>;
+  filter?: Maybe<ResourceTileFilter>;
+  orderBy?: Maybe<Array<Maybe<ResourceTileOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
 
 export type EntriesAllLinkArgs = {
-  condition?: Maybe<LinkFilter>;
-  orderBy?: Maybe<LinkOrderBy>;
+  filter?: Maybe<LinkFilter>;
+  orderBy?: Maybe<Array<Maybe<LinkOrderBy>>>;
   skip?: Scalars['Int'];
   take?: Scalars['Int'];
 };
 
-export type Tiles = PokEntry & PokValue & ITiles & ISection & {
-  __typename?: 'Tiles';
+export type Image = PokEntry & PokValue & IImage & {
+  __typename?: 'Image';
   id: Scalars['String'];
   pokko: Pokko;
-  body?: Maybe<Array<Maybe<Tile>>>;
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
+  image?: Maybe<PokMedia>;
 };
 
 export type PokEntry = {
@@ -326,6 +352,58 @@ export type Pokko = {
 
 export type PokValue = {
   id?: Maybe<Scalars['String']>;
+};
+
+export type IImage = {
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+};
+
+export type PokMedia = {
+  __typename?: 'PokMedia';
+  id: Scalars['String'];
+  url: Scalars['String'];
+};
+
+
+export type PokMediaUrlArgs = {
+  process?: Maybe<PokMediaProcess>;
+};
+
+export type PokMediaProcess = {
+  height?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
+  fit?: Maybe<PokMediaFit>;
+  position?: Maybe<PokMediaPosition>;
+};
+
+export enum PokMediaFit {
+  Contain = 'CONTAIN',
+  Cover = 'COVER',
+  Fill = 'FILL',
+  Inside = 'INSIDE',
+  Outside = 'OUTSIDE'
+}
+
+export enum PokMediaPosition {
+  Centre = 'CENTRE',
+  Top = 'TOP',
+  RightTop = 'RIGHT_TOP',
+  Right = 'RIGHT',
+  RightBottom = 'RIGHT_BOTTOM',
+  Bottom = 'BOTTOM',
+  LeftBottom = 'LEFT_BOTTOM',
+  Left = 'LEFT',
+  LeftTop = 'LEFT_TOP'
+}
+
+export type Tiles = PokEntry & PokValue & ITiles & ISection & {
+  __typename?: 'Tiles';
+  id: Scalars['String'];
+  pokko: Pokko;
+  body?: Maybe<Array<Maybe<Tile>>>;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type ITiles = {
@@ -368,7 +446,7 @@ export type IModularPage = {
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
 };
 
-export type ModularPage_Body = Hero | ResourceTiles | IconTiles | Tiles | FeatureTiles | EarlyAccessForm | RichText;
+export type ModularPage_Body = Hero | ResourceTiles | IconTiles | Tiles | FeatureTiles | EarlyAccessForm | RichText | Image;
 
 export type Hero = PokEntry & PokValue & IHero & {
   __typename?: 'Hero';
@@ -387,44 +465,6 @@ export type IHero = {
   title?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['String']>;
 };
-
-export type PokMedia = {
-  __typename?: 'PokMedia';
-  id: Scalars['String'];
-  url: Scalars['String'];
-};
-
-
-export type PokMediaUrlArgs = {
-  process?: Maybe<PokMediaProcess>;
-};
-
-export type PokMediaProcess = {
-  height?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-  fit?: Maybe<PokMediaFit>;
-  position?: Maybe<PokMediaPosition>;
-};
-
-export enum PokMediaFit {
-  Contain = 'CONTAIN',
-  Cover = 'COVER',
-  Fill = 'FILL',
-  Inside = 'INSIDE',
-  Outside = 'OUTSIDE'
-}
-
-export enum PokMediaPosition {
-  Centre = 'CENTRE',
-  Top = 'TOP',
-  RightTop = 'RIGHT_TOP',
-  Right = 'RIGHT',
-  RightBottom = 'RIGHT_BOTTOM',
-  Bottom = 'BOTTOM',
-  LeftBottom = 'LEFT_BOTTOM',
-  Left = 'LEFT',
-  LeftTop = 'LEFT_TOP'
-}
 
 export type Link = PokEntry & PokValue & ILink & {
   __typename?: 'Link';
@@ -585,24 +625,44 @@ export type BlogPost = PokEntry & PokValue & IBlogPost & IModularPage & IContent
   id: Scalars['String'];
   pokko: Pokko;
   summary?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
+  authors?: Maybe<Array<Maybe<Author>>>;
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
   metaImage?: Maybe<PokMedia>;
+  alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
 };
 
 export type IBlogPost = {
   id: Scalars['String'];
+  authors?: Maybe<Array<Maybe<Author>>>;
   date?: Maybe<Scalars['String']>;
+};
+
+export type Author = PokEntry & PokValue & IAuthor & {
+  __typename?: 'Author';
+  id: Scalars['String'];
+  pokko: Pokko;
+  image?: Maybe<PokMedia>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type IAuthor = {
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type IContentPage = {
   id: Scalars['String'];
   summary?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
+  alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
 };
 
@@ -611,17 +671,19 @@ export type ContentPage = PokEntry & PokValue & IContentPage & IModularPage & IM
   id: Scalars['String'];
   pokko: Pokko;
   summary?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
   metaImage?: Maybe<PokMedia>;
+  alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
 };
 
-export type TilesCollection = {
-  __typename?: 'TilesCollection';
-  nodes: Array<Maybe<Tiles>>;
+export type ImageCollection = {
+  __typename?: 'ImageCollection';
+  nodes: Array<Maybe<Image>>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int'];
 };
@@ -632,11 +694,40 @@ export type PageInfo = {
   hasPrevPage: Scalars['Boolean'];
 };
 
-export type TilesFilter = {
-  /** Filter on the Summary field */
+export type TilesCollection = {
+  __typename?: 'TilesCollection';
+  nodes: Array<Maybe<Tiles>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type TilesCondition = {
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
+};
+
+export type TilesFilter = {
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<TilesFilter>>;
+  or?: Maybe<Array<TilesFilter>>;
+};
+
+export type ScalarStringFilter = {
+  isNull?: Maybe<Scalars['Boolean']>;
+  equalTo?: Maybe<Scalars['String']>;
+  notEqualTo?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type ScalarIdFilter = {
+  isNull?: Maybe<Scalars['Boolean']>;
+  equalTo?: Maybe<Scalars['String']>;
+  notEqualTo?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export enum TilesOrderBy {
@@ -657,11 +748,17 @@ export type ModularPageCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type ModularPageFilter = {
-  /** Filter on the Meta description field */
+export type ModularPageCondition = {
   metaDescription?: Maybe<Scalars['String']>;
-  /** Filter on the Meta title field */
   metaTitle?: Maybe<Scalars['String']>;
+};
+
+export type ModularPageFilter = {
+  metaDescription?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<ModularPageFilter>>;
+  or?: Maybe<Array<ModularPageFilter>>;
 };
 
 export enum ModularPageOrderBy {
@@ -682,13 +779,25 @@ export type FeatureTileCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type FeatureTileFilter = {
-  /** Filter on the Title field */
+export type FeatureTileCondition = {
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Body field */
   body?: Maybe<Scalars['String']>;
-  /** Filter on the Features field */
   features?: Maybe<Scalars['String']>;
+};
+
+export type FeatureTileFilter = {
+  title?: Maybe<ScalarStringFilter>;
+  body?: Maybe<ScalarStringFilter>;
+  features?: Maybe<ScalarStringFilterMulti>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<FeatureTileFilter>>;
+  or?: Maybe<Array<FeatureTileFilter>>;
+};
+
+export type ScalarStringFilterMulti = {
+  every?: Maybe<Array<Maybe<Scalars['String']>>>;
+  some?: Maybe<Array<Maybe<Scalars['String']>>>;
+  none?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export enum FeatureTileOrderBy {
@@ -711,11 +820,17 @@ export type MetadataCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type MetadataFilter = {
-  /** Filter on the Meta description field */
+export type MetadataCondition = {
   metaDescription?: Maybe<Scalars['String']>;
-  /** Filter on the Meta title field */
   metaTitle?: Maybe<Scalars['String']>;
+};
+
+export type MetadataFilter = {
+  metaDescription?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<MetadataFilter>>;
+  or?: Maybe<Array<MetadataFilter>>;
 };
 
 export enum MetadataOrderBy {
@@ -736,11 +851,17 @@ export type IconTileCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type IconTileFilter = {
-  /** Filter on the Title field */
+export type IconTileCondition = {
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Body field */
   body?: Maybe<Scalars['String']>;
+};
+
+export type IconTileFilter = {
+  title?: Maybe<ScalarStringFilter>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<IconTileFilter>>;
+  or?: Maybe<Array<IconTileFilter>>;
 };
 
 export enum IconTileOrderBy {
@@ -761,13 +882,19 @@ export type EarlyAccessFormCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type EarlyAccessFormFilter = {
-  /** Filter on the Style field */
+export type EarlyAccessFormCondition = {
   style?: Maybe<Scalars['String']>;
-  /** Filter on the Summary field */
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
+};
+
+export type EarlyAccessFormFilter = {
+  style?: Maybe<ScalarStringFilter>;
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<EarlyAccessFormFilter>>;
+  or?: Maybe<Array<EarlyAccessFormFilter>>;
 };
 
 export enum EarlyAccessFormOrderBy {
@@ -790,13 +917,19 @@ export type IconTilesCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type IconTilesFilter = {
-  /** Filter on the Summary field */
+export type IconTilesCondition = {
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Layout field */
   layout?: Maybe<Scalars['String']>;
+};
+
+export type IconTilesFilter = {
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  layout?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<IconTilesFilter>>;
+  or?: Maybe<Array<IconTilesFilter>>;
 };
 
 export enum IconTilesOrderBy {
@@ -819,11 +952,17 @@ export type SectionCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type SectionFilter = {
-  /** Filter on the Summary field */
+export type SectionCondition = {
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
+};
+
+export type SectionFilter = {
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<SectionFilter>>;
+  or?: Maybe<Array<SectionFilter>>;
 };
 
 export enum SectionOrderBy {
@@ -844,24 +983,52 @@ export type BlogPostCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type BlogPostFilter = {
-  /** Filter on the Summary field */
+export type BlogPostCondition = {
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
+  title2?: Maybe<Scalars['String']>;
+  authors?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Date field */
   date?: Maybe<Scalars['String']>;
-  /** Filter on the Meta description field */
   metaDescription?: Maybe<Scalars['String']>;
-  /** Filter on the Alias field */
+  alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
-  /** Filter on the Meta title field */
   metaTitle?: Maybe<Scalars['String']>;
+};
+
+export type BlogPostFilter = {
+  summary?: Maybe<ScalarStringFilter>;
+  title2?: Maybe<ScalarStringFilter>;
+  authors?: Maybe<ScalarIdFilterMulti>;
+  title?: Maybe<ScalarStringFilter>;
+  date?: Maybe<ScalarDateFilter>;
+  metaDescription?: Maybe<ScalarStringFilter>;
+  alias2?: Maybe<ScalarStringFilter>;
+  alias?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<BlogPostFilter>>;
+  or?: Maybe<Array<BlogPostFilter>>;
+};
+
+export type ScalarIdFilterMulti = {
+  every?: Maybe<Array<Maybe<Scalars['String']>>>;
+  some?: Maybe<Array<Maybe<Scalars['String']>>>;
+  none?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type ScalarDateFilter = {
+  isNull?: Maybe<Scalars['Boolean']>;
+  equalTo?: Maybe<Scalars['String']>;
+  notEqualTo?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export enum BlogPostOrderBy {
   AliasAsc = 'ALIAS_ASC',
   AliasDesc = 'ALIAS_DESC',
+  Alias2Asc = 'ALIAS2_ASC',
+  Alias2Desc = 'ALIAS2_DESC',
   CreatedAsc = 'CREATED_ASC',
   CreatedDesc = 'CREATED_DESC',
   DateAsc = 'DATE_ASC',
@@ -875,7 +1042,9 @@ export enum BlogPostOrderBy {
   SummaryAsc = 'SUMMARY_ASC',
   SummaryDesc = 'SUMMARY_DESC',
   TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
+  TitleDesc = 'TITLE_DESC',
+  Title2Asc = 'TITLE2_ASC',
+  Title2Desc = 'TITLE2_DESC'
 }
 
 export type RichTextCollection = {
@@ -885,9 +1054,14 @@ export type RichTextCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type RichTextFilter = {
-  /** Filter on the Body field */
+export type RichTextCondition = {
   body?: Maybe<Scalars['String']>;
+};
+
+export type RichTextFilter = {
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<RichTextFilter>>;
+  or?: Maybe<Array<RichTextFilter>>;
 };
 
 export enum RichTextOrderBy {
@@ -906,11 +1080,17 @@ export type HeroCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type HeroFilter = {
-  /** Filter on the Title field */
+export type HeroCondition = {
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Body field */
   body?: Maybe<Scalars['String']>;
+};
+
+export type HeroFilter = {
+  title?: Maybe<ScalarStringFilter>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<HeroFilter>>;
+  or?: Maybe<Array<HeroFilter>>;
 };
 
 export enum HeroOrderBy {
@@ -931,6 +1111,33 @@ export type FeatureTilesCollection = {
   totalCount: Scalars['Int'];
 };
 
+export type AuthorCollection = {
+  __typename?: 'AuthorCollection';
+  nodes: Array<Maybe<Author>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type AuthorCondition = {
+  name?: Maybe<Scalars['String']>;
+};
+
+export type AuthorFilter = {
+  name?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<AuthorFilter>>;
+  or?: Maybe<Array<AuthorFilter>>;
+};
+
+export enum AuthorOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC'
+}
+
 export type ResourceTilesCollection = {
   __typename?: 'ResourceTilesCollection';
   nodes: Array<Maybe<ResourceTiles>>;
@@ -938,11 +1145,17 @@ export type ResourceTilesCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type ResourceTilesFilter = {
-  /** Filter on the Summary field */
+export type ResourceTilesCondition = {
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
   title?: Maybe<Scalars['String']>;
+};
+
+export type ResourceTilesFilter = {
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<ResourceTilesFilter>>;
+  or?: Maybe<Array<ResourceTilesFilter>>;
 };
 
 export enum ResourceTilesOrderBy {
@@ -963,11 +1176,17 @@ export type TileCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type TileFilter = {
-  /** Filter on the Title field */
+export type TileCondition = {
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Body field */
   body?: Maybe<Scalars['String']>;
+};
+
+export type TileFilter = {
+  title?: Maybe<ScalarStringFilter>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<TileFilter>>;
+  or?: Maybe<Array<TileFilter>>;
 };
 
 export enum TileOrderBy {
@@ -988,22 +1207,34 @@ export type ContentPageCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type ContentPageFilter = {
-  /** Filter on the Summary field */
+export type ContentPageCondition = {
   summary?: Maybe<Scalars['String']>;
-  /** Filter on the Title field */
+  title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Meta description field */
   metaDescription?: Maybe<Scalars['String']>;
-  /** Filter on the Alias field */
+  alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
-  /** Filter on the Meta title field */
   metaTitle?: Maybe<Scalars['String']>;
+};
+
+export type ContentPageFilter = {
+  summary?: Maybe<ScalarStringFilter>;
+  title2?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  metaDescription?: Maybe<ScalarStringFilter>;
+  alias2?: Maybe<ScalarStringFilter>;
+  alias?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<ContentPageFilter>>;
+  or?: Maybe<Array<ContentPageFilter>>;
 };
 
 export enum ContentPageOrderBy {
   AliasAsc = 'ALIAS_ASC',
   AliasDesc = 'ALIAS_DESC',
+  Alias2Asc = 'ALIAS2_ASC',
+  Alias2Desc = 'ALIAS2_DESC',
   CreatedAsc = 'CREATED_ASC',
   CreatedDesc = 'CREATED_DESC',
   MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
@@ -1015,7 +1246,9 @@ export enum ContentPageOrderBy {
   SummaryAsc = 'SUMMARY_ASC',
   SummaryDesc = 'SUMMARY_DESC',
   TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
+  TitleDesc = 'TITLE_DESC',
+  Title2Asc = 'TITLE2_ASC',
+  Title2Desc = 'TITLE2_DESC'
 }
 
 export type ResourceTileCollection = {
@@ -1025,11 +1258,17 @@ export type ResourceTileCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type ResourceTileFilter = {
-  /** Filter on the Title field */
+export type ResourceTileCondition = {
   title?: Maybe<Scalars['String']>;
-  /** Filter on the Body field */
   body?: Maybe<Scalars['String']>;
+};
+
+export type ResourceTileFilter = {
+  title?: Maybe<ScalarStringFilter>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<ResourceTileFilter>>;
+  or?: Maybe<Array<ResourceTileFilter>>;
 };
 
 export enum ResourceTileOrderBy {
@@ -1050,11 +1289,17 @@ export type LinkCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type LinkFilter = {
-  /** Filter on the Target field */
+export type LinkCondition = {
   target?: Maybe<Scalars['String']>;
-  /** Filter on the Text field */
   text?: Maybe<Scalars['String']>;
+};
+
+export type LinkFilter = {
+  target?: Maybe<ScalarStringFilter>;
+  text?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  and?: Maybe<Array<LinkFilter>>;
+  or?: Maybe<Array<LinkFilter>>;
 };
 
 export enum LinkOrderBy {
@@ -1165,6 +1410,9 @@ type ModularPageContent_ModularPage_Fragment = (
   ) | (
     { __typename?: 'RichText' }
     & ModularPageBody_RichText_Fragment
+  ) | (
+    { __typename?: 'Image' }
+    & ModularPageBody_Image_Fragment
   )>>> }
   & MetadataContent_ModularPage_Fragment
 );
@@ -1192,6 +1440,9 @@ type ModularPageContent_BlogPost_Fragment = (
   ) | (
     { __typename?: 'RichText' }
     & ModularPageBody_RichText_Fragment
+  ) | (
+    { __typename?: 'Image' }
+    & ModularPageBody_Image_Fragment
   )>>> }
   & MetadataContent_BlogPost_Fragment
 );
@@ -1219,6 +1470,9 @@ type ModularPageContent_ContentPage_Fragment = (
   ) | (
     { __typename?: 'RichText' }
     & ModularPageBody_RichText_Fragment
+  ) | (
+    { __typename?: 'Image' }
+    & ModularPageBody_Image_Fragment
   )>>> }
   & MetadataContent_ContentPage_Fragment
 );
@@ -1283,6 +1537,11 @@ type MetadataContent_ContentPage_Fragment = (
 
 export type MetadataContentFragment = MetadataContent_ModularPage_Fragment | MetadataContent_Metadata_Fragment | MetadataContent_BlogPost_Fragment | MetadataContent_ContentPage_Fragment;
 
+type ModularPageBody_Image_Fragment = (
+  { __typename: 'Image' }
+  & ImageModuleFragment
+);
+
 type ModularPageBody_Tiles_Fragment = { __typename: 'Tiles' };
 
 type ModularPageBody_Tile_Fragment = { __typename: 'Tile' };
@@ -1333,9 +1592,11 @@ type ModularPageBody_Section_Fragment = { __typename: 'Section' };
 
 type ModularPageBody_BlogPost_Fragment = { __typename: 'BlogPost' };
 
+type ModularPageBody_Author_Fragment = { __typename: 'Author' };
+
 type ModularPageBody_ContentPage_Fragment = { __typename: 'ContentPage' };
 
-export type ModularPageBodyFragment = ModularPageBody_Tiles_Fragment | ModularPageBody_Tile_Fragment | ModularPageBody_ModularPage_Fragment | ModularPageBody_Hero_Fragment | ModularPageBody_Link_Fragment | ModularPageBody_ResourceTiles_Fragment | ModularPageBody_ResourceTile_Fragment | ModularPageBody_IconTiles_Fragment | ModularPageBody_IconTile_Fragment | ModularPageBody_FeatureTiles_Fragment | ModularPageBody_FeatureTile_Fragment | ModularPageBody_EarlyAccessForm_Fragment | ModularPageBody_RichText_Fragment | ModularPageBody_Metadata_Fragment | ModularPageBody_Section_Fragment | ModularPageBody_BlogPost_Fragment | ModularPageBody_ContentPage_Fragment;
+export type ModularPageBodyFragment = ModularPageBody_Image_Fragment | ModularPageBody_Tiles_Fragment | ModularPageBody_Tile_Fragment | ModularPageBody_ModularPage_Fragment | ModularPageBody_Hero_Fragment | ModularPageBody_Link_Fragment | ModularPageBody_ResourceTiles_Fragment | ModularPageBody_ResourceTile_Fragment | ModularPageBody_IconTiles_Fragment | ModularPageBody_IconTile_Fragment | ModularPageBody_FeatureTiles_Fragment | ModularPageBody_FeatureTile_Fragment | ModularPageBody_EarlyAccessForm_Fragment | ModularPageBody_RichText_Fragment | ModularPageBody_Metadata_Fragment | ModularPageBody_Section_Fragment | ModularPageBody_BlogPost_Fragment | ModularPageBody_Author_Fragment | ModularPageBody_ContentPage_Fragment;
 
 export type HeroModuleFragment = (
   { __typename?: 'Hero' }
@@ -1402,6 +1663,14 @@ export type RichTextModuleFragment = (
   & Pick<RichText, 'body'>
 );
 
+export type ImageModuleFragment = (
+  { __typename?: 'Image' }
+  & { image?: Maybe<(
+    { __typename?: 'PokMedia' }
+    & Pick<PokMedia, 'url'>
+  )> }
+);
+
 export type GetPageByPathQueryVariables = Exact<{
   path: Array<Scalars['String']> | Scalars['String'];
 }>;
@@ -1409,7 +1678,7 @@ export type GetPageByPathQueryVariables = Exact<{
 
 export type GetPageByPathQuery = (
   { __typename?: 'Query' }
-  & { entry?: Maybe<{ __typename?: 'Tiles' } | { __typename?: 'Tile' } | (
+  & { entry?: Maybe<{ __typename?: 'Image' } | { __typename?: 'Tiles' } | { __typename?: 'Tile' } | (
     { __typename?: 'ModularPage' }
     & ModularPageContent_ModularPage_Fragment
   ) | { __typename?: 'Hero' } | { __typename?: 'Link' } | { __typename?: 'ResourceTiles' } | { __typename?: 'ResourceTile' } | { __typename?: 'IconTiles' } | { __typename?: 'IconTile' } | { __typename?: 'FeatureTiles' } | { __typename?: 'FeatureTile' } | { __typename?: 'EarlyAccessForm' } | { __typename?: 'RichText' } | { __typename?: 'Metadata' } | { __typename?: 'Section' } | (
@@ -1417,7 +1686,7 @@ export type GetPageByPathQuery = (
     & ModularPageContent_BlogPost_Fragment
     & BlogPostContentFragment
     & ContentPageContent_BlogPost_Fragment
-  ) | (
+  ) | { __typename?: 'Author' } | (
     { __typename?: 'ContentPage' }
     & ModularPageContent_ContentPage_Fragment
     & ContentPageContent_ContentPage_Fragment
@@ -1546,6 +1815,13 @@ export const RichTextModuleFragmentDoc = gql`
   body
 }
     `;
+export const ImageModuleFragmentDoc = gql`
+    fragment ImageModule on Image {
+  image {
+    url
+  }
+}
+    `;
 export const ModularPageBodyFragmentDoc = gql`
     fragment ModularPageBody on PokValue {
   __typename
@@ -1555,13 +1831,15 @@ export const ModularPageBodyFragmentDoc = gql`
   ...ResourceTileModule
   ...EarlyAccessFormModule
   ...RichTextModule
+  ...ImageModule
 }
     ${HeroModuleFragmentDoc}
 ${IconTilesModuleFragmentDoc}
 ${FeatureTilesModuleFragmentDoc}
 ${ResourceTileModuleFragmentDoc}
 ${EarlyAccessFormModuleFragmentDoc}
-${RichTextModuleFragmentDoc}`;
+${RichTextModuleFragmentDoc}
+${ImageModuleFragmentDoc}`;
 export const ModularPageContentFragmentDoc = gql`
     fragment ModularPageContent on IModularPage {
   ...MetadataContent
@@ -1699,6 +1977,7 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       const result: PossibleTypesResultData = {
   "possibleTypes": {
     "PokEntry": [
+      "Image",
       "Tiles",
       "Tile",
       "ModularPage",
@@ -1715,9 +1994,11 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       "Metadata",
       "Section",
       "BlogPost",
+      "Author",
       "ContentPage"
     ],
     "PokValue": [
+      "Image",
       "Tiles",
       "Tile",
       "ModularPage",
@@ -1734,7 +2015,11 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       "Metadata",
       "Section",
       "BlogPost",
+      "Author",
       "ContentPage"
+    ],
+    "IImage": [
+      "Image"
     ],
     "ITiles": [
       "Tiles"
@@ -1763,7 +2048,8 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       "Tiles",
       "FeatureTiles",
       "EarlyAccessForm",
-      "RichText"
+      "RichText",
+      "Image"
     ],
     "IHero": [
       "Hero"
@@ -1804,6 +2090,9 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
     ],
     "IBlogPost": [
       "BlogPost"
+    ],
+    "IAuthor": [
+      "Author"
     ],
     "IContentPage": [
       "BlogPost",

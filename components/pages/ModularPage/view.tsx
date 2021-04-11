@@ -6,11 +6,11 @@ import {
 import { Footer } from "../../Footer/module";
 import { Metadata } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
-import { Banner } from "../../modules/Banner/module";
 import { EarlyAccessFormModule } from "../../modules/EarlyAccessForm/module";
 import { FeatureTilesModule } from "../../modules/FeatureTiles/module";
 import { HeroModule } from "../../modules/Hero/module";
 import { IconTilesModule } from "../../modules/IconTiles/module";
+import { ImageModule } from "../../modules/Image/module";
 import { ResourceTileModule } from "../../modules/ResourceTile/module";
 import { RichTextModule } from "../../modules/RichText/module";
 
@@ -45,6 +45,8 @@ export const ModuleHandler: React.FC<ModularPageBodyFragment> = (props) => {
       return <EarlyAccessFormModule {...props} />;
     case "RichText":
       return <RichTextModule {...props} />;
+    case "Image":
+      return <ImageModule {...props} />;
     default:
       return (
         <pre>
