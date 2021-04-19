@@ -7,7 +7,7 @@ export const RichTextModule: React.FC<RichTextModuleFragment> = ({ body }) => {
     return (
       <div className="richtext__container">
         <div className="richtext__content">
-          <SlateReactPresentation value={body} />
+          <SlateReactPresentation value={body.body} />
         </div>
       </div>
     );

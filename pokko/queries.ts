@@ -605,13 +605,19 @@ export type RichText = PokEntry & PokValue & IRichText & {
   __typename?: 'RichText';
   id: Scalars['String'];
   pokko: Pokko;
-  body?: Maybe<Scalars['JSON']>;
+  body?: Maybe<PokRichText>;
 };
 
 export type IRichText = {
   id: Scalars['String'];
   pokko: Pokko;
+  body?: Maybe<PokRichText>;
+};
+
+export type PokRichText = {
+  __typename?: 'PokRichText';
   body?: Maybe<Scalars['JSON']>;
+  embeds?: Maybe<Array<Maybe<PokValue>>>;
 };
 
 
@@ -650,6 +656,7 @@ export type BlogPost = PokEntry & PokValue & IBlogPost & IModularPage & IContent
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
   metaImage?: Maybe<PokMedia>;
   alias2?: Maybe<Scalars['String']>;
@@ -685,6 +692,7 @@ export type IContentPage = {
   summary?: Maybe<Scalars['String']>;
   title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
   alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
 };
@@ -697,6 +705,7 @@ export type ContentPage = PokEntry & PokValue & IContentPage & IModularPage & IM
   title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
   body?: Maybe<Array<Maybe<ModularPage_Body>>>;
   metaImage?: Maybe<PokMedia>;
   alias2?: Maybe<Scalars['String']>;
@@ -1013,6 +1022,7 @@ export type BlogPostCondition = {
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Int']>;
   alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
@@ -1025,6 +1035,7 @@ export type BlogPostFilter = {
   title?: Maybe<ScalarStringFilter>;
   date?: Maybe<ScalarDateFilter>;
   metaDescription?: Maybe<ScalarStringFilter>;
+  estimatedReadTime?: Maybe<ScalarNumberFilter>;
   alias2?: Maybe<ScalarStringFilter>;
   alias?: Maybe<ScalarStringFilter>;
   metaTitle?: Maybe<ScalarStringFilter>;
@@ -1047,6 +1058,14 @@ export type ScalarDateFilter = {
   notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+export type ScalarNumberFilter = {
+  isNull?: Maybe<Scalars['Boolean']>;
+  equalTo?: Maybe<Scalars['Float']>;
+  notEqualTo?: Maybe<Scalars['Float']>;
+  in?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  notIn?: Maybe<Array<Maybe<Scalars['Float']>>>;
+};
+
 export enum BlogPostOrderBy {
   AliasAsc = 'ALIAS_ASC',
   AliasDesc = 'ALIAS_DESC',
@@ -1056,6 +1075,8 @@ export enum BlogPostOrderBy {
   CreatedDesc = 'CREATED_DESC',
   DateAsc = 'DATE_ASC',
   DateDesc = 'DATE_DESC',
+  EstimatedReadTimeAsc = 'ESTIMATED_READ_TIME_ASC',
+  EstimatedReadTimeDesc = 'ESTIMATED_READ_TIME_DESC',
   MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
   MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
   MetaTitleAsc = 'META_TITLE_ASC',
@@ -1235,6 +1256,7 @@ export type ContentPageCondition = {
   title2?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   metaDescription?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Int']>;
   alias2?: Maybe<Scalars['String']>;
   alias?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
@@ -1245,6 +1267,7 @@ export type ContentPageFilter = {
   title2?: Maybe<ScalarStringFilter>;
   title?: Maybe<ScalarStringFilter>;
   metaDescription?: Maybe<ScalarStringFilter>;
+  estimatedReadTime?: Maybe<ScalarNumberFilter>;
   alias2?: Maybe<ScalarStringFilter>;
   alias?: Maybe<ScalarStringFilter>;
   metaTitle?: Maybe<ScalarStringFilter>;
@@ -1260,6 +1283,8 @@ export enum ContentPageOrderBy {
   Alias2Desc = 'ALIAS2_DESC',
   CreatedAsc = 'CREATED_ASC',
   CreatedDesc = 'CREATED_DESC',
+  EstimatedReadTimeAsc = 'ESTIMATED_READ_TIME_ASC',
+  EstimatedReadTimeDesc = 'ESTIMATED_READ_TIME_DESC',
   MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
   MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
   MetaTitleAsc = 'META_TITLE_ASC',
@@ -1403,7 +1428,7 @@ export type BlogPostListingFragment = (
 
 export type BlogPostSummaryFragment = (
   { __typename?: 'BlogPost' }
-  & Pick<BlogPost, 'id' | 'title' | 'date' | 'summary'>
+  & Pick<BlogPost, 'id' | 'title' | 'date' | 'summary' | 'estimatedReadTime'>
   & { pokko: (
     { __typename?: 'Pokko' }
     & Pick<Pokko, 'path'>
@@ -1683,7 +1708,10 @@ export type EarlyAccessFormModuleFragment = (
 
 export type RichTextModuleFragment = (
   { __typename?: 'RichText' }
-  & Pick<RichText, 'body'>
+  & { body?: Maybe<(
+    { __typename?: 'PokRichText' }
+    & Pick<PokRichText, 'body'>
+  )> }
 );
 
 export type ImageModuleFragment = (
@@ -1736,6 +1764,7 @@ export const BlogPostSummaryFragmentDoc = gql`
   title
   date
   summary
+  estimatedReadTime
   pokko {
     path
   }
@@ -1835,7 +1864,9 @@ export const EarlyAccessFormModuleFragmentDoc = gql`
     `;
 export const RichTextModuleFragmentDoc = gql`
     fragment RichTextModule on RichText {
-  body
+  body {
+    body
+  }
 }
     `;
 export const ImageModuleFragmentDoc = gql`
