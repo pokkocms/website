@@ -28,7 +28,11 @@
 
   &__body {
     &-container {
-      margin: 3rem 0;
+      margin: 4.5rem 0;
+
+      @include mobile {
+        margin: 2.5rem 1.5rem;
+      }
     }
   }
 }

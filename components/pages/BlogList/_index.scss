@@ -31,10 +31,10 @@
       @include container;
       grid-template-columns: 1fr 58rem 1fr;
 
-      margin: 3rem 0;
+      margin: 4.5rem 0;
 
       @include mobile {
-        margin: 3rem 1.5rem;
+        margin: 2.5rem 1.5rem;
       }
 
       ul {
