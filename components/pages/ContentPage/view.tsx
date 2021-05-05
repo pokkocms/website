@@ -3,6 +3,7 @@ import { ContentPageContentFragment } from "../../../pokko/queries";
 import { Footer } from "../../Footer/module";
 import { Metadata } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
+import { PreviewBanner } from "../../modules/Banner/preview";
 import { Navbar } from "../../Navbar/module";
 import { ModuleHandler } from "../ModularPage/view";
 
@@ -14,6 +15,7 @@ export const ContentPage: React.FC<ContentPageProps> = ({ entry }) => (
   <>
     <Metadata entry={entry} />
 
+    <PreviewBanner />
     <EarlyAccessBanner />
     <Navbar />
 

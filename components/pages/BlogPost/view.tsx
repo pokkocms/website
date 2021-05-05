@@ -3,6 +3,7 @@ import { BlogPostContentFragment } from "../../../pokko/queries";
 import { Footer } from "../../Footer/module";
 import { Metadata } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
+import { PreviewBanner } from "../../modules/Banner/preview";
 import { Navbar } from "../../Navbar/module";
 import { locale } from "../../util";
 import { ModuleHandler } from "../ModularPage/view";
@@ -15,6 +16,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({ entry }) => (
   <>
     <Metadata entry={entry} />
 
+    <PreviewBanner />
     <EarlyAccessBanner />
     <Navbar />
 

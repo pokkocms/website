@@ -6,6 +6,7 @@ import {
 import { Footer } from "../../Footer/module";
 import { Metadata } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
+import { PreviewBanner } from "../../modules/Banner/preview";
 import { EarlyAccessFormModule } from "../../modules/EarlyAccessForm/module";
 import { FeatureTilesModule } from "../../modules/FeatureTiles/module";
 import { HeroModule } from "../../modules/Hero/module";
@@ -22,6 +23,7 @@ export const ModularPage: React.FC<ModularPageProps> = ({ entry }) => (
   <>
     <Metadata entry={entry} />
 
+    <PreviewBanner />
     <EarlyAccessBanner />
 
     {entry.body.map((ent, idx) => (

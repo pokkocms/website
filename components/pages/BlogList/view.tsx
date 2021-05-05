@@ -4,6 +4,7 @@ import { BlogPostListingFragment } from "../../../pokko/queries";
 import { Footer } from "../../Footer/module";
 import { MetadataRaw } from "../../Metadata";
 import { EarlyAccessBanner } from "../../modules/Banner/default";
+import { PreviewBanner } from "../../modules/Banner/preview";
 import { Navbar } from "../../Navbar/module";
 import { locale } from "../../util";
 
@@ -18,6 +19,7 @@ export const BlogList: React.FC<BlogPostListingFragment> = ({ nodes }) => (
       metaDescription="From the Pokko news desk"
     />
 
+    <PreviewBanner />
     <EarlyAccessBanner />
     <Navbar />
 
