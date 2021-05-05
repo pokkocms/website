@@ -10,6 +10,10 @@
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
+
+    &.--grey {
+      background-color: var(--colour-neutral-light-slate-75);
+    }
   }
 
   &__icon {
