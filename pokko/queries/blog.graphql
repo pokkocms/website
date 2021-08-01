@@ -12,7 +12,7 @@ fragment BlogPostListing on BlogPostCollection {
   }
 }
 
-fragment BlogPostSummary on BlogPost {
+fragment BlogPostSummary on IBlogPost {
   id
   title
   date
@@ -22,3 +22,4 @@ fragment BlogPostSummary on BlogPost {
     path
   }
 }
+
