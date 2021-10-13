@@ -46,7 +46,7 @@ export const useRegisterForm: RegisterFormHook = () => {
               { name: "lead_context", value: input.source },
             ].filter((ent) => Boolean(ent.value)),
             context: {
-              pageUri: window.location.href,
+              pageUri: location.href,
               pageName: document.title,
             },
           }),
