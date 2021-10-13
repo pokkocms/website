@@ -84,6 +84,7 @@
       left: -100px;
       width: 750px;
       pointer-events: none;
+      touch-action: none;
     }
 
     @include mobile {
