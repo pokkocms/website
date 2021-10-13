@@ -94,7 +94,7 @@ a {
   }
 }
 
-.message {
+.control .message {
   color: var(--colour-neutral-onyx);
   background-color: var(--colour-neutral-light-slate-25);
   border: 1px solid var(--colour-neutral-light-slate-75);
@@ -102,6 +102,7 @@ a {
   font-size: 0.75rem;
   line-height: 1.2;
   border-radius: 4px;
+  letter-spacing: initial;
 
   &.--danger {
     color: var(--colour-danger);

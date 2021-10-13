@@ -83,6 +83,7 @@
       position: absolute;
       left: -100px;
       width: 750px;
+      pointer-events: none;
     }
 
     @include mobile {

@@ -19,7 +19,11 @@ const textFromHtml = (input: string): string => {
   const el = document.createElement("div");
   el.innerHTML = input;
 
-  return el.textContent;
+  const { textContent } = el;
+
+  el.remove();
+
+  return textContent;
 };
 
 export const useRegisterForm: RegisterFormHook = () => {
@@ -51,8 +55,17 @@ export const useRegisterForm: RegisterFormHook = () => {
 
       const data = await res.json();
 
-      setMessage(textFromHtml(data?.inlineMessage ?? ""));
-      setState("success");
+      if (res.ok) {
+        setMessage(textFromHtml(data?.inlineMessage ?? ""));
+        setState("success");
+      } else {
+        if (data.errors && data.errors[0].errorType === "INVALID_EMAIL") {
+          setMessage("Invalid email address");
+        } else {
+          setMessage("Something went wrong");
+        }
+        setState("error");
+      }
     } catch {
       setState("error");
     }

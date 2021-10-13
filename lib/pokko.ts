@@ -41,21 +41,28 @@ export const staticPropsByPath = async (
   path: string[],
   preview: boolean
 ): Promise<GetStaticPropsResult<GetPageByPathQuery>> => {
-  const res = await (preview ? clientPreview : client).query<
-    GetPageByPathQuery,
-    GetPageByPathQueryVariables
-  >({
-    query: GetPageByPathDocument,
-    fetchPolicy: "network-only",
-    variables: { path },
-  });
+  try {
+    const res = await (preview ? clientPreview : client).query<
+      GetPageByPathQuery,
+      GetPageByPathQueryVariables
+    >({
+      query: GetPageByPathDocument,
+      fetchPolicy: "network-only",
+      variables: { path },
+    });
 
-  if (!res.data.entry) {
-    return { notFound: true, revalidate };
+    if (!res.data.entry) {
+      return { notFound: true, revalidate };
+    }
+
+    return {
+      revalidate: 5,
+      props: { entry: res.data.entry },
+    };
+  } catch (ex) {
+    if (ex.networkError) {
+      console.error("result", ex.networkError.result);
+    }
+    throw ex;
   }
-
-  return {
-    revalidate,
-    props: { entry: res.data.entry },
-  };
 };

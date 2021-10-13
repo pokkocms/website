@@ -9,7 +9,11 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
   link,
 }) => {
   const [submit, { state, message }] = useRegisterForm();
-  const { register, handleSubmit, errors } = useForm<RegisterFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormInput>();
 
   switch (style) {
     case "twocol": {
@@ -38,8 +42,9 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
                     type="email"
                     placeholder="Your email"
                     className={errors.email ? "input --danger" : "input"}
-                    name="email"
-                    ref={register({ required: "This field is required" })}
+                    {...register("email", {
+                      required: "This field is required",
+                    })}
                   />
                   {errors.email ? (
                     <p className="message --danger">{errors.email.message}</p>
@@ -79,8 +84,9 @@ export const EarlyAccessFormModule: React.FC<EarlyAccessFormModuleFragment> = ({
                     type="email"
                     placeholder="Your email"
                     className={errors.email ? "input --danger" : "input"}
-                    name="email"
-                    ref={register({ required: "This field is required" })}
+                    {...register("email", {
+                      required: "This field is required",
+                    })}
                   />
 
                   {errors.email ? (

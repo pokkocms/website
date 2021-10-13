@@ -4,6 +4,7 @@ export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -15,918 +16,199 @@ export type Scalars = {
   JSON: any;
 };
 
-export type Query = {
-  __typename?: 'Query';
-  entries?: Maybe<Entries>;
-  entry?: Maybe<PokEntry>;
-  sync?: Maybe<SyncCollection>;
-  taxonomy?: Maybe<PageCollection>;
-};
-
-
-export type QueryEntryArgs = {
-  path?: Maybe<Array<Maybe<Scalars['String']>>>;
-  id?: Maybe<Scalars['String']>;
-};
-
-
-export type QuerySyncArgs = {
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  filter?: Maybe<SyncCondition>;
-};
-
-
-export type QueryTaxonomyArgs = {
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  filter?: Maybe<PagesCondition>;
-};
-
-export type Entries = {
-  __typename?: 'Entries';
-  image?: Maybe<Image>;
-  tiles?: Maybe<Tiles>;
-  modularPage?: Maybe<ModularPage>;
-  featureTile?: Maybe<FeatureTile>;
-  metadata?: Maybe<Metadata>;
-  iconTile?: Maybe<IconTile>;
-  earlyAccessForm?: Maybe<EarlyAccessForm>;
-  iconTiles?: Maybe<IconTiles>;
-  section?: Maybe<Section>;
-  blogPost?: Maybe<BlogPost>;
-  richText?: Maybe<RichText>;
-  hero?: Maybe<Hero>;
-  featureTiles?: Maybe<FeatureTiles>;
-  author?: Maybe<Author>;
-  resourceTiles?: Maybe<ResourceTiles>;
-  tile?: Maybe<Tile>;
-  contentPage?: Maybe<ContentPage>;
-  resourceTile?: Maybe<ResourceTile>;
-  link?: Maybe<Link>;
-  allImage?: Maybe<ImageCollection>;
-  allTiles?: Maybe<TilesCollection>;
-  allModularPage?: Maybe<ModularPageCollection>;
-  allFeatureTile?: Maybe<FeatureTileCollection>;
-  allMetadata?: Maybe<MetadataCollection>;
-  allIconTile?: Maybe<IconTileCollection>;
-  allEarlyAccessForm?: Maybe<EarlyAccessFormCollection>;
-  allIconTiles?: Maybe<IconTilesCollection>;
-  allSection?: Maybe<SectionCollection>;
-  allBlogPost?: Maybe<BlogPostCollection>;
-  allRichText?: Maybe<RichTextCollection>;
-  allHero?: Maybe<HeroCollection>;
-  allFeatureTiles?: Maybe<FeatureTilesCollection>;
-  allAuthor?: Maybe<AuthorCollection>;
-  allResourceTiles?: Maybe<ResourceTilesCollection>;
-  allTile?: Maybe<TileCollection>;
-  allContentPage?: Maybe<ContentPageCollection>;
-  allResourceTile?: Maybe<ResourceTileCollection>;
-  allLink?: Maybe<LinkCollection>;
-};
-
-
-export type EntriesImageArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesTilesArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesModularPageArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesFeatureTileArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesMetadataArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesIconTileArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesEarlyAccessFormArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesIconTilesArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesSectionArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesBlogPostArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesRichTextArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesHeroArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesFeatureTilesArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesAuthorArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesResourceTilesArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesTileArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesContentPageArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesResourceTileArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesLinkArgs = {
-  id: Scalars['String'];
-};
-
-
-export type EntriesAllImageArgs = {
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllTilesArgs = {
-  filter?: Maybe<TilesFilter>;
-  orderBy?: Maybe<Array<Maybe<TilesOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllModularPageArgs = {
-  filter?: Maybe<ModularPageFilter>;
-  orderBy?: Maybe<Array<Maybe<ModularPageOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllFeatureTileArgs = {
-  filter?: Maybe<FeatureTileFilter>;
-  orderBy?: Maybe<Array<Maybe<FeatureTileOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllMetadataArgs = {
-  filter?: Maybe<MetadataFilter>;
-  orderBy?: Maybe<Array<Maybe<MetadataOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllIconTileArgs = {
-  filter?: Maybe<IconTileFilter>;
-  orderBy?: Maybe<Array<Maybe<IconTileOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllEarlyAccessFormArgs = {
-  filter?: Maybe<EarlyAccessFormFilter>;
-  orderBy?: Maybe<Array<Maybe<EarlyAccessFormOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllIconTilesArgs = {
-  filter?: Maybe<IconTilesFilter>;
-  orderBy?: Maybe<Array<Maybe<IconTilesOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllSectionArgs = {
-  filter?: Maybe<SectionFilter>;
-  orderBy?: Maybe<Array<Maybe<SectionOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllBlogPostArgs = {
-  filter?: Maybe<BlogPostFilter>;
-  orderBy?: Maybe<Array<Maybe<BlogPostOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllRichTextArgs = {
-  filter?: Maybe<RichTextFilter>;
-  orderBy?: Maybe<Array<Maybe<RichTextOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllHeroArgs = {
-  filter?: Maybe<HeroFilter>;
-  orderBy?: Maybe<Array<Maybe<HeroOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllFeatureTilesArgs = {
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllAuthorArgs = {
-  filter?: Maybe<AuthorFilter>;
-  orderBy?: Maybe<Array<Maybe<AuthorOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllResourceTilesArgs = {
-  filter?: Maybe<ResourceTilesFilter>;
-  orderBy?: Maybe<Array<Maybe<ResourceTilesOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllTileArgs = {
-  filter?: Maybe<TileFilter>;
-  orderBy?: Maybe<Array<Maybe<TileOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllContentPageArgs = {
-  filter?: Maybe<ContentPageFilter>;
-  orderBy?: Maybe<Array<Maybe<ContentPageOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllResourceTileArgs = {
-  filter?: Maybe<ResourceTileFilter>;
-  orderBy?: Maybe<Array<Maybe<ResourceTileOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-
-export type EntriesAllLinkArgs = {
-  filter?: Maybe<LinkFilter>;
-  orderBy?: Maybe<Array<Maybe<LinkOrderBy>>>;
-  skip?: Scalars['Int'];
-  take?: Scalars['Int'];
-  inherit?: Scalars['Boolean'];
-};
-
-export type Image = PokValue & IImage & {
-  __typename?: 'Image';
-  id: Scalars['String'];
-  image?: Maybe<PokMedia>;
-};
-
-export type PokValue = {
-  id?: Maybe<Scalars['String']>;
-};
-
-export type IImage = {
-  id: Scalars['String'];
-  image?: Maybe<PokMedia>;
-};
-
-export type PokMedia = {
-  __typename?: 'PokMedia';
-  id: Scalars['String'];
-  contentType: Scalars['String'];
-  height?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-  size: Scalars['Int'];
-  url: Scalars['String'];
-};
-
-
-export type PokMediaUrlArgs = {
-  process?: Maybe<PokMediaProcess>;
-};
-
-export type PokMediaProcess = {
-  height?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-  fit?: Maybe<PokMediaFit>;
-  position?: Maybe<PokMediaPosition>;
-};
-
-export enum PokMediaFit {
-  Contain = 'CONTAIN',
-  Cover = 'COVER',
-  Fill = 'FILL',
-  Inside = 'INSIDE',
-  Outside = 'OUTSIDE'
-}
-
-export enum PokMediaPosition {
-  Centre = 'CENTRE',
-  Top = 'TOP',
-  RightTop = 'RIGHT_TOP',
-  Right = 'RIGHT',
-  RightBottom = 'RIGHT_BOTTOM',
-  Bottom = 'BOTTOM',
-  LeftBottom = 'LEFT_BOTTOM',
-  Left = 'LEFT',
-  LeftTop = 'LEFT_TOP'
-}
-
-export type Tiles = PokValue & ITiles & ISection & {
-  __typename?: 'Tiles';
-  id: Scalars['String'];
-  body?: Maybe<Array<Maybe<Tile>>>;
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type ITiles = {
-  id: Scalars['String'];
-  body?: Maybe<Array<Maybe<Tile>>>;
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type ISection = {
-  id: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type Tile = PokValue & ITile & {
-  __typename?: 'Tile';
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type ITile = {
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type ModularPage = PokEntry & IModularPage & IMetadata & {
-  __typename?: 'ModularPage';
-  id: Scalars['String'];
-  pokko: Pokko;
-  metaDescription?: Maybe<Scalars['String']>;
-  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
-  metaImage?: Maybe<PokMedia>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type PokEntry = {
-  id: Scalars['String'];
-  pokko: Pokko;
-};
-
-export type Pokko = {
-  __typename?: 'Pokko';
-  id: Scalars['String'];
-  model: Scalars['String'];
-  name: Scalars['String'];
-  created: Scalars['String'];
-  modified: Scalars['String'];
-  path?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type IModularPage = {
-  id: Scalars['String'];
-  pokko: Pokko;
-  metaDescription?: Maybe<Scalars['String']>;
-  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
-  metaImage?: Maybe<PokMedia>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type IMetadata = {
-  id: Scalars['String'];
-  pokko: Pokko;
-  metaDescription?: Maybe<Scalars['String']>;
-  metaImage?: Maybe<PokMedia>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type ModularPage_Body = Hero | ResourceTiles | IconTiles | Tiles | FeatureTiles | EarlyAccessForm | RichText | Image;
-
-export type Hero = PokValue & IHero & {
-  __typename?: 'Hero';
-  id: Scalars['String'];
-  image?: Maybe<PokMedia>;
-  link?: Maybe<Link>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type IHero = {
-  id: Scalars['String'];
-  image?: Maybe<PokMedia>;
-  link?: Maybe<Link>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type Link = PokValue & ILink & {
-  __typename?: 'Link';
-  id: Scalars['String'];
-  target?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-};
-
-export type ILink = {
-  id: Scalars['String'];
-  target?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-};
-
-export type ResourceTiles = PokValue & IResourceTiles & ISection & {
-  __typename?: 'ResourceTiles';
-  id: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Array<Maybe<ResourceTile>>>;
-};
-
-export type IResourceTiles = {
-  id: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Array<Maybe<ResourceTile>>>;
-};
-
-export type ResourceTile = PokValue & IResourceTile & ITile & {
-  __typename?: 'ResourceTile';
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  link?: Maybe<Link>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type IResourceTile = {
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  link?: Maybe<Link>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type IconTiles = PokValue & IIconTiles & ISection & {
-  __typename?: 'IconTiles';
-  id: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Array<Maybe<IconTile>>>;
-  layout?: Maybe<Scalars['String']>;
-};
-
-export type IIconTiles = {
-  id: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Array<Maybe<IconTile>>>;
-  layout?: Maybe<Scalars['String']>;
-};
-
-export type IconTile = PokValue & IIconTile & ITile & {
-  __typename?: 'IconTile';
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  icon?: Maybe<PokMedia>;
-};
-
-export type IIconTile = {
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  icon?: Maybe<PokMedia>;
-};
-
-export type FeatureTiles = PokValue & IFeatureTiles & {
-  __typename?: 'FeatureTiles';
-  id: Scalars['String'];
-  body?: Maybe<Array<Maybe<FeatureTile>>>;
-};
-
-export type IFeatureTiles = {
-  id: Scalars['String'];
-  body?: Maybe<Array<Maybe<FeatureTile>>>;
-};
-
-export type FeatureTile = PokValue & IFeatureTile & ITile & IIconTile & {
-  __typename?: 'FeatureTile';
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  icon?: Maybe<PokMedia>;
-  features?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type IFeatureTile = {
-  id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  icon?: Maybe<PokMedia>;
-  features?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type EarlyAccessForm = PokValue & IEarlyAccessForm & {
-  __typename?: 'EarlyAccessForm';
-  id: Scalars['String'];
-  style?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  link?: Maybe<Link>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type IEarlyAccessForm = {
-  id: Scalars['String'];
-  style?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  link?: Maybe<Link>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type RichText = PokValue & IRichText & {
-  __typename?: 'RichText';
-  id: Scalars['String'];
-  body?: Maybe<PokRichText>;
-};
-
-export type IRichText = {
-  id: Scalars['String'];
-  body?: Maybe<PokRichText>;
-};
-
-export type PokRichText = {
-  __typename?: 'PokRichText';
-  body?: Maybe<Scalars['JSON']>;
-  embeds?: Maybe<Array<Maybe<PokValue>>>;
-};
-
-
-export type Metadata = PokEntry & IMetadata & {
-  __typename?: 'Metadata';
-  id: Scalars['String'];
-  pokko: Pokko;
-  metaDescription?: Maybe<Scalars['String']>;
-  metaImage?: Maybe<PokMedia>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type Section = PokValue & ISection & {
-  __typename?: 'Section';
-  id: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type BlogPost = PokEntry & IBlogPost & IModularPage & IContentPage & IMetadata & {
-  __typename?: 'BlogPost';
-  id: Scalars['String'];
-  pokko: Pokko;
-  summary?: Maybe<Scalars['String']>;
-  title2?: Maybe<Scalars['String']>;
-  authors?: Maybe<Array<Maybe<Author>>>;
-  title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['String']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  estimatedReadTime?: Maybe<Scalars['Float']>;
-  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
-  metaImage?: Maybe<PokMedia>;
-  alias2?: Maybe<Scalars['String']>;
-  alias: Scalars['String'];
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type IBlogPost = {
-  id: Scalars['String'];
-  pokko: Pokko;
-  summary?: Maybe<Scalars['String']>;
-  title2?: Maybe<Scalars['String']>;
-  authors?: Maybe<Array<Maybe<Author>>>;
-  title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['String']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  estimatedReadTime?: Maybe<Scalars['Float']>;
-  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
-  metaImage?: Maybe<PokMedia>;
-  alias2?: Maybe<Scalars['String']>;
-  alias: Scalars['String'];
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type IContentPage = {
-  id: Scalars['String'];
-  pokko: Pokko;
-  summary?: Maybe<Scalars['String']>;
-  title2?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  estimatedReadTime?: Maybe<Scalars['Float']>;
-  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
-  metaImage?: Maybe<PokMedia>;
-  alias2?: Maybe<Scalars['String']>;
-  alias: Scalars['String'];
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type Author = PokEntry & IAuthor & {
+export type Author = IAuthor & PokEntry & {
   __typename?: 'Author';
   id: Scalars['String'];
-  pokko: Pokko;
   image?: Maybe<PokMedia>;
   name?: Maybe<Scalars['String']>;
-};
-
-export type IAuthor = {
-  id: Scalars['String'];
   pokko: Pokko;
-  image?: Maybe<PokMedia>;
-  name?: Maybe<Scalars['String']>;
 };
 
-export type ContentPage = PokEntry & IContentPage & IModularPage & IMetadata & {
-  __typename?: 'ContentPage';
-  id: Scalars['String'];
-  pokko: Pokko;
-  summary?: Maybe<Scalars['String']>;
-  title2?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  estimatedReadTime?: Maybe<Scalars['Float']>;
-  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
-  metaImage?: Maybe<PokMedia>;
-  alias2?: Maybe<Scalars['String']>;
-  alias: Scalars['String'];
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type ImageCollection = {
-  __typename?: 'ImageCollection';
-  nodes: Array<Maybe<IImage>>;
+export type AuthorCollection = {
+  __typename?: 'AuthorCollection';
+  nodes: Array<Maybe<IAuthor>>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int'];
 };
 
-export type PageInfo = {
-  __typename?: 'PageInfo';
-  hasNextPage: Scalars['Boolean'];
-  hasPrevPage: Scalars['Boolean'];
+export type AuthorCondition = {
+  name?: Maybe<Scalars['String']>;
 };
 
-export type TilesCollection = {
-  __typename?: 'TilesCollection';
-  nodes: Array<Maybe<ITiles>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type TilesCondition = {
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type TilesFilter = {
-  summary?: Maybe<ScalarStringFilter>;
-  title?: Maybe<ScalarStringFilter>;
+export type AuthorFilter = {
+  and?: Maybe<Array<AuthorFilter>>;
   id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<TilesFilter>>;
-  or?: Maybe<Array<TilesFilter>>;
+  name?: Maybe<ScalarStringFilter>;
+  or?: Maybe<Array<AuthorFilter>>;
 };
 
-export type ScalarStringFilter = {
-  isNull?: Maybe<Scalars['Boolean']>;
-  equalTo?: Maybe<Scalars['String']>;
-  notEqualTo?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type ScalarIdFilter = {
-  isNull?: Maybe<Scalars['Boolean']>;
-  equalTo?: Maybe<Scalars['String']>;
-  notEqualTo?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export enum TilesOrderBy {
+export enum AuthorOrderBy {
   CreatedAsc = 'CREATED_ASC',
   CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC'
+}
+
+export type BlogPost = IBlogPost & IContentPage & IMetadata & IModularPage & PokEntry & {
+  __typename?: 'BlogPost';
+  alias: Scalars['String'];
+  alias2?: Maybe<Scalars['String']>;
+  authors?: Maybe<Array<Maybe<Author>>>;
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  date?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
+};
+
+export type BlogPostCollection = {
+  __typename?: 'BlogPostCollection';
+  nodes: Array<Maybe<IBlogPost>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type BlogPostCondition = {
+  alias?: Maybe<Scalars['String']>;
+  alias2?: Maybe<Scalars['String']>;
+  authors?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Int']>;
+  metaDescription?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
+};
+
+export type BlogPostFilter = {
+  alias?: Maybe<ScalarStringFilter>;
+  alias2?: Maybe<ScalarStringFilter>;
+  and?: Maybe<Array<BlogPostFilter>>;
+  authors?: Maybe<ScalarIdFilterMulti>;
+  date?: Maybe<ScalarDateFilter>;
+  estimatedReadTime?: Maybe<ScalarNumberFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  metaDescription?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  or?: Maybe<Array<BlogPostFilter>>;
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  title2?: Maybe<ScalarStringFilter>;
+};
+
+export enum BlogPostOrderBy {
+  Alias2Asc = 'ALIAS2_ASC',
+  Alias2Desc = 'ALIAS2_DESC',
+  AliasAsc = 'ALIAS_ASC',
+  AliasDesc = 'ALIAS_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  DateAsc = 'DATE_ASC',
+  DateDesc = 'DATE_DESC',
+  EstimatedReadTimeAsc = 'ESTIMATED_READ_TIME_ASC',
+  EstimatedReadTimeDesc = 'ESTIMATED_READ_TIME_DESC',
+  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
+  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
+  MetaTitleAsc = 'META_TITLE_ASC',
+  MetaTitleDesc = 'META_TITLE_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
   ModifiedDesc = 'MODIFIED_DESC',
   SummaryAsc = 'SUMMARY_ASC',
   SummaryDesc = 'SUMMARY_DESC',
+  Title2Asc = 'TITLE2_ASC',
+  Title2Desc = 'TITLE2_DESC',
   TitleAsc = 'TITLE_ASC',
   TitleDesc = 'TITLE_DESC'
 }
 
-export type ModularPageCollection = {
-  __typename?: 'ModularPageCollection';
-  nodes: Array<Maybe<IModularPage>>;
+export type ContentPage = IContentPage & IMetadata & IModularPage & PokEntry & {
+  __typename?: 'ContentPage';
+  alias: Scalars['String'];
+  alias2?: Maybe<Scalars['String']>;
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
+};
+
+export type ContentPageCollection = {
+  __typename?: 'ContentPageCollection';
+  nodes: Array<Maybe<IContentPage>>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int'];
 };
 
-export type ModularPageCondition = {
+export type ContentPageCondition = {
+  alias?: Maybe<Scalars['String']>;
+  alias2?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Int']>;
   metaDescription?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
 };
 
-export type ModularPageFilter = {
+export type ContentPageFilter = {
+  alias?: Maybe<ScalarStringFilter>;
+  alias2?: Maybe<ScalarStringFilter>;
+  and?: Maybe<Array<ContentPageFilter>>;
+  estimatedReadTime?: Maybe<ScalarNumberFilter>;
+  id?: Maybe<ScalarIdFilter>;
   metaDescription?: Maybe<ScalarStringFilter>;
   metaTitle?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<ModularPageFilter>>;
-  or?: Maybe<Array<ModularPageFilter>>;
+  or?: Maybe<Array<ContentPageFilter>>;
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+  title2?: Maybe<ScalarStringFilter>;
 };
 
-export enum ModularPageOrderBy {
+export enum ContentPageOrderBy {
+  Alias2Asc = 'ALIAS2_ASC',
+  Alias2Desc = 'ALIAS2_DESC',
+  AliasAsc = 'ALIAS_ASC',
+  AliasDesc = 'ALIAS_DESC',
   CreatedAsc = 'CREATED_ASC',
   CreatedDesc = 'CREATED_DESC',
+  EstimatedReadTimeAsc = 'ESTIMATED_READ_TIME_ASC',
+  EstimatedReadTimeDesc = 'ESTIMATED_READ_TIME_DESC',
   MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
   MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
   MetaTitleAsc = 'META_TITLE_ASC',
   MetaTitleDesc = 'META_TITLE_DESC',
   ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC'
-}
-
-export type FeatureTileCollection = {
-  __typename?: 'FeatureTileCollection';
-  nodes: Array<Maybe<IFeatureTile>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type FeatureTileCondition = {
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  features?: Maybe<Scalars['String']>;
-};
-
-export type FeatureTileFilter = {
-  title?: Maybe<ScalarStringFilter>;
-  body?: Maybe<ScalarStringFilter>;
-  features?: Maybe<ScalarStringFilterMulti>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<FeatureTileFilter>>;
-  or?: Maybe<Array<FeatureTileFilter>>;
-};
-
-export type ScalarStringFilterMulti = {
-  every?: Maybe<Array<Maybe<Scalars['String']>>>;
-  some?: Maybe<Array<Maybe<Scalars['String']>>>;
-  none?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export enum FeatureTileOrderBy {
-  BodyAsc = 'BODY_ASC',
-  BodyDesc = 'BODY_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  FeaturesAsc = 'FEATURES_ASC',
-  FeaturesDesc = 'FEATURES_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
   ModifiedDesc = 'MODIFIED_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
+  Title2Asc = 'TITLE2_ASC',
+  Title2Desc = 'TITLE2_DESC',
   TitleAsc = 'TITLE_ASC',
   TitleDesc = 'TITLE_DESC'
 }
 
-export type MetadataCollection = {
-  __typename?: 'MetadataCollection';
-  nodes: Array<Maybe<IMetadata>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type MetadataCondition = {
-  metaDescription?: Maybe<Scalars['String']>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type MetadataFilter = {
-  metaDescription?: Maybe<ScalarStringFilter>;
-  metaTitle?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<MetadataFilter>>;
-  or?: Maybe<Array<MetadataFilter>>;
-};
-
-export enum MetadataOrderBy {
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
-  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
-  MetaTitleAsc = 'META_TITLE_ASC',
-  MetaTitleDesc = 'META_TITLE_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC'
-}
-
-export type IconTileCollection = {
-  __typename?: 'IconTileCollection';
-  nodes: Array<Maybe<IIconTile>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type IconTileCondition = {
+export type EarlyAccessForm = IEarlyAccessForm & PokValue & {
+  __typename?: 'EarlyAccessForm';
+  id: Scalars['String'];
+  link?: Maybe<Link>;
+  style?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
 };
-
-export type IconTileFilter = {
-  title?: Maybe<ScalarStringFilter>;
-  body?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<IconTileFilter>>;
-  or?: Maybe<Array<IconTileFilter>>;
-};
-
-export enum IconTileOrderBy {
-  BodyAsc = 'BODY_ASC',
-  BodyDesc = 'BODY_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
-}
 
 export type EarlyAccessFormCollection = {
   __typename?: 'EarlyAccessFormCollection';
@@ -942,12 +224,12 @@ export type EarlyAccessFormCondition = {
 };
 
 export type EarlyAccessFormFilter = {
+  and?: Maybe<Array<EarlyAccessFormFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<EarlyAccessFormFilter>>;
   style?: Maybe<ScalarStringFilter>;
   summary?: Maybe<ScalarStringFilter>;
   title?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<EarlyAccessFormFilter>>;
-  or?: Maybe<Array<EarlyAccessFormFilter>>;
 };
 
 export enum EarlyAccessFormOrderBy {
@@ -963,6 +245,604 @@ export enum EarlyAccessFormOrderBy {
   TitleDesc = 'TITLE_DESC'
 }
 
+export type Entries = {
+  __typename?: 'Entries';
+  allAuthor?: Maybe<AuthorCollection>;
+  allBlogPost?: Maybe<BlogPostCollection>;
+  allContentPage?: Maybe<ContentPageCollection>;
+  allEarlyAccessForm?: Maybe<EarlyAccessFormCollection>;
+  allFeatureTile?: Maybe<FeatureTileCollection>;
+  allFeatureTiles?: Maybe<FeatureTilesCollection>;
+  allHero?: Maybe<HeroCollection>;
+  allIconTile?: Maybe<IconTileCollection>;
+  allIconTiles?: Maybe<IconTilesCollection>;
+  allImage?: Maybe<ImageCollection>;
+  allLink?: Maybe<LinkCollection>;
+  allMetadata?: Maybe<MetadataCollection>;
+  allModularPage?: Maybe<ModularPageCollection>;
+  allResourceTile?: Maybe<ResourceTileCollection>;
+  allResourceTiles?: Maybe<ResourceTilesCollection>;
+  allRichText?: Maybe<RichTextCollection>;
+  allSection?: Maybe<SectionCollection>;
+  allTile?: Maybe<TileCollection>;
+  allTiles?: Maybe<TilesCollection>;
+  author?: Maybe<Author>;
+  blogPost?: Maybe<BlogPost>;
+  contentPage?: Maybe<ContentPage>;
+  earlyAccessForm?: Maybe<EarlyAccessForm>;
+  featureTile?: Maybe<FeatureTile>;
+  featureTiles?: Maybe<FeatureTiles>;
+  hero?: Maybe<Hero>;
+  iconTile?: Maybe<IconTile>;
+  iconTiles?: Maybe<IconTiles>;
+  image?: Maybe<Image>;
+  link?: Maybe<Link>;
+  metadata?: Maybe<Metadata>;
+  modularPage?: Maybe<ModularPage>;
+  resourceTile?: Maybe<ResourceTile>;
+  resourceTiles?: Maybe<ResourceTiles>;
+  richText?: Maybe<RichText>;
+  section?: Maybe<Section>;
+  tile?: Maybe<Tile>;
+  tiles?: Maybe<Tiles>;
+};
+
+
+export type EntriesAllAuthorArgs = {
+  filter?: Maybe<AuthorFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<AuthorOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllBlogPostArgs = {
+  filter?: Maybe<BlogPostFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<BlogPostOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllContentPageArgs = {
+  filter?: Maybe<ContentPageFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<ContentPageOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllEarlyAccessFormArgs = {
+  filter?: Maybe<EarlyAccessFormFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<EarlyAccessFormOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllFeatureTileArgs = {
+  filter?: Maybe<FeatureTileFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<FeatureTileOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllFeatureTilesArgs = {
+  inherit?: Scalars['Boolean'];
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllHeroArgs = {
+  filter?: Maybe<HeroFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<HeroOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllIconTileArgs = {
+  filter?: Maybe<IconTileFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<IconTileOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllIconTilesArgs = {
+  filter?: Maybe<IconTilesFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<IconTilesOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllImageArgs = {
+  inherit?: Scalars['Boolean'];
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllLinkArgs = {
+  filter?: Maybe<LinkFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<LinkOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllMetadataArgs = {
+  filter?: Maybe<MetadataFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<MetadataOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllModularPageArgs = {
+  filter?: Maybe<ModularPageFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<ModularPageOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllResourceTileArgs = {
+  filter?: Maybe<ResourceTileFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<ResourceTileOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllResourceTilesArgs = {
+  filter?: Maybe<ResourceTilesFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<ResourceTilesOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllRichTextArgs = {
+  filter?: Maybe<RichTextFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<RichTextOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllSectionArgs = {
+  filter?: Maybe<SectionFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<SectionOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllTileArgs = {
+  filter?: Maybe<TileFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<TileOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAllTilesArgs = {
+  filter?: Maybe<TilesFilter>;
+  inherit?: Scalars['Boolean'];
+  orderBy?: Maybe<Array<Maybe<TilesOrderBy>>>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type EntriesAuthorArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesBlogPostArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesContentPageArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesEarlyAccessFormArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesFeatureTileArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesFeatureTilesArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesHeroArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesIconTileArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesIconTilesArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesImageArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesLinkArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesMetadataArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesModularPageArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesResourceTileArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesResourceTilesArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesRichTextArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesSectionArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesTileArgs = {
+  id: Scalars['String'];
+};
+
+
+export type EntriesTilesArgs = {
+  id: Scalars['String'];
+};
+
+export type FeatureTile = IFeatureTile & IIconTile & ITile & PokValue & {
+  __typename?: 'FeatureTile';
+  body?: Maybe<Scalars['String']>;
+  features?: Maybe<Array<Maybe<Scalars['String']>>>;
+  icon?: Maybe<PokMedia>;
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+};
+
+export type FeatureTileCollection = {
+  __typename?: 'FeatureTileCollection';
+  nodes: Array<Maybe<IFeatureTile>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type FeatureTileCondition = {
+  body?: Maybe<Scalars['String']>;
+  features?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type FeatureTileFilter = {
+  and?: Maybe<Array<FeatureTileFilter>>;
+  body?: Maybe<ScalarStringFilter>;
+  features?: Maybe<ScalarStringFilterMulti>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<FeatureTileFilter>>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum FeatureTileOrderBy {
+  BodyAsc = 'BODY_ASC',
+  BodyDesc = 'BODY_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  FeaturesAsc = 'FEATURES_ASC',
+  FeaturesDesc = 'FEATURES_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type FeatureTiles = IFeatureTiles & PokValue & {
+  __typename?: 'FeatureTiles';
+  body?: Maybe<Array<Maybe<FeatureTile>>>;
+  id: Scalars['String'];
+};
+
+export type FeatureTilesCollection = {
+  __typename?: 'FeatureTilesCollection';
+  nodes: Array<Maybe<IFeatureTiles>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type Hero = IHero & PokValue & {
+  __typename?: 'Hero';
+  body?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+  link?: Maybe<Link>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type HeroCollection = {
+  __typename?: 'HeroCollection';
+  nodes: Array<Maybe<IHero>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type HeroCondition = {
+  body?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type HeroFilter = {
+  and?: Maybe<Array<HeroFilter>>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<HeroFilter>>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum HeroOrderBy {
+  BodyAsc = 'BODY_ASC',
+  BodyDesc = 'BODY_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type IAuthor = {
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+  name?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+};
+
+export type IBlogPost = {
+  alias: Scalars['String'];
+  alias2?: Maybe<Scalars['String']>;
+  authors?: Maybe<Array<Maybe<Author>>>;
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  date?: Maybe<Scalars['String']>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
+};
+
+export type IContentPage = {
+  alias: Scalars['String'];
+  alias2?: Maybe<Scalars['String']>;
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  estimatedReadTime?: Maybe<Scalars['Float']>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  title2?: Maybe<Scalars['String']>;
+};
+
+export type IEarlyAccessForm = {
+  id: Scalars['String'];
+  link?: Maybe<Link>;
+  style?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IFeatureTile = {
+  body?: Maybe<Scalars['String']>;
+  features?: Maybe<Array<Maybe<Scalars['String']>>>;
+  icon?: Maybe<PokMedia>;
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IFeatureTiles = {
+  body?: Maybe<Array<Maybe<FeatureTile>>>;
+  id: Scalars['String'];
+};
+
+export type IHero = {
+  body?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+  link?: Maybe<Link>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IIconTile = {
+  body?: Maybe<Scalars['String']>;
+  icon?: Maybe<PokMedia>;
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IIconTiles = {
+  body?: Maybe<Array<Maybe<IconTile>>>;
+  id: Scalars['String'];
+  layout?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IImage = {
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+};
+
+export type ILink = {
+  id: Scalars['String'];
+  target?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+export type IMetadata = {
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+};
+
+export type IModularPage = {
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+};
+
+export type IResourceTile = {
+  body?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  link?: Maybe<Link>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IResourceTiles = {
+  body?: Maybe<Array<Maybe<ResourceTile>>>;
+  id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IRichText = {
+  body?: Maybe<PokRichText>;
+  id: Scalars['String'];
+};
+
+export type ISection = {
+  id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ITile = {
+  body?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ITiles = {
+  body?: Maybe<Array<Maybe<Tile>>>;
+  id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IconTile = IIconTile & ITile & PokValue & {
+  __typename?: 'IconTile';
+  body?: Maybe<Scalars['String']>;
+  icon?: Maybe<PokMedia>;
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IconTileCollection = {
+  __typename?: 'IconTileCollection';
+  nodes: Array<Maybe<IIconTile>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type IconTileCondition = {
+  body?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type IconTileFilter = {
+  and?: Maybe<Array<IconTileFilter>>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<IconTileFilter>>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum IconTileOrderBy {
+  BodyAsc = 'BODY_ASC',
+  BodyDesc = 'BODY_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type IconTiles = IIconTiles & ISection & PokValue & {
+  __typename?: 'IconTiles';
+  body?: Maybe<Array<Maybe<IconTile>>>;
+  id: Scalars['String'];
+  layout?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
 export type IconTilesCollection = {
   __typename?: 'IconTilesCollection';
   nodes: Array<Maybe<IIconTiles>>;
@@ -971,18 +851,18 @@ export type IconTilesCollection = {
 };
 
 export type IconTilesCondition = {
+  layout?: Maybe<Scalars['String']>;
   summary?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  layout?: Maybe<Scalars['String']>;
 };
 
 export type IconTilesFilter = {
+  and?: Maybe<Array<IconTilesFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  layout?: Maybe<ScalarStringFilter>;
+  or?: Maybe<Array<IconTilesFilter>>;
   summary?: Maybe<ScalarStringFilter>;
   title?: Maybe<ScalarStringFilter>;
-  layout?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<IconTilesFilter>>;
-  or?: Maybe<Array<IconTilesFilter>>;
 };
 
 export enum IconTilesOrderBy {
@@ -998,358 +878,25 @@ export enum IconTilesOrderBy {
   TitleDesc = 'TITLE_DESC'
 }
 
-export type SectionCollection = {
-  __typename?: 'SectionCollection';
-  nodes: Array<Maybe<ISection>>;
+export type Image = IImage & PokValue & {
+  __typename?: 'Image';
+  id: Scalars['String'];
+  image?: Maybe<PokMedia>;
+};
+
+export type ImageCollection = {
+  __typename?: 'ImageCollection';
+  nodes: Array<Maybe<IImage>>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int'];
 };
 
-export type SectionCondition = {
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
+export type Link = ILink & PokValue & {
+  __typename?: 'Link';
+  id: Scalars['String'];
+  target?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
 };
-
-export type SectionFilter = {
-  summary?: Maybe<ScalarStringFilter>;
-  title?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<SectionFilter>>;
-  or?: Maybe<Array<SectionFilter>>;
-};
-
-export enum SectionOrderBy {
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  SummaryAsc = 'SUMMARY_ASC',
-  SummaryDesc = 'SUMMARY_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
-}
-
-export type BlogPostCollection = {
-  __typename?: 'BlogPostCollection';
-  nodes: Array<Maybe<IBlogPost>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type BlogPostCondition = {
-  summary?: Maybe<Scalars['String']>;
-  title2?: Maybe<Scalars['String']>;
-  authors?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['String']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  estimatedReadTime?: Maybe<Scalars['Int']>;
-  alias2?: Maybe<Scalars['String']>;
-  alias?: Maybe<Scalars['String']>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type BlogPostFilter = {
-  summary?: Maybe<ScalarStringFilter>;
-  title2?: Maybe<ScalarStringFilter>;
-  authors?: Maybe<ScalarIdFilterMulti>;
-  title?: Maybe<ScalarStringFilter>;
-  date?: Maybe<ScalarDateFilter>;
-  metaDescription?: Maybe<ScalarStringFilter>;
-  estimatedReadTime?: Maybe<ScalarNumberFilter>;
-  alias2?: Maybe<ScalarStringFilter>;
-  alias?: Maybe<ScalarStringFilter>;
-  metaTitle?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<BlogPostFilter>>;
-  or?: Maybe<Array<BlogPostFilter>>;
-};
-
-export type ScalarIdFilterMulti = {
-  every?: Maybe<Array<Maybe<Scalars['String']>>>;
-  some?: Maybe<Array<Maybe<Scalars['String']>>>;
-  none?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type ScalarDateFilter = {
-  isNull?: Maybe<Scalars['Boolean']>;
-  equalTo?: Maybe<Scalars['String']>;
-  notEqualTo?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type ScalarNumberFilter = {
-  isNull?: Maybe<Scalars['Boolean']>;
-  equalTo?: Maybe<Scalars['Float']>;
-  notEqualTo?: Maybe<Scalars['Float']>;
-  in?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  notIn?: Maybe<Array<Maybe<Scalars['Float']>>>;
-};
-
-export enum BlogPostOrderBy {
-  AliasAsc = 'ALIAS_ASC',
-  AliasDesc = 'ALIAS_DESC',
-  Alias2Asc = 'ALIAS2_ASC',
-  Alias2Desc = 'ALIAS2_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  DateAsc = 'DATE_ASC',
-  DateDesc = 'DATE_DESC',
-  EstimatedReadTimeAsc = 'ESTIMATED_READ_TIME_ASC',
-  EstimatedReadTimeDesc = 'ESTIMATED_READ_TIME_DESC',
-  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
-  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
-  MetaTitleAsc = 'META_TITLE_ASC',
-  MetaTitleDesc = 'META_TITLE_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  SummaryAsc = 'SUMMARY_ASC',
-  SummaryDesc = 'SUMMARY_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC',
-  Title2Asc = 'TITLE2_ASC',
-  Title2Desc = 'TITLE2_DESC'
-}
-
-export type RichTextCollection = {
-  __typename?: 'RichTextCollection';
-  nodes: Array<Maybe<IRichText>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type RichTextCondition = {
-  body?: Maybe<Scalars['String']>;
-};
-
-export type RichTextFilter = {
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<RichTextFilter>>;
-  or?: Maybe<Array<RichTextFilter>>;
-};
-
-export enum RichTextOrderBy {
-  BodyAsc = 'BODY_ASC',
-  BodyDesc = 'BODY_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC'
-}
-
-export type HeroCollection = {
-  __typename?: 'HeroCollection';
-  nodes: Array<Maybe<IHero>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type HeroCondition = {
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type HeroFilter = {
-  title?: Maybe<ScalarStringFilter>;
-  body?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<HeroFilter>>;
-  or?: Maybe<Array<HeroFilter>>;
-};
-
-export enum HeroOrderBy {
-  BodyAsc = 'BODY_ASC',
-  BodyDesc = 'BODY_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
-}
-
-export type FeatureTilesCollection = {
-  __typename?: 'FeatureTilesCollection';
-  nodes: Array<Maybe<IFeatureTiles>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type AuthorCollection = {
-  __typename?: 'AuthorCollection';
-  nodes: Array<Maybe<IAuthor>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type AuthorCondition = {
-  name?: Maybe<Scalars['String']>;
-};
-
-export type AuthorFilter = {
-  name?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<AuthorFilter>>;
-  or?: Maybe<Array<AuthorFilter>>;
-};
-
-export enum AuthorOrderBy {
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  NameAsc = 'NAME_ASC',
-  NameDesc = 'NAME_DESC'
-}
-
-export type ResourceTilesCollection = {
-  __typename?: 'ResourceTilesCollection';
-  nodes: Array<Maybe<IResourceTiles>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type ResourceTilesCondition = {
-  summary?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type ResourceTilesFilter = {
-  summary?: Maybe<ScalarStringFilter>;
-  title?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<ResourceTilesFilter>>;
-  or?: Maybe<Array<ResourceTilesFilter>>;
-};
-
-export enum ResourceTilesOrderBy {
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  SummaryAsc = 'SUMMARY_ASC',
-  SummaryDesc = 'SUMMARY_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
-}
-
-export type TileCollection = {
-  __typename?: 'TileCollection';
-  nodes: Array<Maybe<ITile>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type TileCondition = {
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type TileFilter = {
-  title?: Maybe<ScalarStringFilter>;
-  body?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<TileFilter>>;
-  or?: Maybe<Array<TileFilter>>;
-};
-
-export enum TileOrderBy {
-  BodyAsc = 'BODY_ASC',
-  BodyDesc = 'BODY_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
-}
-
-export type ContentPageCollection = {
-  __typename?: 'ContentPageCollection';
-  nodes: Array<Maybe<IContentPage>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type ContentPageCondition = {
-  summary?: Maybe<Scalars['String']>;
-  title2?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  estimatedReadTime?: Maybe<Scalars['Int']>;
-  alias2?: Maybe<Scalars['String']>;
-  alias?: Maybe<Scalars['String']>;
-  metaTitle?: Maybe<Scalars['String']>;
-};
-
-export type ContentPageFilter = {
-  summary?: Maybe<ScalarStringFilter>;
-  title2?: Maybe<ScalarStringFilter>;
-  title?: Maybe<ScalarStringFilter>;
-  metaDescription?: Maybe<ScalarStringFilter>;
-  estimatedReadTime?: Maybe<ScalarNumberFilter>;
-  alias2?: Maybe<ScalarStringFilter>;
-  alias?: Maybe<ScalarStringFilter>;
-  metaTitle?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<ContentPageFilter>>;
-  or?: Maybe<Array<ContentPageFilter>>;
-};
-
-export enum ContentPageOrderBy {
-  AliasAsc = 'ALIAS_ASC',
-  AliasDesc = 'ALIAS_DESC',
-  Alias2Asc = 'ALIAS2_ASC',
-  Alias2Desc = 'ALIAS2_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  EstimatedReadTimeAsc = 'ESTIMATED_READ_TIME_ASC',
-  EstimatedReadTimeDesc = 'ESTIMATED_READ_TIME_DESC',
-  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
-  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
-  MetaTitleAsc = 'META_TITLE_ASC',
-  MetaTitleDesc = 'META_TITLE_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  SummaryAsc = 'SUMMARY_ASC',
-  SummaryDesc = 'SUMMARY_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC',
-  Title2Asc = 'TITLE2_ASC',
-  Title2Desc = 'TITLE2_DESC'
-}
-
-export type ResourceTileCollection = {
-  __typename?: 'ResourceTileCollection';
-  nodes: Array<Maybe<IResourceTile>>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type ResourceTileCondition = {
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-};
-
-export type ResourceTileFilter = {
-  title?: Maybe<ScalarStringFilter>;
-  body?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<ResourceTileFilter>>;
-  or?: Maybe<Array<ResourceTileFilter>>;
-};
-
-export enum ResourceTileOrderBy {
-  BodyAsc = 'BODY_ASC',
-  BodyDesc = 'BODY_DESC',
-  CreatedAsc = 'CREATED_ASC',
-  CreatedDesc = 'CREATED_DESC',
-  ModifiedAsc = 'MODIFIED_ASC',
-  ModifiedDesc = 'MODIFIED_DESC',
-  TitleAsc = 'TITLE_ASC',
-  TitleDesc = 'TITLE_DESC'
-}
 
 export type LinkCollection = {
   __typename?: 'LinkCollection';
@@ -1364,11 +911,11 @@ export type LinkCondition = {
 };
 
 export type LinkFilter = {
+  and?: Maybe<Array<LinkFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<LinkFilter>>;
   target?: Maybe<ScalarStringFilter>;
   text?: Maybe<ScalarStringFilter>;
-  id?: Maybe<ScalarIdFilter>;
-  and?: Maybe<Array<LinkFilter>>;
-  or?: Maybe<Array<LinkFilter>>;
 };
 
 export enum LinkOrderBy {
@@ -1382,26 +929,96 @@ export enum LinkOrderBy {
   TextDesc = 'TEXT_DESC'
 }
 
-export type SyncCollection = {
-  __typename?: 'SyncCollection';
-  nodes: Array<Maybe<Sync>>;
+export type Metadata = IMetadata & PokEntry & {
+  __typename?: 'Metadata';
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+};
+
+export type MetadataCollection = {
+  __typename?: 'MetadataCollection';
+  nodes: Array<Maybe<IMetadata>>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int'];
 };
 
-export type Sync = {
-  __typename?: 'Sync';
-  id?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['String']>;
-  modifiedAt?: Maybe<Scalars['String']>;
-  deletedAt?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  action?: Maybe<Scalars['String']>;
-  payload?: Maybe<Scalars['JSON']>;
+export type MetadataCondition = {
+  metaDescription?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
 };
 
-export type SyncCondition = {
-  after?: Maybe<Scalars['String']>;
+export type MetadataFilter = {
+  and?: Maybe<Array<MetadataFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  metaDescription?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  or?: Maybe<Array<MetadataFilter>>;
+};
+
+export enum MetadataOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
+  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
+  MetaTitleAsc = 'META_TITLE_ASC',
+  MetaTitleDesc = 'META_TITLE_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC'
+}
+
+export type ModularPage = IMetadata & IModularPage & PokEntry & {
+  __typename?: 'ModularPage';
+  body?: Maybe<Array<Maybe<ModularPage_Body>>>;
+  id: Scalars['String'];
+  metaDescription?: Maybe<Scalars['String']>;
+  metaImage?: Maybe<PokMedia>;
+  metaTitle?: Maybe<Scalars['String']>;
+  pokko: Pokko;
+};
+
+export type ModularPageCollection = {
+  __typename?: 'ModularPageCollection';
+  nodes: Array<Maybe<IModularPage>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type ModularPageCondition = {
+  metaDescription?: Maybe<Scalars['String']>;
+  metaTitle?: Maybe<Scalars['String']>;
+};
+
+export type ModularPageFilter = {
+  and?: Maybe<Array<ModularPageFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  metaDescription?: Maybe<ScalarStringFilter>;
+  metaTitle?: Maybe<ScalarStringFilter>;
+  or?: Maybe<Array<ModularPageFilter>>;
+};
+
+export enum ModularPageOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  MetaDescriptionAsc = 'META_DESCRIPTION_ASC',
+  MetaDescriptionDesc = 'META_DESCRIPTION_DESC',
+  MetaTitleAsc = 'META_TITLE_ASC',
+  MetaTitleDesc = 'META_TITLE_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC'
+}
+
+export type ModularPage_Body = EarlyAccessForm | FeatureTiles | Hero | IconTiles | Image | ResourceTiles | RichText | Tiles;
+
+export type Page = {
+  __typename?: 'Page';
+  entry?: Maybe<PokEntry>;
+  entryId?: Maybe<Scalars['String']>;
+  fullPath?: Maybe<Array<Maybe<Scalars['String']>>>;
+  path?: Maybe<Array<Maybe<Scalars['String']>>>;
+  type?: Maybe<Scalars['String']>;
 };
 
 export type PageCollection = {
@@ -1411,13 +1028,10 @@ export type PageCollection = {
   totalCount: Scalars['Int'];
 };
 
-export type Page = {
-  __typename?: 'Page';
-  fullPath?: Maybe<Array<Maybe<Scalars['String']>>>;
-  path?: Maybe<Array<Maybe<Scalars['String']>>>;
-  entry?: Maybe<PokEntry>;
-  type?: Maybe<Scalars['String']>;
-  entryId?: Maybe<Scalars['String']>;
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  hasNextPage: Scalars['Boolean'];
+  hasPrevPage: Scalars['Boolean'];
 };
 
 export type PagesCondition = {
@@ -1425,349 +1039,482 @@ export type PagesCondition = {
   pathExact?: Maybe<Scalars['Boolean']>;
 };
 
+export type PokEntry = {
+  id: Scalars['String'];
+  pokko: Pokko;
+};
+
+export type PokMedia = {
+  __typename?: 'PokMedia';
+  contentType: Scalars['String'];
+  height?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
+  size: Scalars['Int'];
+  url: Scalars['String'];
+  width?: Maybe<Scalars['Int']>;
+};
+
+
+export type PokMediaUrlArgs = {
+  process?: Maybe<PokMediaProcess>;
+};
+
+export enum PokMediaFit {
+  Contain = 'CONTAIN',
+  Cover = 'COVER',
+  Fill = 'FILL',
+  Inside = 'INSIDE',
+  Outside = 'OUTSIDE'
+}
+
+export enum PokMediaPosition {
+  Bottom = 'BOTTOM',
+  Centre = 'CENTRE',
+  Left = 'LEFT',
+  LeftBottom = 'LEFT_BOTTOM',
+  LeftTop = 'LEFT_TOP',
+  Right = 'RIGHT',
+  RightBottom = 'RIGHT_BOTTOM',
+  RightTop = 'RIGHT_TOP',
+  Top = 'TOP'
+}
+
+export type PokMediaProcess = {
+  fit?: Maybe<PokMediaFit>;
+  height?: Maybe<Scalars['Int']>;
+  position?: Maybe<PokMediaPosition>;
+  width?: Maybe<Scalars['Int']>;
+};
+
+export type PokRichText = {
+  __typename?: 'PokRichText';
+  body?: Maybe<Scalars['JSON']>;
+  embeds?: Maybe<Array<Maybe<PokValue>>>;
+};
+
+export type PokValue = {
+  id?: Maybe<Scalars['String']>;
+};
+
+export type Pokko = {
+  __typename?: 'Pokko';
+  created: Scalars['String'];
+  id: Scalars['String'];
+  model: Scalars['String'];
+  modified: Scalars['String'];
+  name: Scalars['String'];
+  path?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type Query = {
+  __typename?: 'Query';
+  entries?: Maybe<Entries>;
+  entry?: Maybe<PokEntry>;
+  sync?: Maybe<SyncCollection>;
+  taxonomy?: Maybe<PageCollection>;
+};
+
+
+export type QueryEntryArgs = {
+  id?: Maybe<Scalars['String']>;
+  path?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+
+export type QuerySyncArgs = {
+  filter?: Maybe<SyncCondition>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+
+export type QueryTaxonomyArgs = {
+  filter?: Maybe<PagesCondition>;
+  skip?: Scalars['Int'];
+  take?: Scalars['Int'];
+};
+
+export type ResourceTile = IResourceTile & ITile & PokValue & {
+  __typename?: 'ResourceTile';
+  body?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  link?: Maybe<Link>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ResourceTileCollection = {
+  __typename?: 'ResourceTileCollection';
+  nodes: Array<Maybe<IResourceTile>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type ResourceTileCondition = {
+  body?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ResourceTileFilter = {
+  and?: Maybe<Array<ResourceTileFilter>>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<ResourceTileFilter>>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum ResourceTileOrderBy {
+  BodyAsc = 'BODY_ASC',
+  BodyDesc = 'BODY_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type ResourceTiles = IResourceTiles & ISection & PokValue & {
+  __typename?: 'ResourceTiles';
+  body?: Maybe<Array<Maybe<ResourceTile>>>;
+  id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ResourceTilesCollection = {
+  __typename?: 'ResourceTilesCollection';
+  nodes: Array<Maybe<IResourceTiles>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type ResourceTilesCondition = {
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ResourceTilesFilter = {
+  and?: Maybe<Array<ResourceTilesFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<ResourceTilesFilter>>;
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum ResourceTilesOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type RichText = IRichText & PokValue & {
+  __typename?: 'RichText';
+  body?: Maybe<PokRichText>;
+  id: Scalars['String'];
+};
+
+export type RichTextCollection = {
+  __typename?: 'RichTextCollection';
+  nodes: Array<Maybe<IRichText>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type RichTextCondition = {
+  body?: Maybe<Scalars['String']>;
+};
+
+export type RichTextFilter = {
+  and?: Maybe<Array<RichTextFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<RichTextFilter>>;
+};
+
+export enum RichTextOrderBy {
+  BodyAsc = 'BODY_ASC',
+  BodyDesc = 'BODY_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC'
+}
+
+export type ScalarDateFilter = {
+  equalTo?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  isNull?: Maybe<Scalars['Boolean']>;
+  notEqualTo?: Maybe<Scalars['String']>;
+  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type ScalarIdFilter = {
+  equalTo?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  isNull?: Maybe<Scalars['Boolean']>;
+  notEqualTo?: Maybe<Scalars['String']>;
+  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type ScalarIdFilterMulti = {
+  every?: Maybe<Array<Maybe<Scalars['String']>>>;
+  none?: Maybe<Array<Maybe<Scalars['String']>>>;
+  some?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type ScalarNumberFilter = {
+  equalTo?: Maybe<Scalars['Float']>;
+  in?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  isNull?: Maybe<Scalars['Boolean']>;
+  notEqualTo?: Maybe<Scalars['Float']>;
+  notIn?: Maybe<Array<Maybe<Scalars['Float']>>>;
+};
+
+export type ScalarStringFilter = {
+  equalTo?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  isNull?: Maybe<Scalars['Boolean']>;
+  notEqualTo?: Maybe<Scalars['String']>;
+  notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type ScalarStringFilterMulti = {
+  every?: Maybe<Array<Maybe<Scalars['String']>>>;
+  none?: Maybe<Array<Maybe<Scalars['String']>>>;
+  some?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type Section = ISection & PokValue & {
+  __typename?: 'Section';
+  id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SectionCollection = {
+  __typename?: 'SectionCollection';
+  nodes: Array<Maybe<ISection>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type SectionCondition = {
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SectionFilter = {
+  and?: Maybe<Array<SectionFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<SectionFilter>>;
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum SectionOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type Sync = {
+  __typename?: 'Sync';
+  action?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['String']>;
+  deletedAt?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  modifiedAt?: Maybe<Scalars['String']>;
+  payload?: Maybe<Scalars['JSON']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type SyncCollection = {
+  __typename?: 'SyncCollection';
+  nodes: Array<Maybe<Sync>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type SyncCondition = {
+  after?: Maybe<Scalars['String']>;
+};
+
+export type Tile = ITile & PokValue & {
+  __typename?: 'Tile';
+  body?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+};
+
+export type TileCollection = {
+  __typename?: 'TileCollection';
+  nodes: Array<Maybe<ITile>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type TileCondition = {
+  body?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type TileFilter = {
+  and?: Maybe<Array<TileFilter>>;
+  body?: Maybe<ScalarStringFilter>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<TileFilter>>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum TileOrderBy {
+  BodyAsc = 'BODY_ASC',
+  BodyDesc = 'BODY_DESC',
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
+export type Tiles = ISection & ITiles & PokValue & {
+  __typename?: 'Tiles';
+  body?: Maybe<Array<Maybe<Tile>>>;
+  id: Scalars['String'];
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type TilesCollection = {
+  __typename?: 'TilesCollection';
+  nodes: Array<Maybe<ITiles>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type TilesCondition = {
+  summary?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type TilesFilter = {
+  and?: Maybe<Array<TilesFilter>>;
+  id?: Maybe<ScalarIdFilter>;
+  or?: Maybe<Array<TilesFilter>>;
+  summary?: Maybe<ScalarStringFilter>;
+  title?: Maybe<ScalarStringFilter>;
+};
+
+export enum TilesOrderBy {
+  CreatedAsc = 'CREATED_ASC',
+  CreatedDesc = 'CREATED_DESC',
+  ModifiedAsc = 'MODIFIED_ASC',
+  ModifiedDesc = 'MODIFIED_DESC',
+  SummaryAsc = 'SUMMARY_ASC',
+  SummaryDesc = 'SUMMARY_DESC',
+  TitleAsc = 'TITLE_ASC',
+  TitleDesc = 'TITLE_DESC'
+}
+
 export type ListBlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ListBlogPostsQuery = (
-  { __typename?: 'Query' }
-  & { entries?: Maybe<(
-    { __typename?: 'Entries' }
-    & { allBlogPost?: Maybe<(
-      { __typename?: 'BlogPostCollection' }
-      & BlogPostListingFragment
-    )> }
-  )> }
-);
+export type ListBlogPostsQuery = { __typename?: 'Query', entries?: { __typename?: 'Entries', allBlogPost?: { __typename?: 'BlogPostCollection', nodes: Array<{ __typename?: 'BlogPost', id: string, title?: string | null | undefined, date?: string | null | undefined, summary?: string | null | undefined, estimatedReadTime?: number | null | undefined, pokko: { __typename?: 'Pokko', path?: Array<string | null | undefined> | null | undefined } } | null | undefined> } | null | undefined } | null | undefined };
 
-export type BlogPostListingFragment = (
-  { __typename?: 'BlogPostCollection' }
-  & { nodes: Array<Maybe<(
-    { __typename?: 'BlogPost' }
-    & BlogPostSummaryFragment
-  )>> }
-);
+export type BlogPostListingFragment = { __typename?: 'BlogPostCollection', nodes: Array<{ __typename?: 'BlogPost', id: string, title?: string | null | undefined, date?: string | null | undefined, summary?: string | null | undefined, estimatedReadTime?: number | null | undefined, pokko: { __typename?: 'Pokko', path?: Array<string | null | undefined> | null | undefined } } | null | undefined> };
 
-export type BlogPostSummaryFragment = (
-  { __typename?: 'BlogPost' }
-  & Pick<BlogPost, 'id' | 'title' | 'date' | 'summary' | 'estimatedReadTime'>
-  & { pokko: (
-    { __typename?: 'Pokko' }
-    & Pick<Pokko, 'path'>
-  ) }
-);
+export type BlogPostSummaryFragment = { __typename?: 'BlogPost', id: string, title?: string | null | undefined, date?: string | null | undefined, summary?: string | null | undefined, estimatedReadTime?: number | null | undefined, pokko: { __typename?: 'Pokko', path?: Array<string | null | undefined> | null | undefined } };
 
-type ModularPageContent_ModularPage_Fragment = (
-  { __typename?: 'ModularPage' }
-  & { body?: Maybe<Array<Maybe<(
-    { __typename?: 'Hero' }
-    & ModularPageBody_Hero_Fragment
-  ) | (
-    { __typename?: 'ResourceTiles' }
-    & ModularPageBody_ResourceTiles_Fragment
-  ) | (
-    { __typename?: 'IconTiles' }
-    & ModularPageBody_IconTiles_Fragment
-  ) | (
-    { __typename?: 'Tiles' }
-    & ModularPageBody_Tiles_Fragment
-  ) | (
-    { __typename?: 'FeatureTiles' }
-    & ModularPageBody_FeatureTiles_Fragment
-  ) | (
-    { __typename?: 'EarlyAccessForm' }
-    & ModularPageBody_EarlyAccessForm_Fragment
-  ) | (
-    { __typename?: 'RichText' }
-    & ModularPageBody_RichText_Fragment
-  ) | (
-    { __typename?: 'Image' }
-    & ModularPageBody_Image_Fragment
-  )>>> }
-  & MetadataContent_ModularPage_Fragment
-);
+type ModularPageContent_BlogPost_Fragment = { __typename?: 'BlogPost', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type ModularPageContent_BlogPost_Fragment = (
-  { __typename?: 'BlogPost' }
-  & { body?: Maybe<Array<Maybe<(
-    { __typename?: 'Hero' }
-    & ModularPageBody_Hero_Fragment
-  ) | (
-    { __typename?: 'ResourceTiles' }
-    & ModularPageBody_ResourceTiles_Fragment
-  ) | (
-    { __typename?: 'IconTiles' }
-    & ModularPageBody_IconTiles_Fragment
-  ) | (
-    { __typename?: 'Tiles' }
-    & ModularPageBody_Tiles_Fragment
-  ) | (
-    { __typename?: 'FeatureTiles' }
-    & ModularPageBody_FeatureTiles_Fragment
-  ) | (
-    { __typename?: 'EarlyAccessForm' }
-    & ModularPageBody_EarlyAccessForm_Fragment
-  ) | (
-    { __typename?: 'RichText' }
-    & ModularPageBody_RichText_Fragment
-  ) | (
-    { __typename?: 'Image' }
-    & ModularPageBody_Image_Fragment
-  )>>> }
-  & MetadataContent_BlogPost_Fragment
-);
+type ModularPageContent_ContentPage_Fragment = { __typename?: 'ContentPage', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type ModularPageContent_ContentPage_Fragment = (
-  { __typename?: 'ContentPage' }
-  & { body?: Maybe<Array<Maybe<(
-    { __typename?: 'Hero' }
-    & ModularPageBody_Hero_Fragment
-  ) | (
-    { __typename?: 'ResourceTiles' }
-    & ModularPageBody_ResourceTiles_Fragment
-  ) | (
-    { __typename?: 'IconTiles' }
-    & ModularPageBody_IconTiles_Fragment
-  ) | (
-    { __typename?: 'Tiles' }
-    & ModularPageBody_Tiles_Fragment
-  ) | (
-    { __typename?: 'FeatureTiles' }
-    & ModularPageBody_FeatureTiles_Fragment
-  ) | (
-    { __typename?: 'EarlyAccessForm' }
-    & ModularPageBody_EarlyAccessForm_Fragment
-  ) | (
-    { __typename?: 'RichText' }
-    & ModularPageBody_RichText_Fragment
-  ) | (
-    { __typename?: 'Image' }
-    & ModularPageBody_Image_Fragment
-  )>>> }
-  & MetadataContent_ContentPage_Fragment
-);
+type ModularPageContent_ModularPage_Fragment = { __typename?: 'ModularPage', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-export type ModularPageContentFragment = ModularPageContent_ModularPage_Fragment | ModularPageContent_BlogPost_Fragment | ModularPageContent_ContentPage_Fragment;
+export type ModularPageContentFragment = ModularPageContent_BlogPost_Fragment | ModularPageContent_ContentPage_Fragment | ModularPageContent_ModularPage_Fragment;
 
-type ContentPageContent_BlogPost_Fragment = (
-  { __typename?: 'BlogPost' }
-  & Pick<BlogPost, 'alias' | 'title'>
-  & ModularPageContent_BlogPost_Fragment
-);
+type ContentPageContent_BlogPost_Fragment = { __typename?: 'BlogPost', alias: string, title?: string | null | undefined, metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type ContentPageContent_ContentPage_Fragment = (
-  { __typename?: 'ContentPage' }
-  & Pick<ContentPage, 'alias' | 'title'>
-  & ModularPageContent_ContentPage_Fragment
-);
+type ContentPageContent_ContentPage_Fragment = { __typename?: 'ContentPage', alias: string, title?: string | null | undefined, metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
 export type ContentPageContentFragment = ContentPageContent_BlogPost_Fragment | ContentPageContent_ContentPage_Fragment;
 
-export type BlogPostContentFragment = (
-  { __typename?: 'BlogPost' }
-  & Pick<BlogPost, 'date'>
-  & ContentPageContent_BlogPost_Fragment
-);
+export type BlogPostContentFragment = { __typename?: 'BlogPost', date?: string | null | undefined, alias: string, title?: string | null | undefined, metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type MetadataContent_ModularPage_Fragment = (
-  { __typename?: 'ModularPage' }
-  & Pick<ModularPage, 'metaDescription' | 'metaTitle'>
-  & { metaImage?: Maybe<(
-    { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url'>
-  )> }
-);
+type MetadataContent_BlogPost_Fragment = { __typename?: 'BlogPost', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type MetadataContent_Metadata_Fragment = (
-  { __typename?: 'Metadata' }
-  & Pick<Metadata, 'metaDescription' | 'metaTitle'>
-  & { metaImage?: Maybe<(
-    { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url'>
-  )> }
-);
+type MetadataContent_ContentPage_Fragment = { __typename?: 'ContentPage', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type MetadataContent_BlogPost_Fragment = (
-  { __typename?: 'BlogPost' }
-  & Pick<BlogPost, 'metaDescription' | 'metaTitle'>
-  & { metaImage?: Maybe<(
-    { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url'>
-  )> }
-);
+type MetadataContent_Metadata_Fragment = { __typename?: 'Metadata', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-type MetadataContent_ContentPage_Fragment = (
-  { __typename?: 'ContentPage' }
-  & Pick<ContentPage, 'metaDescription' | 'metaTitle'>
-  & { metaImage?: Maybe<(
-    { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url'>
-  )> }
-);
+type MetadataContent_ModularPage_Fragment = { __typename?: 'ModularPage', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-export type MetadataContentFragment = MetadataContent_ModularPage_Fragment | MetadataContent_Metadata_Fragment | MetadataContent_BlogPost_Fragment | MetadataContent_ContentPage_Fragment;
+export type MetadataContentFragment = MetadataContent_BlogPost_Fragment | MetadataContent_ContentPage_Fragment | MetadataContent_Metadata_Fragment | MetadataContent_ModularPage_Fragment;
 
-type ModularPageBody_Image_Fragment = (
-  { __typename: 'Image' }
-  & ImageModuleFragment
-);
-
-type ModularPageBody_Tiles_Fragment = { __typename: 'Tiles' };
-
-type ModularPageBody_Tile_Fragment = { __typename: 'Tile' };
-
-type ModularPageBody_Hero_Fragment = (
-  { __typename: 'Hero' }
-  & HeroModuleFragment
-);
-
-type ModularPageBody_Link_Fragment = { __typename: 'Link' };
-
-type ModularPageBody_ResourceTiles_Fragment = (
-  { __typename: 'ResourceTiles' }
-  & ResourceTileModuleFragment
-);
-
-type ModularPageBody_ResourceTile_Fragment = { __typename: 'ResourceTile' };
-
-type ModularPageBody_IconTiles_Fragment = (
-  { __typename: 'IconTiles' }
-  & IconTilesModuleFragment
-);
-
-type ModularPageBody_IconTile_Fragment = { __typename: 'IconTile' };
-
-type ModularPageBody_FeatureTiles_Fragment = (
-  { __typename: 'FeatureTiles' }
-  & FeatureTilesModuleFragment
-);
+type ModularPageBody_EarlyAccessForm_Fragment = { __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined };
 
 type ModularPageBody_FeatureTile_Fragment = { __typename: 'FeatureTile' };
 
-type ModularPageBody_EarlyAccessForm_Fragment = (
-  { __typename: 'EarlyAccessForm' }
-  & EarlyAccessFormModuleFragment
-);
+type ModularPageBody_FeatureTiles_Fragment = { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined };
 
-type ModularPageBody_RichText_Fragment = (
-  { __typename: 'RichText' }
-  & RichTextModuleFragment
-);
+type ModularPageBody_Hero_Fragment = { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined };
+
+type ModularPageBody_IconTile_Fragment = { __typename: 'IconTile' };
+
+type ModularPageBody_IconTiles_Fragment = { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined };
+
+type ModularPageBody_Image_Fragment = { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined };
+
+type ModularPageBody_Link_Fragment = { __typename: 'Link' };
+
+type ModularPageBody_ResourceTile_Fragment = { __typename: 'ResourceTile' };
+
+type ModularPageBody_ResourceTiles_Fragment = { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
+
+type ModularPageBody_RichText_Fragment = { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined };
 
 type ModularPageBody_Section_Fragment = { __typename: 'Section' };
 
-export type ModularPageBodyFragment = ModularPageBody_Image_Fragment | ModularPageBody_Tiles_Fragment | ModularPageBody_Tile_Fragment | ModularPageBody_Hero_Fragment | ModularPageBody_Link_Fragment | ModularPageBody_ResourceTiles_Fragment | ModularPageBody_ResourceTile_Fragment | ModularPageBody_IconTiles_Fragment | ModularPageBody_IconTile_Fragment | ModularPageBody_FeatureTiles_Fragment | ModularPageBody_FeatureTile_Fragment | ModularPageBody_EarlyAccessForm_Fragment | ModularPageBody_RichText_Fragment | ModularPageBody_Section_Fragment;
+type ModularPageBody_Tile_Fragment = { __typename: 'Tile' };
 
-export type HeroModuleFragment = (
-  { __typename?: 'Hero' }
-  & Pick<Hero, 'title'>
-  & { heroBody: Hero['body'] }
-  & { link?: Maybe<(
-    { __typename?: 'Link' }
-    & Pick<Link, 'target' | 'text'>
-  )>, image?: Maybe<(
-    { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url'>
-  )> }
-);
+type ModularPageBody_Tiles_Fragment = { __typename: 'Tiles' };
 
-export type IconTilesModuleFragment = (
-  { __typename?: 'IconTiles' }
-  & Pick<IconTiles, 'layout' | 'title' | 'summary'>
-  & { iconTileBody?: Maybe<Array<Maybe<(
-    { __typename?: 'IconTile' }
-    & Pick<IconTile, 'title' | 'body'>
-    & { icon?: Maybe<(
-      { __typename?: 'PokMedia' }
-      & Pick<PokMedia, 'url'>
-    )> }
-  )>>> }
-);
+export type ModularPageBodyFragment = ModularPageBody_EarlyAccessForm_Fragment | ModularPageBody_FeatureTile_Fragment | ModularPageBody_FeatureTiles_Fragment | ModularPageBody_Hero_Fragment | ModularPageBody_IconTile_Fragment | ModularPageBody_IconTiles_Fragment | ModularPageBody_Image_Fragment | ModularPageBody_Link_Fragment | ModularPageBody_ResourceTile_Fragment | ModularPageBody_ResourceTiles_Fragment | ModularPageBody_RichText_Fragment | ModularPageBody_Section_Fragment | ModularPageBody_Tile_Fragment | ModularPageBody_Tiles_Fragment;
 
-export type FeatureTilesModuleFragment = (
-  { __typename?: 'FeatureTiles' }
-  & { featureTilesBody?: Maybe<Array<Maybe<(
-    { __typename?: 'FeatureTile' }
-    & Pick<FeatureTile, 'title' | 'body' | 'features'>
-    & { icon?: Maybe<(
-      { __typename?: 'PokMedia' }
-      & Pick<PokMedia, 'url'>
-    )> }
-  )>>> }
-);
+export type HeroModuleFragment = { __typename?: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined };
 
-export type ResourceTileModuleFragment = (
-  { __typename?: 'ResourceTiles' }
-  & Pick<ResourceTiles, 'title' | 'summary'>
-  & { resourceTilesBody?: Maybe<Array<Maybe<(
-    { __typename?: 'ResourceTile' }
-    & Pick<ResourceTile, 'title' | 'body'>
-    & { link?: Maybe<(
-      { __typename?: 'Link' }
-      & Pick<Link, 'text' | 'target'>
-    )> }
-  )>>> }
-);
+export type IconTilesModuleFragment = { __typename?: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined };
 
-export type EarlyAccessFormModuleFragment = (
-  { __typename?: 'EarlyAccessForm' }
-  & Pick<EarlyAccessForm, 'style' | 'title' | 'summary'>
-  & { link?: Maybe<(
-    { __typename?: 'Link' }
-    & Pick<Link, 'text' | 'target'>
-  )> }
-);
+export type FeatureTilesModuleFragment = { __typename?: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined };
 
-export type RichTextModuleFragment = (
-  { __typename?: 'RichText' }
-  & { body?: Maybe<(
-    { __typename?: 'PokRichText' }
-    & Pick<PokRichText, 'body'>
-  )> }
-);
+export type ResourceTileModuleFragment = { __typename?: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
-export type ImageModuleFragment = (
-  { __typename?: 'Image' }
-  & { image?: Maybe<(
-    { __typename?: 'PokMedia' }
-    & Pick<PokMedia, 'url' | 'height' | 'width'>
-  )> }
-);
+export type EarlyAccessFormModuleFragment = { __typename?: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined };
+
+export type RichTextModuleFragment = { __typename?: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined };
+
+export type ImageModuleFragment = { __typename?: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined };
 
 export type GetPageByPathQueryVariables = Exact<{
   path: Array<Scalars['String']> | Scalars['String'];
 }>;
 
 
-export type GetPageByPathQuery = (
-  { __typename?: 'Query' }
-  & { entry?: Maybe<(
-    { __typename?: 'ModularPage' }
-    & ModularPageContent_ModularPage_Fragment
-  ) | { __typename?: 'Metadata' } | (
-    { __typename?: 'BlogPost' }
-    & ModularPageContent_BlogPost_Fragment
-    & BlogPostContentFragment
-    & ContentPageContent_BlogPost_Fragment
-  ) | { __typename?: 'Author' } | (
-    { __typename?: 'ContentPage' }
-    & ModularPageContent_ContentPage_Fragment
-    & ContentPageContent_ContentPage_Fragment
-  )> }
-);
+export type GetPageByPathQuery = { __typename?: 'Query', entry?: { __typename?: 'Author' } | { __typename?: 'BlogPost', date?: string | null | undefined, alias: string, title?: string | null | undefined, metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename?: 'ContentPage', alias: string, title?: string | null | undefined, metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename?: 'Metadata' } | { __typename?: 'ModularPage', metaDescription?: string | null | undefined, metaTitle?: string | null | undefined, body?: Array<{ __typename: 'EarlyAccessForm', style?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | { __typename: 'FeatureTiles', featureTilesBody?: Array<{ __typename?: 'FeatureTile', title?: string | null | undefined, body?: string | null | undefined, features?: Array<string | null | undefined> | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Hero', title?: string | null | undefined, heroBody?: string | null | undefined, link?: { __typename?: 'Link', target?: string | null | undefined, text?: string | null | undefined } | null | undefined, image?: { __typename?: 'PokMedia', url: string } | null | undefined } | { __typename: 'IconTiles', layout?: string | null | undefined, title?: string | null | undefined, summary?: string | null | undefined, iconTileBody?: Array<{ __typename?: 'IconTile', title?: string | null | undefined, body?: string | null | undefined, icon?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'Image', image?: { __typename?: 'PokMedia', url: string, height?: number | null | undefined, width?: number | null | undefined } | null | undefined } | { __typename: 'ResourceTiles', title?: string | null | undefined, summary?: string | null | undefined, resourceTilesBody?: Array<{ __typename?: 'ResourceTile', title?: string | null | undefined, body?: string | null | undefined, link?: { __typename?: 'Link', text?: string | null | undefined, target?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'RichText', body?: { __typename?: 'PokRichText', body?: any | null | undefined } | null | undefined } | { __typename: 'Tiles' } | null | undefined> | null | undefined, metaImage?: { __typename?: 'PokMedia', url: string } | null | undefined } | null | undefined };
 
 export type GetDynamicPagePathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDynamicPagePathsQuery = (
-  { __typename?: 'Query' }
-  & { taxonomy?: Maybe<(
-    { __typename?: 'PageCollection' }
-    & { nodes: Array<Maybe<(
-      { __typename?: 'Page' }
-      & Pick<Page, 'path' | 'entryId'>
-    )>> }
-  )> }
-);
+export type GetDynamicPagePathsQuery = { __typename?: 'Query', taxonomy?: { __typename?: 'PageCollection', nodes: Array<{ __typename?: 'Page', path?: Array<string | null | undefined> | null | undefined, entryId?: string | null | undefined } | null | undefined> } | null | undefined };
 
 export const BlogPostSummaryFragmentDoc = gql`
     fragment BlogPostSummary on IBlogPost {
@@ -1955,10 +1702,12 @@ export const ListBlogPostsDocument = gql`
  * });
  */
 export function useListBlogPostsQuery(baseOptions?: Apollo.QueryHookOptions<ListBlogPostsQuery, ListBlogPostsQueryVariables>) {
-        return Apollo.useQuery<ListBlogPostsQuery, ListBlogPostsQueryVariables>(ListBlogPostsDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ListBlogPostsQuery, ListBlogPostsQueryVariables>(ListBlogPostsDocument, options);
       }
 export function useListBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListBlogPostsQuery, ListBlogPostsQueryVariables>) {
-          return Apollo.useLazyQuery<ListBlogPostsQuery, ListBlogPostsQueryVariables>(ListBlogPostsDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ListBlogPostsQuery, ListBlogPostsQueryVariables>(ListBlogPostsDocument, options);
         }
 export type ListBlogPostsQueryHookResult = ReturnType<typeof useListBlogPostsQuery>;
 export type ListBlogPostsLazyQueryHookResult = ReturnType<typeof useListBlogPostsLazyQuery>;
@@ -1992,10 +1741,12 @@ ${ContentPageContentFragmentDoc}`;
  * });
  */
 export function useGetPageByPathQuery(baseOptions: Apollo.QueryHookOptions<GetPageByPathQuery, GetPageByPathQueryVariables>) {
-        return Apollo.useQuery<GetPageByPathQuery, GetPageByPathQueryVariables>(GetPageByPathDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPageByPathQuery, GetPageByPathQueryVariables>(GetPageByPathDocument, options);
       }
 export function useGetPageByPathLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPageByPathQuery, GetPageByPathQueryVariables>) {
-          return Apollo.useLazyQuery<GetPageByPathQuery, GetPageByPathQueryVariables>(GetPageByPathDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPageByPathQuery, GetPageByPathQueryVariables>(GetPageByPathDocument, options);
         }
 export type GetPageByPathQueryHookResult = ReturnType<typeof useGetPageByPathQuery>;
 export type GetPageByPathLazyQueryHookResult = ReturnType<typeof useGetPageByPathLazyQuery>;
@@ -2027,10 +1778,12 @@ export const GetDynamicPagePathsDocument = gql`
  * });
  */
 export function useGetDynamicPagePathsQuery(baseOptions?: Apollo.QueryHookOptions<GetDynamicPagePathsQuery, GetDynamicPagePathsQueryVariables>) {
-        return Apollo.useQuery<GetDynamicPagePathsQuery, GetDynamicPagePathsQueryVariables>(GetDynamicPagePathsDocument, baseOptions);
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetDynamicPagePathsQuery, GetDynamicPagePathsQueryVariables>(GetDynamicPagePathsDocument, options);
       }
 export function useGetDynamicPagePathsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDynamicPagePathsQuery, GetDynamicPagePathsQueryVariables>) {
-          return Apollo.useLazyQuery<GetDynamicPagePathsQuery, GetDynamicPagePathsQueryVariables>(GetDynamicPagePathsDocument, baseOptions);
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetDynamicPagePathsQuery, GetDynamicPagePathsQueryVariables>(GetDynamicPagePathsDocument, options);
         }
 export type GetDynamicPagePathsQueryHookResult = ReturnType<typeof useGetDynamicPagePathsQuery>;
 export type GetDynamicPagePathsLazyQueryHookResult = ReturnType<typeof useGetDynamicPagePathsLazyQuery>;
@@ -2043,98 +1796,8 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       }
       const result: PossibleTypesResultData = {
   "possibleTypes": {
-    "PokValue": [
-      "Image",
-      "Tiles",
-      "Tile",
-      "Hero",
-      "Link",
-      "ResourceTiles",
-      "ResourceTile",
-      "IconTiles",
-      "IconTile",
-      "FeatureTiles",
-      "FeatureTile",
-      "EarlyAccessForm",
-      "RichText",
-      "Section"
-    ],
-    "IImage": [
-      "Image"
-    ],
-    "ITiles": [
-      "Tiles"
-    ],
-    "ISection": [
-      "Tiles",
-      "ResourceTiles",
-      "IconTiles",
-      "Section"
-    ],
-    "ITile": [
-      "Tile",
-      "ResourceTile",
-      "IconTile",
-      "FeatureTile"
-    ],
-    "PokEntry": [
-      "ModularPage",
-      "Metadata",
-      "BlogPost",
-      "Author",
-      "ContentPage"
-    ],
-    "IModularPage": [
-      "ModularPage",
-      "BlogPost",
-      "ContentPage"
-    ],
-    "IMetadata": [
-      "ModularPage",
-      "Metadata",
-      "BlogPost",
-      "ContentPage"
-    ],
-    "ModularPage_Body": [
-      "Hero",
-      "ResourceTiles",
-      "IconTiles",
-      "Tiles",
-      "FeatureTiles",
-      "EarlyAccessForm",
-      "RichText",
-      "Image"
-    ],
-    "IHero": [
-      "Hero"
-    ],
-    "ILink": [
-      "Link"
-    ],
-    "IResourceTiles": [
-      "ResourceTiles"
-    ],
-    "IResourceTile": [
-      "ResourceTile"
-    ],
-    "IIconTiles": [
-      "IconTiles"
-    ],
-    "IIconTile": [
-      "IconTile",
-      "FeatureTile"
-    ],
-    "IFeatureTiles": [
-      "FeatureTiles"
-    ],
-    "IFeatureTile": [
-      "FeatureTile"
-    ],
-    "IEarlyAccessForm": [
-      "EarlyAccessForm"
-    ],
-    "IRichText": [
-      "RichText"
+    "IAuthor": [
+      "Author"
     ],
     "IBlogPost": [
       "BlogPost"
@@ -2143,8 +1806,98 @@ export type GetDynamicPagePathsQueryResult = Apollo.QueryResult<GetDynamicPagePa
       "BlogPost",
       "ContentPage"
     ],
-    "IAuthor": [
-      "Author"
+    "IEarlyAccessForm": [
+      "EarlyAccessForm"
+    ],
+    "IFeatureTile": [
+      "FeatureTile"
+    ],
+    "IFeatureTiles": [
+      "FeatureTiles"
+    ],
+    "IHero": [
+      "Hero"
+    ],
+    "IIconTile": [
+      "FeatureTile",
+      "IconTile"
+    ],
+    "IIconTiles": [
+      "IconTiles"
+    ],
+    "IImage": [
+      "Image"
+    ],
+    "ILink": [
+      "Link"
+    ],
+    "IMetadata": [
+      "BlogPost",
+      "ContentPage",
+      "Metadata",
+      "ModularPage"
+    ],
+    "IModularPage": [
+      "BlogPost",
+      "ContentPage",
+      "ModularPage"
+    ],
+    "IResourceTile": [
+      "ResourceTile"
+    ],
+    "IResourceTiles": [
+      "ResourceTiles"
+    ],
+    "IRichText": [
+      "RichText"
+    ],
+    "ISection": [
+      "IconTiles",
+      "ResourceTiles",
+      "Section",
+      "Tiles"
+    ],
+    "ITile": [
+      "FeatureTile",
+      "IconTile",
+      "ResourceTile",
+      "Tile"
+    ],
+    "ITiles": [
+      "Tiles"
+    ],
+    "ModularPage_Body": [
+      "EarlyAccessForm",
+      "FeatureTiles",
+      "Hero",
+      "IconTiles",
+      "Image",
+      "ResourceTiles",
+      "RichText",
+      "Tiles"
+    ],
+    "PokEntry": [
+      "Author",
+      "BlogPost",
+      "ContentPage",
+      "Metadata",
+      "ModularPage"
+    ],
+    "PokValue": [
+      "EarlyAccessForm",
+      "FeatureTile",
+      "FeatureTiles",
+      "Hero",
+      "IconTile",
+      "IconTiles",
+      "Image",
+      "Link",
+      "ResourceTile",
+      "ResourceTiles",
+      "RichText",
+      "Section",
+      "Tile",
+      "Tiles"
     ]
   }
 };

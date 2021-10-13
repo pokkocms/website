@@ -11,7 +11,11 @@ export const HeroModule: React.FC<HeroModuleFragment> = ({
   image,
 }) => {
   const [submit, { state, message }] = useRegisterForm();
-  const { register, handleSubmit, errors } = useForm<RegisterFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormInput>();
 
   return (
     <div className="hero__container">
@@ -19,15 +23,15 @@ export const HeroModule: React.FC<HeroModuleFragment> = ({
       <div className="hero__content">
         <div className="hero__left">
           <h1>
-            <ReactMarkdown renderers={{ paragraph: React.Fragment }}>
+            <ReactMarkdown components={{ p: React.Fragment }}>
               {title}
             </ReactMarkdown>
           </h1>
           <p>{heroBody}</p>
 
           {state === "success" ? (
-            <div className="eap-basic__success">
-              <p>{message ?? "Thank you!"}</p>
+            <div className="control">
+              <p className="message">{message ?? "Thank you!"}</p>
             </div>
           ) : (
             <form
@@ -39,12 +43,14 @@ export const HeroModule: React.FC<HeroModuleFragment> = ({
                   type="email"
                   placeholder="Your email"
                   className={errors.email ? "input --danger" : "input"}
-                  name="email"
-                  ref={register({ required: "This field is required" })}
+                  {...register("email", { required: "This field is required" })}
                 />
 
                 {errors.email ? (
                   <p className="message --danger">{errors.email.message}</p>
+                ) : null}
+                {state === "error" && message ? (
+                  <p className="message --danger">{message}</p>
                 ) : null}
               </div>
               <button
